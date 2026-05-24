@@ -6,8 +6,8 @@ const path = require('node:path');
 // All packages @flupkejs provides
 const REPLACEMENTS = [
   'aggregate-error','ansi-regex','ansi-styles','balanced-match','call-bind','callsites',
-  'camelcase','classnames','clean-stack','cliui','color-convert','color-name','concat-map',
-  'cross-spawn','debug','decamelize','deep-equal','define-data-property','delay',
+  'camelcase','classnames','clean-stack','cliui','clsx','color-convert','color-name',
+  'concat-map','cross-spawn','debug','decamelize','deep-equal','define-data-property','delay',
   'dotenv-expand','emoji-regex','es-define-property','es-errors','escalade',
   'escape-string-regexp','execa','fast-deep-equal','filter-obj','find-up','function-bind',
   'get-caller-file','get-intrinsic','globby','gopd','graceful-fs','has-flag','has-proto',
@@ -19,7 +19,8 @@ const REPLACEMENTS = [
   'pify','pkg-dir','require-directory','resolve-from','retry','rimraf','safe-buffer',
   'semver','set-function-length','side-channel','signal-exit','slash','sort-keys',
   'string-width','strip-ansi','strip-indent','supports-color','tempy','type-detect',
-  'type-fest','util-deprecate','which','wrap-ansi','wrappy','y18n','yallist','yargs-parser'
+  'type-fest','util-deprecate','uuid','which','wrap-ansi','wrappy','y18n','yallist',
+  'yargs-parser'
 ];
 
 function detectPackageManager(dir) {
