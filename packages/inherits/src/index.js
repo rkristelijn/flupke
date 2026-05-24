@@ -9,7 +9,7 @@ module.exports = function inherits(ctor, superCtor) {
   if (typeof ctor !== 'function') {
     throw new TypeError('The constructor must be a function');
   }
-  Object.defineProperty(ctor, 'super_', { value: superCtor, writable: true, configurable: true });
+  ctor.super_ = superCtor;
   ctor.prototype = Object.create(superCtor.prototype, {
     constructor: { value: ctor, enumerable: false, writable: true, configurable: true }
   });
