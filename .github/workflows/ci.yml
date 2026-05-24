@@ -21,16 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with:
-          repository: rkristelijn/cpm
-          path: .cpm-tool
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: npm ci
-      - name: cpm checks
-        run: |
-          bash .cpm-tool/checks/javascript/check-v8-perf.sh
-          bash .cpm-tool/checks/javascript/check-ts-dangerous.sh
-          bash .cpm-tool/checks/javascript/check-package-json.sh
+      - name: Install cpm
+        run: curl -fsSL https://raw.githubusercontent.com/rkristelijn/cpm/main/install.sh | bash
+      - name: cpm scan
+        run: cpm scan .
