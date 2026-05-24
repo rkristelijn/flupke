@@ -1,0 +1,11 @@
+{
+  "name": "@flupke/safe-buffer",
+  "version": "1.0.0",
+  "description": "Drop-in replacement for safe-buffer — delegates to native Buffer.from/alloc",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/rkristelijn/flupke" },
+  "keywords": ["safe-buffer", "buffer", "alloc", "flupke", "hardened"]
+}

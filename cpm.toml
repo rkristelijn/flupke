@@ -1,0 +1,19 @@
+[project]
+name = "flupke"
+version = "1.0.0"
+lang = "typescript"
+build = "npm"
+
+[checks]
+format-code = true
+lint-code = true
+complexity = true
+comment-ratio = true
+
+[hooks]
+pre-commit = true
+pre-push = true
+commit-msg = true
+
+[process]
+maturity-target = 5

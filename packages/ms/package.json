@@ -1,0 +1,11 @@
+{
+  "name": "@flupke/ms",
+  "version": "1.0.0",
+  "description": "Drop-in replacement for ms — time string parsing/formatting",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/rkristelijn/flupke" },
+  "keywords": ["ms", "milliseconds", "time", "duration", "flupke", "hardened"]
+}
