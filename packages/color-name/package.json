@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/color-name",
+  "version": "1.0.0",
+  "description": "CSS color name to RGB map",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

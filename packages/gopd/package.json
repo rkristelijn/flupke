@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/gopd",
+  "version": "1.0.0",
+  "description": "Get own property descriptor",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

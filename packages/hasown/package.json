@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/hasown",
+  "version": "1.0.0",
+  "description": "Object.hasOwn or polyfill",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

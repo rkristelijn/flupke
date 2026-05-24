@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/es-errors",
+  "version": "1.0.0",
+  "description": "ES Error types",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

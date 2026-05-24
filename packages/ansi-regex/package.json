@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/ansi-regex",
+  "version": "1.0.0",
+  "description": "ANSI escape regex",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

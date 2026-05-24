@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/classnames",
+  "version": "1.0.0",
+  "description": "Join class names",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/es-define-property",
+  "version": "1.0.0",
+  "description": "Object.defineProperty",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

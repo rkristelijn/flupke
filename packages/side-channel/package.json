@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/side-channel",
+  "version": "1.0.0",
+  "description": "WeakMap-based private storage",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

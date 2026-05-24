@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/ansi-styles",
+  "version": "1.0.0",
+  "description": "ANSI escape code pairs",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/balanced-match",
+  "version": "1.0.0",
+  "description": "Find matching braces in a string",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

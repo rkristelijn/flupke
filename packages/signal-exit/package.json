@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/signal-exit",
+  "version": "1.0.0",
+  "description": "Signal exit handler",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

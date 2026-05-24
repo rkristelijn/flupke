@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/get-intrinsic",
+  "version": "1.0.0",
+  "description": "Get JS intrinsics",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

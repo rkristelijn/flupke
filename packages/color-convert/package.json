@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/color-convert",
+  "version": "1.0.0",
+  "description": "RGB/HSL/HEX conversion",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

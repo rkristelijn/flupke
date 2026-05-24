@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/object-inspect",
+  "version": "1.0.0",
+  "description": "util.inspect wrapper",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

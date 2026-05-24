@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/deep-equal",
+  "version": "1.0.0",
+  "description": "util.isDeepStrictEqual",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

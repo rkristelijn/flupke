@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/lru-cache",
+  "version": "1.0.0",
+  "description": "Map-based LRU cache",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

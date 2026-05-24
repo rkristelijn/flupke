@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/slash",
+  "version": "1.0.0",
+  "description": "Convert backslashes to forward slashes",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

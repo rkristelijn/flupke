@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/call-bind",
+  "version": "1.0.0",
+  "description": "Function.prototype.call.bind",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

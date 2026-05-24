@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/semver",
+  "version": "1.0.0",
+  "description": "Version parsing and comparison",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

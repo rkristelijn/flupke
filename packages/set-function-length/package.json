@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/set-function-length",
+  "version": "1.0.0",
+  "description": "Set function length property",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

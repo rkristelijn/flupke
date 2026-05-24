@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/supports-color",
+  "version": "1.0.0",
+  "description": "Detect terminal color support",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

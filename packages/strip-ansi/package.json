@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/strip-ansi",
+  "version": "1.0.0",
+  "description": "Strip ANSI escape codes",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}

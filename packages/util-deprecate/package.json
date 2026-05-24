@@ -1,0 +1,9 @@
+{
+  "name": "@flupke/util-deprecate",
+  "version": "1.0.0",
+  "description": "Node util.deprecate",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "license": "MIT"
+}
