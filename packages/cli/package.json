@@ -1,0 +1,11 @@
+{
+  "name": "@flupkejs/cli",
+  "version": "1.0.1",
+  "description": "One command. Safer dependencies.",
+  "bin": { "flupke": "src/index.js" },
+  "files": ["src"],
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/rkristelijn/flupke" },
+  "keywords": ["flupke", "security", "supply-chain", "overrides", "cli"],
+  "engines": { "node": ">=18" }
+}
