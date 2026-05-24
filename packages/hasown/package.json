@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/hasown",
+  "name": "@flupkejs/hasown",
   "version": "1.0.0",
   "description": "Object.hasOwn or polyfill",
   "main": "src/index.js",

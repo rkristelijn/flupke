@@ -1,2 +1,2 @@
-{"name":"@flupke/escalade","version":"1.0.0","main":"src/index.js","types":"src/index.d.ts","files":["src"],"exports": { ".": { "types": "./src/index.d.ts", "default": "./src/index.js" }, "./package.json": "./package.json" },
+{"name":"@flupkejs/escalade","version":"1.0.0","main":"src/index.js","types":"src/index.d.ts","files":["src"],"exports": { ".": { "types": "./src/index.d.ts", "default": "./src/index.js" }, "./package.json": "./package.json" },
   "license":"MIT"}

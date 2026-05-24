@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/is-array",
+  "name": "@flupkejs/is-array",
   "version": "1.0.0",
   "description": "Drop-in replacement for isarray — uses native Array.isArray",
   "main": "src/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/slash",
+  "name": "@flupkejs/slash",
   "version": "1.0.0",
   "description": "Convert backslashes to forward slashes",
   "main": "src/index.js",

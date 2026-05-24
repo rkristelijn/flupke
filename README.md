@@ -3,7 +3,7 @@
 One command. Safer dependencies.
 
 ```bash
-npx @flupke/cli
+npx @flupkejs/cli
 ```
 
 ## The problem
@@ -26,7 +26,7 @@ These are packages like `safe-buffer` (untouched 5.5 years), `function-bind` (us
 ## The fix
 
 ```bash
-npx @flupke/cli
+npx @flupkejs/cli
 ```
 
 That's it. Works with npm, yarn, and pnpm. Scans your lockfile, finds replaceable packages, adds overrides, shows a before/after report:
@@ -35,7 +35,7 @@ That's it. Works with npm, yarn, and pnpm. Scans your lockfile, finds replaceabl
  flupke — dependency cleanup report
 
  Scanned: 847 packages in node_modules
- Replaced: 23 packages → @flupke/* equivalents
+ Replaced: 23 packages → @flupkejs/* equivalents
 
  Before                          After
  ─────────────────────────────── ───────────────────────────
@@ -66,13 +66,13 @@ That's it. Works with npm, yarn, and pnpm. Scans your lockfile, finds replaceabl
 
 ```bash
 # npm
-npx @flupke/cli
+npx @flupkejs/cli
 
 # yarn
-yarn dlx @flupke/cli
+yarn dlx @flupkejs/cli
 
 # pnpm
-pnpm dlx @flupke/cli
+pnpm dlx @flupkejs/cli
 ```
 
 All three generate the correct override format (`overrides`, `resolutions`, or `pnpm.overrides`).

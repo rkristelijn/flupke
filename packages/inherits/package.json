@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/inherits",
+  "name": "@flupkejs/inherits",
   "version": "1.0.0",
   "description": "Drop-in replacement for inherits — uses native Object.create",
   "main": "src/index.js",

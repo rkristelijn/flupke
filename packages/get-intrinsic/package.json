@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/get-intrinsic",
+  "name": "@flupkejs/get-intrinsic",
   "version": "1.0.0",
   "description": "Get JS intrinsics",
   "main": "src/index.js",

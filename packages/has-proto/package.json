@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/has-proto",
+  "name": "@flupkejs/has-proto",
   "version": "1.0.0",
   "description": "Check if __proto__ exists",
   "main": "src/index.js",

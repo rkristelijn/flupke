@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/es-define-property",
+  "name": "@flupkejs/es-define-property",
   "version": "1.0.0",
   "description": "Object.defineProperty",
   "main": "src/index.js",

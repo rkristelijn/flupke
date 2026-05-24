@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/semver",
+  "name": "@flupkejs/semver",
   "version": "1.0.0",
   "description": "Version parsing and comparison",
   "main": "src/index.js",

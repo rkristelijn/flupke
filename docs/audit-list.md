@@ -82,11 +82,11 @@ For each replaced package, flupke guarantees:
 ```json
 {
   "overrides": {
-    "safe-buffer": "npm:@flupke/safe-buffer@^1.0.0",
-    "inherits": "npm:@flupke/inherits@^1.0.0",
-    "isarray": "npm:@flupke/is-array@^1.0.0",
-    "ms": "npm:@flupke/ms@^1.0.0",
-    "function-bind": "npm:@flupke/function-bind@^1.0.0"
+    "safe-buffer": "npm:@flupkejs/safe-buffer@^1.0.0",
+    "inherits": "npm:@flupkejs/inherits@^1.0.0",
+    "isarray": "npm:@flupkejs/is-array@^1.0.0",
+    "ms": "npm:@flupkejs/ms@^1.0.0",
+    "function-bind": "npm:@flupkejs/function-bind@^1.0.0"
   }
 }
 ```

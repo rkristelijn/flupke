@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/has-flag",
+  "name": "@flupkejs/has-flag",
   "version": "1.0.0",
   "description": "Check if flag is in process.argv",
   "main": "src/index.js",

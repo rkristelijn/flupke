@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/strip-ansi",
+  "name": "@flupkejs/strip-ansi",
   "version": "1.0.0",
   "description": "Strip ANSI escape codes",
   "main": "src/index.js",

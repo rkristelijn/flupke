@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/gopd",
+  "name": "@flupkejs/gopd",
   "version": "1.0.0",
   "description": "Get own property descriptor",
   "main": "src/index.js",

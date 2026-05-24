@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/ansi-regex",
+  "name": "@flupkejs/ansi-regex",
   "version": "1.0.0",
   "description": "ANSI escape regex",
   "main": "src/index.js",

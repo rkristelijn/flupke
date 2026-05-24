@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/set-function-length",
+  "name": "@flupkejs/set-function-length",
   "version": "1.0.0",
   "description": "Set function length property",
   "main": "src/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/ms",
+  "name": "@flupkejs/ms",
   "version": "1.0.0",
   "description": "Drop-in replacement for ms — time string parsing/formatting",
   "main": "src/index.js",

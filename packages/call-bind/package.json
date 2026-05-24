@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/call-bind",
+  "name": "@flupkejs/call-bind",
   "version": "1.0.0",
   "description": "Function.prototype.call.bind",
   "main": "src/index.js",

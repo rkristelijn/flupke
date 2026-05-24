@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/safe-buffer",
+  "name": "@flupkejs/safe-buffer",
   "version": "1.0.0",
   "description": "Drop-in replacement for safe-buffer — delegates to native Buffer.from/alloc",
   "main": "src/index.js",

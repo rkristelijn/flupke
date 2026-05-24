@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/balanced-match",
+  "name": "@flupkejs/balanced-match",
   "version": "1.0.0",
   "description": "Find matching braces in a string",
   "main": "src/index.js",

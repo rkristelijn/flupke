@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/classnames",
+  "name": "@flupkejs/classnames",
   "version": "1.0.0",
   "description": "Join class names",
   "main": "src/index.js",

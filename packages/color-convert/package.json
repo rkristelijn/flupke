@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/color-convert",
+  "name": "@flupkejs/color-convert",
   "version": "1.0.0",
   "description": "RGB/HSL/HEX conversion",
   "main": "src/index.js",

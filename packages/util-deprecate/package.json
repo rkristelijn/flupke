@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/util-deprecate",
+  "name": "@flupkejs/util-deprecate",
   "version": "1.0.0",
   "description": "Node util.deprecate",
   "main": "src/index.js",

@@ -25,7 +25,7 @@ Every framework pulls in hundreds of transitive dependencies. Many are unmaintai
  flupke — dependency cleanup report
 
  Scanned: 847 packages in node_modules
- Replaced: 23 packages → @flupke/* equivalents
+ Replaced: 23 packages → @flupkejs/* equivalents
 
  Before                          After
  ─────────────────────────────── ───────────────────────────
@@ -39,11 +39,11 @@ Every framework pulls in hundreds of transitive dependencies. Many are unmaintai
 
 | Original | @flupke | Orig LOC | flupke LOC | Orig deps | Strategy |
 |----------|---------|---------|------------|-----------|----------|
-| `isarray` | `@flupke/is-array` | 7 | 1 | 0 | `Array.isArray` — native since ES5 |
-| `ms` | `@flupke/ms` | 283 | 50 | 0 | Rewrite: same API, 5.6× smaller |
-| `safe-buffer` | `@flupke/safe-buffer` | 251 | 3 | 0 | `Buffer.from/alloc` — native since Node 6 |
-| `inherits` | `@flupke/inherits` | 53 | 14 | 0 | `Object.create` — native since ES6 |
-| `function-bind` | `@flupke/function-bind` | 89 | 1 | 0 | `Function.prototype.bind` — native since ES5 |
+| `isarray` | `@flupkejs/is-array` | 7 | 1 | 0 | `Array.isArray` — native since ES5 |
+| `ms` | `@flupkejs/ms` | 283 | 50 | 0 | Rewrite: same API, 5.6× smaller |
+| `safe-buffer` | `@flupkejs/safe-buffer` | 251 | 3 | 0 | `Buffer.from/alloc` — native since Node 6 |
+| `inherits` | `@flupkejs/inherits` | 53 | 14 | 0 | `Object.create` — native since ES6 |
+| `function-bind` | `@flupkejs/function-bind` | 89 | 1 | 0 | `Function.prototype.bind` — native since ES5 |
 
 ## Quality guarantees (all packages)
 

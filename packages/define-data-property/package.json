@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/define-data-property",
+  "name": "@flupkejs/define-data-property",
   "version": "1.0.0",
   "description": "Object.defineProperty with data descriptor defaults",
   "main": "src/index.js",

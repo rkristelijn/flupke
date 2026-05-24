@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/lru-cache",
+  "name": "@flupkejs/lru-cache",
   "version": "1.0.0",
   "description": "Map-based LRU cache",
   "main": "src/index.js",

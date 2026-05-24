@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/ansi-styles",
+  "name": "@flupkejs/ansi-styles",
   "version": "1.0.0",
   "description": "ANSI escape code pairs",
   "main": "src/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@flupke/side-channel",
+  "name": "@flupkejs/side-channel",
   "version": "1.0.0",
   "description": "WeakMap-based private storage",
   "main": "src/index.js",
