@@ -29,24 +29,27 @@ These are packages like `safe-buffer` (untouched 5.5 years), `function-bind` (us
 npx @flupkejs/cli
 ```
 
-That's it. Works with npm, yarn, and pnpm. Scans your lockfile, finds replaceable packages, adds overrides, shows a before/after report:
+That's it. Works with npm, yarn, and pnpm. Scans your node_modules, finds replaceable packages, writes overrides:
 
 ```
- flupke — dependency cleanup report
+ flupke — dependency cleanup
 
- Scanned: 847 packages in node_modules
- Replaced: 23 packages → @flupkejs/* equivalents
+ Scanned:   260 packages in node_modules
+ Replaced:  43 packages → @flupkejs/* equivalents
 
- Before                          After
- ─────────────────────────────── ───────────────────────────
- Unmaintained deps:  38          Unmaintained deps:  15
- Packages w/o tests: 12          Packages w/o tests: 0
- Total dep weight:   2.4 MB      Total dep weight:   1.9 MB
- Known CVE exposure: 3           Known CVE exposure: 0
+ ✓ overrides written to package.json
 
- Overrides written to package.json ✓
- Run `npm install` to apply.
+ Run npm install to apply.
 ```
+
+### Measured bundle size impact
+
+React app using `uuid`, `qs`, `deepmerge`, `eventemitter3`, `clsx`:
+
+| | Before | After | Saved |
+|---|--------|-------|-------|
+| Bundle | 237 KB | 194 KB | **-18%** |
+| Gzip | 75 KB | 61 KB | **-18%** |
 
 ## What @flupke packages guarantee
 
