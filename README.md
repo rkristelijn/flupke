@@ -81,7 +81,7 @@ All three generate the correct override format (`overrides`, `resolutions`, or `
 
 ## Packages
 
-100 packages implemented. 299 tests. Zero dependencies each.
+106 packages. 299 tests. Zero dependencies each.
 
 | Original | Dependents | flupke LOC | Strategy |
 |----------|-----------|-----------|----------|
