@@ -57,27 +57,8 @@ Every framework pulls in hundreds of transitive dependencies. Many are unmaintai
 | Performance | — | Benchmarked, equal or faster |
 | API | — | Identical (drop-in) |
 
-## Planned replacements (61 more)
+## All 100 packages implemented
 
-| Original | Dependents | Action | Strategy |
-|----------|-----------|--------|----------|
-| `es-errors` | 316 | ELIMINATE | Native `Error` subclasses |
-| `graceful-fs` | 160 | REPLACE | EMFILE retry, 50 LOC core |
-| `gopd` | 149 | ELIMINATE | `Object.getOwnPropertyDescriptor` |
-| `has-symbols` | 133 | ELIMINATE | `typeof Symbol !== 'undefined'` |
-| `util-deprecate` | 93 | ELIMINATE | `util.deprecate` is native |
-| `es-define-property` | 87 | ELIMINATE | `Object.defineProperty` |
-| `ansi-regex` | 83 | REPLACE | Single regex pattern |
-| `balanced-match` | 83 | REPLACE | Brace matching, 30 LOC |
-| `has-flag` | 82 | ELIMINATE | `process.argv.includes()` |
-| `color-name` | 78 | REPLACE | Static JSON lookup |
-| `classnames` | 68 | ELIMINATE | One-liner with filter/join |
-| `slash` | 66 | ELIMINATE | `path.replace(/\\/g, '/')` |
-| `signal-exit` | 66 | REPLACE | `process.on('exit')` wrapper |
-| `strip-ansi` | 35 | REPLACE | `str.replace(ansiRegex, '')` |
-| `supports-color` | 32 | REPLACE | Env var check, 20 LOC |
-| `debug` | 28 | REPLACE | `console.log` + `DEBUG` env |
-| `semver` | 25 | REPLACE | Version parsing, 100 LOC core |
-| `lru-cache` | 22 | REPLACE | `Map` + eviction, 50 LOC |
+See [catalog.md](./catalog.md) for the full list with LOC, tests, and dependents per package.
 
 Full audit: [audit-list.md](./audit-list.md)

@@ -1,6 +1,6 @@
 # flupke audit list
 
-Packages sorted by blast radius (dependents in top-100 repos). Action: what flupke does.
+All 100 packages implemented and tested. See [catalog.md](./catalog.md) for the full table.
 
 ## Legend
 

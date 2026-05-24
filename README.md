@@ -74,17 +74,24 @@ pnpm dlx @flupke/cli
 
 All three generate the correct override format (`overrides`, `resolutions`, or `pnpm.overrides`).
 
-## Current replacements
+## Packages
 
-| Original | flupke LOC | Strategy |
-|----------|-----------|----------|
-| `isarray` (7 LOC) | 1 | `Array.isArray` — native since ES5 |
-| `ms` (283 LOC) | 50 | Rewrite: same API, 5.6× smaller |
-| `safe-buffer` (251 LOC) | 3 | `Buffer.from/alloc` — native since Node 6 |
-| `inherits` (53 LOC) | 14 | `Object.create` — native since ES6 |
-| `function-bind` (89 LOC) | 1 | `Function.prototype.bind` — native since ES5 |
+100 packages implemented. 299 tests. Zero dependencies each.
 
-61 more planned — see [docs/compare.md](docs/compare.md) for the full list.
+| Original | Dependents | flupke LOC | Strategy |
+|----------|-----------|-----------|----------|
+| `es-errors` | 316 | 8 | Native Error subclasses |
+| `debug` | 262 | 20 | `console.log` + DEBUG env |
+| `semver` | 201 | 27 | Version parsing rewrite |
+| `strip-ansi` | 181 | 4 | `str.replace(regex, '')` |
+| `graceful-fs` | 160 | 20 | fs + EMFILE retry |
+| `inherits` | 159 | 16 | `class extends` native |
+| `safe-buffer` | 140 | 5 | `Buffer.from` native |
+| `ms` | 99 | 57 | Time parser rewrite |
+| `function-bind` | 92 | 2 | `.bind()` native |
+| `rimraf` | 33 | 4 | `fs.rm({recursive:true})` native |
+
+Full list: [docs/catalog.md](docs/catalog.md) | Comparison: [docs/compare.md](docs/compare.md)
 
 ## Philosophy
 
