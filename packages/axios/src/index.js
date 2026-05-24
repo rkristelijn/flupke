@@ -1,115 +1,65 @@
 'use strict';
-
-class AxiosError extends Error {
-  constructor(message, code, config, response) {
-    super(message);
-    this.name = 'AxiosError';
-    this.code = code;
-    this.config = config;
-    this.response = response;
-    this.isAxiosError = true;
-  }
-}
-
-function createInstance(defaults) {
-  var interceptors = { request: createInterceptorManager(), response: createInterceptorManager() };
-
-  async function axios(configOrUrl, config) {
-    if (typeof configOrUrl === 'string') {
-      config = config || {};
-      config.url = configOrUrl;
-    } else {
-      config = configOrUrl || {};
-    }
-    config = Object.assign({}, defaults, config);
-
-    var url = config.baseURL ? config.baseURL.replace(/\/$/, '') + '/' + (config.url || '').replace(/^\//, '') : config.url;
-    var method = (config.method || 'get').toUpperCase();
-    var headers = new Headers(config.headers || {});
-    var body = undefined;
-
-    if (config.data) {
-      if (typeof config.data === 'object' && !(config.data instanceof FormData)) {
-        body = JSON.stringify(config.data);
-        if (!headers.has('Content-Type')) headers.set('Content-Type', 'application/json');
-      } else {
-        body = config.data;
-      }
-    }
-
-    if (config.params) {
-      var params = new URLSearchParams(config.params).toString();
-      url += (url.includes('?') ? '&' : '?') + params;
-    }
-
-    // Run request interceptors
-    for (var i = 0; i < interceptors.request.handlers.length; i++) {
-      var h = interceptors.request.handlers[i];
-      if (h) config = (await h.fulfilled(config)) || config;
-    }
-
-    var fetchOpts = { method: method, headers: headers, body: body, signal: config.signal };
-    if (config.timeout) {
-      var controller = new AbortController();
-      fetchOpts.signal = controller.signal;
-      setTimeout(function() { controller.abort(); }, config.timeout);
-    }
-
-    var res;
-    try {
-      res = await fetch(url, fetchOpts);
-    } catch (err) {
-      throw new AxiosError(err.message, 'ERR_NETWORK', config, null);
-    }
-
-    var responseData;
-    var contentType = res.headers.get('content-type') || '';
-    if (config.responseType === 'arraybuffer') responseData = await res.arrayBuffer();
-    else if (config.responseType === 'blob') responseData = await res.blob();
-    else if (contentType.includes('json')) responseData = await res.json();
-    else responseData = await res.text();
-
-    var response = {
-      data: responseData,
-      status: res.status,
-      statusText: res.statusText,
-      headers: Object.fromEntries(res.headers.entries()),
-      config: config
-    };
-
-    // Run response interceptors
-    for (var i = 0; i < interceptors.response.handlers.length; i++) {
-      var h = interceptors.response.handlers[i];
-      if (h) response = (await h.fulfilled(response)) || response;
-    }
-
-    if (res.ok || (config.validateStatus && config.validateStatus(res.status))) return response;
-    throw new AxiosError('Request failed with status ' + res.status, 'ERR_BAD_REQUEST', config, response);
+// Vendored from redaxios v0.5.1 (MIT) — https://github.com/developit/redaxios
+// 800 bytes, 99% axios-compatible, native fetch under the hood
+function create(defaults) {
+  function merge(a, b, lc) {
+    var c = {}, k;
+    if (Array.isArray(a)) return a.concat(b);
+    for (k in a) c[lc ? k.toLowerCase() : k] = a[k];
+    for (k in b) { var key = lc ? k.toLowerCase() : k; var v = b[k]; c[key] = key in c && typeof v === 'object' ? merge(c[key], v, key === 'headers') : v; }
+    return c;
   }
 
-  axios.defaults = defaults;
-  axios.interceptors = interceptors;
-  axios.get = function(url, config) { return axios(Object.assign({}, config, { url: url, method: 'get' })); };
-  axios.post = function(url, data, config) { return axios(Object.assign({}, config, { url: url, method: 'post', data: data })); };
-  axios.put = function(url, data, config) { return axios(Object.assign({}, config, { url: url, method: 'put', data: data })); };
-  axios.patch = function(url, data, config) { return axios(Object.assign({}, config, { url: url, method: 'patch', data: data })); };
-  axios.delete = function(url, config) { return axios(Object.assign({}, config, { url: url, method: 'delete' })); };
-  axios.head = function(url, config) { return axios(Object.assign({}, config, { url: url, method: 'head' })); };
-  axios.create = function(cfg) { return createInstance(Object.assign({}, defaults, cfg)); };
-  axios.isAxiosError = function(e) { return e && e.isAxiosError === true; };
-  axios.AxiosError = AxiosError;
-  axios.all = Promise.all.bind(Promise);
-  axios.spread = function(fn) { return function(arr) { return fn.apply(null, arr); }; };
+  function request(url, config, method, data, _credentials) {
+    if (typeof url !== 'string') { config = url; url = config.url; }
+    var response = { config: config };
+    var opts = merge(defaults, config);
+    var headers = {};
+    data = data || opts.data;
+    (opts.transformRequest || []).forEach(function(fn) { data = fn(data, opts.headers) || data; });
+    if (opts.auth) headers.authorization = opts.auth;
+    if (data && typeof data === 'object' && typeof data.append !== 'function' && typeof data.text !== 'function') {
+      data = JSON.stringify(data);
+      headers['content-type'] = 'application/json';
+    }
+    if (opts.baseURL) url = url.replace(/^(?!.*\/\/)\//, opts.baseURL + '/');
+    if (opts.params) url += (~url.indexOf('?') ? '&' : '?') + (opts.paramsSerializer ? opts.paramsSerializer(opts.params) : new URLSearchParams(opts.params));
 
-  return axios;
+    return (opts.fetch || fetch)(url, {
+      method: (method || opts.method || 'get').toUpperCase(),
+      body: data,
+      headers: merge(opts.headers, headers, true),
+      credentials: opts.withCredentials ? 'include' : _credentials,
+      signal: opts.signal
+    }).then(function(res) {
+      for (var k in res) if (typeof res[k] !== 'function') response[k] = res[k];
+      if (opts.responseType === 'stream') { response.data = res.body; return response; }
+      return res[opts.responseType || 'text']().then(function(d) {
+        response.data = d;
+        try { response.data = JSON.parse(d); } catch(e) {}
+      }).catch(Object).then(function() {
+        return (opts.validateStatus ? opts.validateStatus(res.status) : res.ok) ? response : Promise.reject(response);
+      });
+    });
+  }
+
+  request.request = request;
+  request.get = function(u, c) { return request(u, c, 'get'); };
+  request.delete = function(u, c) { return request(u, c, 'delete'); };
+  request.head = function(u, c) { return request(u, c, 'head'); };
+  request.options = function(u, c) { return request(u, c, 'options'); };
+  request.post = function(u, d, c) { return request(u, c, 'post', d); };
+  request.put = function(u, d, c) { return request(u, c, 'put', d); };
+  request.patch = function(u, d, c) { return request(u, c, 'patch', d); };
+  request.all = Promise.all.bind(Promise);
+  request.spread = function(fn) { return fn.apply.bind(fn, fn); };
+  request.CancelToken = typeof AbortController !== 'undefined' ? AbortController : Object;
+  request.defaults = defaults;
+  request.create = create;
+  request.isAxiosError = function(e) { return e && e.config !== undefined && e.status !== undefined; };
+  return request;
 }
 
-function createInterceptorManager() {
-  var mgr = { handlers: [] };
-  mgr.use = function(fulfilled, rejected) { mgr.handlers.push({ fulfilled: fulfilled, rejected: rejected }); return mgr.handlers.length - 1; };
-  mgr.eject = function(id) { mgr.handlers[id] = null; };
-  return mgr;
-}
-
-module.exports = createInstance({});
+module.exports = create({});
 module.exports.default = module.exports;
+module.exports.create = create;
