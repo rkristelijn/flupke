@@ -6,22 +6,17 @@ One command. Safer dependencies.
 npx @flupkejs/cli
 ```
 
-## The problem
+## What flupke does
 
-You `npm create next-app` and get 50+ unmaintained packages you never asked for:
+Every framework ships with transitive dependencies you never chose. flupke replaces them with tested, typed, native-first alternatives:
 
-| Framework | Neglected deps in tree | Untested | Stale (>1yr) |
-|-----------|----------------------|----------|--------------|
-| Next.js | 38 | 12 | 21 |
-| React (CRA) | 41 | 14 | 24 |
-| Angular | 29 | 8 | 16 |
-| Vue (Vite) | 22 | 7 | 13 |
-| Nuxt | 34 | 11 | 19 |
-| NestJS | 31 | 9 | 17 |
-| SvelteKit | 19 | 6 | 11 |
-| Remix | 27 | 9 | 15 |
-
-These are packages like `safe-buffer` (untouched 5.5 years), `function-bind` (uses `Function()` constructor), `es-errors` (zero tests). You don't see them. You don't choose them. But they're in your production bundle.
+| Framework | Replaceable deps | After flupke |
+|-----------|-----------------|--------------|
+| Next.js | 43 | Tested, typed, zero-dep |
+| Angular | 19 | Tested, typed, zero-dep |
+| NestJS | 30 | Tested, typed, zero-dep |
+| React (Vite) | 7 | Tested, typed, zero-dep |
+| Vue (Vite) | — | Already lean ✓ |
 
 ## The fix
 
@@ -53,17 +48,17 @@ React app using `uuid`, `qs`, `deepmerge`, `eventemitter3`, `clsx`:
 
 ## What @flupke packages guarantee
 
-| | Original | @flupke |
-|---|---|---|
-| Bundle size | 2.4 MB in tree | 39 KB total (up to 95% smaller per package) |
-| Performance | Unoptimized, V8 deopt patterns | Benchmarked, equal or faster |
-| Types | Usually none | TypeScript strict, generics, type guards |
-| Tests | Often zero | 100% branch coverage |
-| Deps | Chains of deps | Zero |
-| Maintained | Solo / abandoned | CI, multiple reviewers |
-| Security | `Function()`, `eval` | Native-only, no dynamic code |
-| API | — | Identical (drop-in) |
-| Exports | CJS only, no conditions | `"exports"` with types condition |
+| | @flupke |
+|---|---|
+| Bundle size | 39 KB total (up to 95% smaller per package) |
+| Performance | Benchmarked, equal or faster |
+| Types | TypeScript strict, generics, type guards |
+| Tests | 100% branch coverage |
+| Deps | Zero |
+| Maintained | CI, multiple reviewers |
+| Security | Native-only, no dynamic code |
+| API | Identical (drop-in) |
+| Exports | `"exports"` with types condition |
 
 ## Package managers
 
