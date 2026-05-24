@@ -11,7 +11,8 @@
     "bench": "node packages/*/bench/*.bench.js",
     "lint": "biome check .",
     "format": "biome format --write .",
-    "override": "node scripts/generate-overrides.js"
+    "override": "node scripts/generate-overrides.js",
+    "catalog": "node scripts/generate-catalog.js"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

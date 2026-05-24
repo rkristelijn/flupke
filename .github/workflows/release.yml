@@ -1,0 +1,67 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g. 1.1.0)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Generate changelog
+        run: |
+          echo "## v${{ inputs.version }}" > /tmp/release-notes.md
+          echo "" >> /tmp/release-notes.md
+          git log $(git describe --tags --abbrev=0 2>/dev/null || echo "")..HEAD --pretty=format:"- %s" >> /tmp/release-notes.md
+          cat /tmp/release-notes.md
+
+      - name: Update versions
+        run: |
+          for pkg in packages/*/package.json; do
+            sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${{ inputs.version }}\"/" "$pkg"
+          done
+
+      - name: Generate catalog
+        run: node scripts/generate-catalog.js
+
+      - name: Commit and tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: release v${{ inputs.version }}" || true
+          git tag "v${{ inputs.version }}"
+          git push origin main --tags
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          for pkg in packages/*/; do
+            if [ -f "$pkg/package.json" ]; then
+              npm publish "$pkg" --access public || true
+            fi
+          done
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "v${{ inputs.version }}" \
+            --title "v${{ inputs.version }}" \
+            --notes-file /tmp/release-notes.md
