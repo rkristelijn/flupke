@@ -1,2 +1,26 @@
-{"name":"@flupkejs/nanoid","version":"1.0.0","main":"src/index.js","types":"src/index.d.ts","files":["src"],"exports": { ".": { "types": "./src/index.d.ts", "default": "./src/index.js" }, "./package.json": "./package.json" },
-  "license":"MIT"}
+{
+  "name": "@flupkejs/nanoid",
+  "version": "1.0.2",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./async": {
+      "default": "./src/async.js"
+    },
+    "./non-secure": {
+      "default": "./src/non-secure.js"
+    },
+    "./url-alphabet": {
+      "default": "./src/url-alphabet.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT"
+}

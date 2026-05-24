@@ -1,11 +1,10 @@
 'use strict';
-module.exports = class LRUCache {
+class LRUCache {
   constructor(options) {
     if (typeof options === 'number') options = { max: options };
     this.max = options?.max || 1000;
-    this.maxAge = options?.maxAge || 0;
+    this.maxAge = options?.maxAge || options?.ttl || 0;
     this.cache = new Map();
-    this.timers = this.maxAge ? new Map() : null;
   }
   get(key) {
     if (!this.cache.has(key)) return undefined;
@@ -27,4 +26,7 @@ module.exports = class LRUCache {
   get size() { return this.cache.size; }
   *keys() { yield* this.cache.keys(); }
   *values() { yield* this.cache.values(); }
-};
+}
+// Support both: require('lru-cache') and { LRUCache } = require('lru-cache')
+module.exports = LRUCache;
+module.exports.LRUCache = LRUCache;
