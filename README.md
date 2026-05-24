@@ -52,12 +52,15 @@ That's it. Works with npm, yarn, and pnpm. Scans your lockfile, finds replaceabl
 
 | | Original | @flupke |
 |---|---|---|
+| Bundle size | 2.4 MB in tree | 39 KB total (up to 95% smaller per package) |
+| Performance | Unoptimized, V8 deopt patterns | Benchmarked, equal or faster |
+| Types | Usually none | TypeScript strict, generics, type guards |
 | Tests | Often zero | 100% branch coverage |
-| Types | Usually none | TypeScript strict |
 | Deps | Chains of deps | Zero |
 | Maintained | Solo / abandoned | CI, multiple reviewers |
 | Security | `Function()`, `eval` | Native-only, no dynamic code |
 | API | — | Identical (drop-in) |
+| Exports | CJS only, no conditions | `"exports"` with types condition |
 
 ## Package managers
 
