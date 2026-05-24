@@ -1,0 +1,12 @@
+{
+  "name": "@flupkejs/lodash",
+  "version": "1.0.1",
+  "description": "Drop-in replacement for lodash — native ES2020+ implementations",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "exports": { ".": { "types": "./src/index.d.ts", "default": "./src/index.js" }, "./package.json": "./package.json" },
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/rkristelijn/flupke" },
+  "keywords": ["lodash", "utility", "native", "flupke"]
+}

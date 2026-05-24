@@ -15,7 +15,7 @@ const REPLACEMENTS = [
   'get-caller-file','get-intrinsic','globby','gopd','graceful-fs','has-flag','has-proto',
   'has-symbols','hasown','human-readable','import-fresh','indent-string','inflight',
   'inherits','is-array','is-buffer','is-fullwidth-code-point','is-glob','is-number',
-  'is-plain-object','is-stream','locate-path','lru-cache','map-obj','mem','memoize-one','mimic-fn','minipass',
+  'is-plain-object','is-stream','lodash','locate-path','lru-cache','map-obj','mem','memoize-one','mimic-fn','minipass',
   'mkdirp','moment','ms','nanoid','normalize-path','object-inspect','once','onetime','p-limit',
   'p-locate','p-map','p-queue','parent-module','path-exists','path-is-absolute','path-type',
   'pify','pkg-dir','qs','require-directory','resolve-from','retry','rimraf','safe-buffer',
