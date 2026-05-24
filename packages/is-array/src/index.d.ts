@@ -1,2 +1,2 @@
-declare function isArray(value: unknown): value is unknown[];
+declare function isArray(value: unknown): value is Array<unknown>;
 export = isArray;

@@ -1,9 +1,10 @@
-declare class LRUCache {
+declare class LRUCache<K = unknown, V = unknown> {
   constructor(options?: { max?: number });
-  get(key: unknown): unknown;
-  set(key: unknown, val: unknown): this;
-  has(key: unknown): boolean;
-  delete(key: unknown): boolean;
+  get(key: K): V | undefined;
+  set(key: K, val: V): this;
+  has(key: K): boolean;
+  delete(key: K): boolean;
   clear(): void;
+  readonly size: number;
 }
 export = LRUCache;
