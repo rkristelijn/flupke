@@ -1,15 +1,21 @@
 'use strict';
-module.exports = function classnames() {
-  const args = [].slice.call(arguments).flat();
-  const result = [];
-  for (const arg of args) {
+module.exports = function classnames(...args) {
+  var result = '';
+  for (var i = 0; i < args.length; i++) {
+    var arg = args[i];
     if (!arg) continue;
-    if (typeof arg === 'string') result.push(arg);
-    else if (typeof arg === 'object') {
-      for (const key of Object.keys(arg)) {
-        if (arg[key]) result.push(key);
+    if (typeof arg === 'string') {
+      result = result ? result + ' ' + arg : arg;
+    } else if (Array.isArray(arg)) {
+      var inner = classnames.apply(null, arg);
+      if (inner) result = result ? result + ' ' + inner : inner;
+    } else if (typeof arg === 'object') {
+      for (var key in arg) {
+        if (Object.prototype.hasOwnProperty.call(arg, key) && arg[key]) {
+          result = result ? result + ' ' + key : key;
+        }
       }
     }
   }
-  return result.join(' ');
+  return result;
 };
