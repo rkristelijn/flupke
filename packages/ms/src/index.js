@@ -9,8 +9,9 @@ const PARSE_RE = /^(-?\d*\.?\d+)\s*(ms|milliseconds?|s|sec|seconds?|m|min|minute
 
 /** @param {string|number} val @param {{ long?: boolean }} [options] @returns {string|number|undefined} */
 module.exports = function ms(val, options) {
-  if (typeof val === 'string' && val.length > 0) return parse(val);
-  if (typeof val === 'number' && isFinite(val)) return format(val, options);
+  var type = typeof val;
+  if (type === 'string' && val.length > 0) return parse(val);
+  if (type === 'number' && isFinite(val)) return options && options.long ? fmtLong(val) : fmtShort(val);
   throw new Error('val is not a non-empty string or a valid number: ' + JSON.stringify(val));
 };
 
@@ -30,16 +31,9 @@ function parse(str) {
   return undefined;
 }
 
-/** @param {number} ms @param {{ long?: boolean }} [options] */
-function format(ms, options) {
-  const abs = Math.abs(ms);
-  if (options && options.long) {
-    if (abs >= D) return plural(ms, abs, D, 'day');
-    if (abs >= H) return plural(ms, abs, H, 'hour');
-    if (abs >= M) return plural(ms, abs, M, 'minute');
-    if (abs >= S) return plural(ms, abs, S, 'second');
-    return ms + ' ms';
-  }
+/** @param {number} ms */
+function fmtShort(ms) {
+  var abs = Math.abs(ms);
   if (abs >= D) return Math.round(ms / D) + 'd';
   if (abs >= H) return Math.round(ms / H) + 'h';
   if (abs >= M) return Math.round(ms / M) + 'm';
@@ -47,7 +41,17 @@ function format(ms, options) {
   return ms + 'ms';
 }
 
+/** @param {number} ms */
+function fmtLong(ms) {
+  var abs = Math.abs(ms);
+  if (abs >= D) return plural(ms, abs, D, 'day');
+  if (abs >= H) return plural(ms, abs, H, 'hour');
+  if (abs >= M) return plural(ms, abs, M, 'minute');
+  if (abs >= S) return plural(ms, abs, S, 'second');
+  return ms + ' ms';
+}
+
 function plural(ms, abs, unit, name) {
-  const val = Math.round(abs / unit);
-  return val + ' ' + name + (val > 1 ? 's' : '');
+  var isPlural = abs >= unit * 1.5;
+  return Math.round(ms / unit) + ' ' + name + (isPlural ? 's' : '');
 }
