@@ -1,16 +1,27 @@
 # TODO
 
-## Validate claims
+## Tests needed (beta packages)
 
-- [ ] Run coverage: `node --test --experimental-test-coverage packages/*/test/*.test.js`
-- [ ] Run benchmarks vs originals: `node packages/*/bench/*.bench.js`
-- [ ] Verify framework dep counts: scaffold Next.js, React, Vue, Angular, Nuxt, NestJS, SvelteKit, Remix, Astro, Express → parse lockfile → count flupke-replaceable packages
-- [ ] Update docs/compare.md with real numbers from above
+- [ ] axios: run against axios test suite
+- [ ] moment: run against moment test suite
+- [ ] lodash: run against lodash test suite
+- [ ] uuid: write tests for v4, v7, validate, parse, stringify
+- [ ] qs: write tests for nested objects, arrays, edge cases
+- [ ] deepmerge: write tests for circular refs, arrays, options
+- [ ] eventemitter3: write tests for once, removeAllListeners, error handling
 
-## CLI (`@flupke/cli`)
+## Subpath exports
 
-- [ ] Detect package manager (npm/yarn/pnpm)
-- [ ] Parse lockfile → find replaceable packages
-- [ ] Write correct override format (`overrides` / `resolutions` / `pnpm.overrides`)
-- [ ] Generate before/after report (unmaintained count, untested count, total weight, CVEs)
-- [ ] `npx @flupke/cli` single-command UX
+- [ ] debug: ./src subpath
+- [ ] semver: ./functions/* subpaths
+
+## Framework validation
+
+- [ ] Verify exact framework dep counts (currently estimated)
+- [ ] Test with Nuxt, Remix, Astro, SvelteKit
+
+## CLI improvements
+
+- [ ] Show bundle size estimate in report
+- [ ] Detect which overrides are beta vs stable
+- [ ] Support --dry-run flag

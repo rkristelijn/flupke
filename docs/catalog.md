@@ -1,12 +1,13 @@
 # Package catalog
 
-106 packages. Generated from `packages/`.
+109 packages. Generated from `packages/`.
 
 | Package | Description | LOC | Has types | Has tests |
 |---------|-------------|-----|-----------|-----------|
 | `aggregate-error` |  | 5 | ✓ | ✓ |
 | `ansi-regex` | ANSI escape regex | 4 | ✓ | ✓ |
 | `ansi-styles` | ANSI escape code pairs | 47 | ✓ | ✓ |
+| `axios` | Drop-in replacement for axios — uses native fetch() | 66 | ✓ | — |
 | `balanced-match` | Find matching braces in a string | 21 | ✓ | ✓ |
 | `call-bind` | Function.prototype.call.bind | 2 | ✓ | ✓ |
 | `callsites` |  | 8 | ✓ | ✓ |
@@ -59,13 +60,15 @@
 | `is-plain-object` |  | 6 | ✓ | ✓ |
 | `is-stream` |  | 4 | ✓ | ✓ |
 | `locate-path` |  | 7 | ✓ | ✓ |
-| `lru-cache` | Map-based LRU cache | 30 | ✓ | ✓ |
+| `lodash` | Drop-in replacement for lodash — native ES2020+ implementations | 83 | ✓ | — |
+| `lru-cache` | Map-based LRU cache | 32 | ✓ | ✓ |
 | `map-obj` |  | 6 | ✓ | ✓ |
 | `mem` |  | 6 | ✓ | ✓ |
 | `memoize-one` |  | 8 | ✓ | ✓ |
 | `mimic-fn` |  | 2 | ✓ | ✓ |
 | `minipass` |  | 2 | ✓ | ✓ |
 | `mkdirp` |  | 5 | ✓ | ✓ |
+| `moment` | Drop-in replacement for moment — uses native Date and Intl | 31 | ✓ | — |
 | `ms` | Drop-in replacement for ms — time string parsing/formatting | 58 | ✓ | ✓ |
 | `nanoid` |  | 9 | ✓ | ✓ |
 | `normalize-path` |  | 2 | ✓ | ✓ |

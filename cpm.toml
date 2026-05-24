@@ -5,6 +5,8 @@ lang = "typescript"
 build = "npm"
 
 [checks]
+file-size = true
+source-lines = 500
 format-code = true
 lint-code = true
 complexity = true
