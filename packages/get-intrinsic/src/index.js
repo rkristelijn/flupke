@@ -20,7 +20,7 @@ const intrinsics = {
   '%encodeURI%': encodeURI,
   '%encodeURIComponent%': encodeURIComponent,
   '%Error%': Error,
-  '%eval%': eval,
+  '%eval%': undefined, // intentionally disabled for security
   '%EvalError%': EvalError,
   '%Float32Array%': typeof Float32Array !== 'undefined' ? Float32Array : undefined,
   '%Float64Array%': typeof Float64Array !== 'undefined' ? Float64Array : undefined,
