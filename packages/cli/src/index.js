@@ -21,8 +21,7 @@ const REPLACEMENTS = [
   'pify','pkg-dir','qs','require-directory','resolve-from','retry','rimraf','safe-buffer',
   'semver','set-function-length','side-channel','signal-exit','slash','sort-keys',
   'string-width','strip-ansi','strip-indent','supports-color','tempy','type-detect',
-  'type-fest','util-deprecate','uuid','which','wrap-ansi','wrappy','y18n','yallist',
-  'yargs-parser'
+  'type-fest','util-deprecate','uuid','which','wrap-ansi','wrappy','y18n','yallist'
 ];
 
 function detectPackageManager(dir) {
