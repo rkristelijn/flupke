@@ -43,12 +43,12 @@ That's it. Works with npm, yarn, and pnpm. Scans your node_modules, finds replac
 
 ### Measured bundle size impact
 
-React app using `uuid`, `qs`, `deepmerge`, `eventemitter3`, `clsx`:
+React app using `axios`, `moment`, `uuid`, `qs`, `deepmerge`, `eventemitter3`, `clsx`:
 
 | | Before | After | Saved |
 |---|--------|-------|-------|
-| Bundle | 237 KB | 194 KB | **-18%** |
-| Gzip | 75 KB | 61 KB | **-18%** |
+| Bundle | 339 KB | 200 KB | **-41%** |
+| Gzip | 110 KB | 64 KB | **-42%** |
 
 ## What @flupke packages guarantee
 
