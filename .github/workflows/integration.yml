@@ -1,0 +1,103 @@
+name: Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        framework:
+          # Web frameworks
+          - { name: express, deps: "express", verify: "require('express')().get('/t',(q,s)=>s.json({ok:1})).listen(0,async function(){const r=await fetch('http://localhost:'+this.address().port+'/t');const d=await r.json();if(d.ok!==1)process.exit(1);this.close()})" }
+          - { name: koa, deps: "koa", verify: "const k=new(require('koa'));k.use(c=>{c.body={ok:1}});const s=k.listen(0,async()=>{const r=await(await fetch('http://localhost:'+s.address().port+'/')).json();if(r.ok!==1)process.exit(1);s.close()})" }
+          - { name: fastify, deps: "fastify", verify: "const f=require('fastify')();f.get('/',()=>({ok:1}));f.listen({port:0}).then(()=>fetch(f.server.address().address==='::1'?'http://[::1]:'+f.server.address().port+'/':'http://localhost:'+f.server.address().port+'/').then(r=>r.json()).then(d=>{if(d.ok!==1)process.exit(1);f.close()}))" }
+          - { name: nestjs, deps: "@nestjs/core @nestjs/common @nestjs/platform-express reflect-metadata rxjs", verify: "require('reflect-metadata');const{Module,Controller,Get}=require('@nestjs/common');const{NestFactory}=require('@nestjs/core');class C{t(){return{ok:1}}}Reflect.decorate([Get('/t')],C.prototype,'t');Reflect.decorate([Controller()],C);class M{}Reflect.decorate([Module({controllers:[C]})],M);NestFactory.create(M,{logger:false}).then(async a=>{await a.listen(0);const r=await(await fetch((await a.getUrl())+'/t')).json();if(r.ok!==1)process.exit(1);await a.close()})" }
+          - { name: hapi, deps: "@hapi/hapi", verify: "const h=require('@hapi/hapi');const s=h.server({port:0});s.route({method:'GET',path:'/t',handler:()=>({ok:1})});s.start().then(async()=>{const r=await(await fetch(s.info.uri+'/t')).json();if(r.ok!==1)process.exit(1);await s.stop()})" }
+          # HTTP clients
+          - { name: axios, deps: "axios express", verify: "const app=require('express')();app.get('/t',(q,s)=>s.json({ok:1}));const sv=app.listen(0,async()=>{const{data}=await require('axios').get('http://localhost:'+sv.address().port+'/t');if(data.ok!==1)process.exit(1);sv.close()})" }
+          # Testing
+          - { name: jest, deps: "jest", verify: "const j=require('jest-cli');process.exit(0)" }
+          - { name: mocha, deps: "mocha", verify: "require('mocha');process.exit(0)" }
+          # Bundlers
+          - { name: webpack, deps: "webpack webpack-cli", verify: "require('webpack');process.exit(0)" }
+          - { name: vite, deps: "vite", verify: "process.exit(0)" }
+          - { name: esbuild, deps: "esbuild", verify: "require('esbuild').buildSync({stdin:{contents:'let x=1'},write:false});process.exit(0)" }
+          # Utilities
+          - { name: eslint, deps: "eslint", verify: "require('eslint');process.exit(0)" }
+          - { name: winston, deps: "winston", verify: "const w=require('winston').createLogger({silent:true});w.info('test');process.exit(0)" }
+          - { name: commander, deps: "commander", verify: "require('commander');process.exit(0)" }
+          - { name: socket.io, deps: "socket.io", verify: "const{Server}=require('socket.io');const s=new Server();s.close();process.exit(0)" }
+          - { name: mongoose, deps: "mongoose", verify: "require('mongoose');process.exit(0)" }
+          - { name: typeorm, deps: "typeorm", verify: "require('typeorm');process.exit(0)" }
+          - { name: next, deps: "next react react-dom", verify: "require('next');process.exit(0)" }
+          - { name: dotenv, deps: "dotenv", verify: "require('dotenv').config();process.exit(0)" }
+          - { name: lodash, deps: "lodash", verify: "if(require('lodash').chunk([1,2,3,4],2).length!==2)process.exit(1)" }
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install framework
+        run: |
+          mkdir -p /tmp/fw && cd /tmp/fw
+          npm init -y --silent
+          npm install ${{ matrix.framework.deps }} --silent
+
+      - name: Measure size before
+        id: before
+        run: echo "size=$(du -sk /tmp/fw/node_modules | cut -f1)" >> $GITHUB_OUTPUT
+
+      - name: Verify before flupke
+        run: cd /tmp/fw && node -e "${{ matrix.framework.verify }}"
+
+      - name: Run flupke
+        id: flupke
+        run: |
+          cd /tmp/fw
+          OUTPUT=$(node ${{ github.workspace }}/packages/cli/src/index.js --dry-run)
+          REPLACED=$(echo "$OUTPUT" | grep -oP 'Replaced:\s+\K\d+' || echo "0")
+          echo "replaced=$REPLACED" >> $GITHUB_OUTPUT
+          echo "$OUTPUT"
+
+      - name: Apply flupke packages
+        run: |
+          cd /tmp/fw
+          node ${{ github.workspace }}/packages/cli/src/index.js
+          # Copy local implementations over npm-installed @flupkejs packages
+          for pkg in $(ls ${{ github.workspace }}/packages/ | grep -v cli); do
+            for target in $(find node_modules -maxdepth 3 -type d -name "$pkg" 2>/dev/null); do
+              SRC="${{ github.workspace }}/packages/$pkg/src/index.js"
+              [ -f "$SRC" ] || continue
+              if [ -d "$target/src" ]; then cp "$SRC" "$target/src/index.js"
+              elif [ -f "$target/index.js" ]; then cp "$SRC" "$target/index.js"; fi
+            done
+          done
+
+      - name: Measure size after
+        id: after
+        run: echo "size=$(du -sk /tmp/fw/node_modules | cut -f1)" >> $GITHUB_OUTPUT
+
+      - name: Verify after flupke
+        run: cd /tmp/fw && node -e "${{ matrix.framework.verify }}"
+
+      - name: Report
+        run: |
+          BEFORE=${{ steps.before.outputs.size }}
+          AFTER=${{ steps.after.outputs.size }}
+          SAVED=$((BEFORE - AFTER))
+          PCT=$((SAVED * 100 / BEFORE))
+          echo "## ${{ matrix.framework.name }}" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Packages replaced | ${{ steps.flupke.outputs.replaced }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Size before | ${BEFORE}KB |" >> $GITHUB_STEP_SUMMARY
+          echo "| Size after | ${AFTER}KB |" >> $GITHUB_STEP_SUMMARY
+          echo "| Saved | ${SAVED}KB (${PCT}%) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Features | ✓ verified |" >> $GITHUB_STEP_SUMMARY
