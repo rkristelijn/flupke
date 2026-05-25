@@ -143,18 +143,30 @@ function findReplaceable(installed) {
 function writeOverrides(dir, pm, replaceable) {
   const pkgPath = path.join(dir, "package.json");
   const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
+  const directDeps = Object.keys(pkg.dependencies || {});
+  const devDeps = Object.keys(pkg.devDependencies || {});
   const overrides = {};
+
   for (const p of replaceable) {
-    overrides[p] = `npm:@flupkejs/${p}@^1.0.0`;
+    const alias = `npm:@flupkejs/${p}@^1.0.0`;
+    if (directDeps.includes(p)) {
+      pkg.dependencies[p] = alias;
+    } else if (devDeps.includes(p)) {
+      pkg.devDependencies[p] = alias;
+    } else {
+      overrides[p] = alias;
+    }
   }
 
-  if (pm === "pnpm") {
-    pkg.pnpm = pkg.pnpm || {};
-    pkg.pnpm.overrides = { ...(pkg.pnpm.overrides || {}), ...overrides };
-  } else if (pm === "yarn") {
-    pkg.resolutions = { ...(pkg.resolutions || {}), ...overrides };
-  } else {
-    pkg.overrides = { ...(pkg.overrides || {}), ...overrides };
+  if (Object.keys(overrides).length > 0) {
+    if (pm === "pnpm") {
+      pkg.pnpm = pkg.pnpm || {};
+      pkg.pnpm.overrides = { ...(pkg.pnpm.overrides || {}), ...overrides };
+    } else if (pm === "yarn") {
+      pkg.resolutions = { ...(pkg.resolutions || {}), ...overrides };
+    } else {
+      pkg.overrides = { ...(pkg.overrides || {}), ...overrides };
+    }
   }
 
   fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);

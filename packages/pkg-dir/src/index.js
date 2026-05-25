@@ -16,3 +16,14 @@ module.exports = async function pkgDir(cwd = ".") {
     dir = p;
   }
 };
+
+module.exports.sync = function pkgDirSync(cwd = ".") {
+  let dir = path.resolve(cwd);
+  const { existsSync } = require("node:fs");
+  while (true) {
+    if (existsSync(path.join(dir, "package.json"))) return dir;
+    const p = path.dirname(dir);
+    if (p === dir) return;
+    dir = p;
+  }
+};
