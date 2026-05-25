@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "scripts": {
+    "prepare": "git config core.hooksPath hooks",
     "build": "tsc --build packages/*/tsconfig.json",
     "test": "node --test packages/*/test/*.test.js",
     "bench": "node packages/*/bench/*.bench.js",
