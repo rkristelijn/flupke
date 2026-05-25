@@ -7,7 +7,7 @@
 | `aggregate-error` |  | 13 | ✓ | ✓ |
 | `ansi-regex` | ANSI escape regex | 4 | ✓ | ✓ |
 | `ansi-styles` | ANSI escape code pairs | 47 | ✓ | ✓ |
-| `axios` | Drop-in replacement for axios — uses native fetch() | 123 | ✓ | ✓ |
+| `axios` | Drop-in replacement for axios — uses native fetch() | 124 | ✓ | ✓ |
 | `balanced-match` | Find matching braces in a string | 28 | ✓ | ✓ |
 | `bytes` | Drop-in replacement for bytes | 69 | ✓ | ✓ |
 | `call-bind` | Function.prototype.call.bind | 2 | ✓ | ✓ |
@@ -25,7 +25,7 @@
 | `cookie` | Drop-in replacement for cookie | 40 | ✓ | ✓ |
 | `cookie-signature` | Drop-in replacement for cookie-signature | 61 | ✓ | ✓ |
 | `cross-spawn` |  | 10 | ✓ | ✓ |
-| `debug` |  | 25 | ✓ | ✓ |
+| `debug` |  | 31 | ✓ | ✓ |
 | `decamelize` |  | 4 | ✓ | ✓ |
 | `deep-equal` | util.isDeepStrictEqual | 2 | ✓ | ✓ |
 | `deepmerge` | Drop-in replacement for deepmerge | 38 | ✓ | ✓ |
@@ -72,7 +72,7 @@
 | `is-plain-object` |  | 10 | ✓ | ✓ |
 | `is-stream` |  | 8 | ✓ | ✓ |
 | `locate-path` |  | 16 | ✓ | ✓ |
-| `lodash` | Drop-in replacement for lodash — native ES2020+ implementations | 118 | ✓ | ✓ |
+| `lodash` | Drop-in replacement for lodash — native ES2020+ implementations | 124 | ✓ | ✓ |
 | `lru-cache` | Map-based LRU cache | 47 | ✓ | ✓ |
 | `map-obj` |  | 13 | ✓ | ✓ |
 | `mem` |  | 16 | ✓ | ✓ |
@@ -82,7 +82,7 @@
 | `minipass` |  | 2 | ✓ | ✓ |
 | `mkdirp` |  | 15 | ✓ | ✓ |
 | `moment` | Drop-in replacement for moment — uses native Date and Intl | 35 | ✓ | ✓ |
-| `ms` | Drop-in replacement for ms — time string parsing/formatting | 74 | ✓ | ✓ |
+| `ms` | Drop-in replacement for ms — time string parsing/formatting | 76 | ✓ | ✓ |
 | `nanoid` |  | 14 | ✓ | ✓ |
 | `normalize-path` |  | 4 | ✓ | ✓ |
 | `object-inspect` | util.inspect wrapper | 2 | ✓ | ✓ |
@@ -114,11 +114,11 @@
 | `signal-exit` | Signal exit handler | 17 | ✓ | ✓ |
 | `slash` | Convert backslashes to forward slashes | 4 | ✓ | ✓ |
 | `slash-trailing` |  | 6 | ✓ | ✓ |
-| `sort-keys` |  | 19 | ✓ | ✓ |
+| `sort-keys` |  | 20 | ✓ | ✓ |
 | `statuses` | Drop-in replacement for statuses | 131 | ✓ | ✓ |
 | `string-width` |  | 27 | ✓ | ✓ |
 | `strip-ansi` | Strip ANSI escape codes | 5 | ✓ | ✓ |
-| `strip-indent` |  | 11 | ✓ | ✓ |
+| `strip-indent` |  | 17 | ✓ | ✓ |
 | `supports-color` | Detect terminal color support | 14 | ✓ | ✓ |
 | `tempy` |  | 19 | ✓ | ✓ |
 | `toidentifier` | Drop-in replacement for toidentifier | 31 | ✓ | ✓ |
