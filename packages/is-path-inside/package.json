@@ -1,0 +1,1 @@
+{"name":"@flupkejs/is-path-inside","version":"1.0.0","description":"Drop-in replacement for is-path-inside","main":"src/index.js","exports":{".":{"types":"./src/index.d.ts","default":"./src/index.js"},"./package.json":"./package.json"},"license":"MIT"}
