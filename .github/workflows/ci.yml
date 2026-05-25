@@ -25,6 +25,10 @@ jobs:
           files: coverage.lcov
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: false
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - run: node bench/compare-isolated.js | tee /tmp/bench.txt
       - name: Benchmark summary
         run: |
