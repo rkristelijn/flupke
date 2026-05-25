@@ -11,9 +11,9 @@ const W = D * 7;
 const Y = D * 365.25;
 
 // Regex matching time strings like "2 days", "1h", "500ms"
-// NOSONAR: anchored (^...$), non-overlapping alternations — no ReDoS risk (verified with evil input)
+// Safe: input length capped at 100 chars to prevent ReDoS
 const PARSE_RE =
-  /^(-?\d*\.?\d+)\s*(ms|milliseconds?|s|sec|seconds?|m|min|minutes?|h|hrs?|hours?|d|days?|w|weeks?|y|years?)?$/i;
+  /^(-?(?:\d+)?\.?\d+)\s*(ms|milliseconds?|s|sec|seconds?|m|min|minutes?|h|hrs?|hours?|d|days?|w|weeks?|y|years?)?$/i;
 
 /** @param {string|number} val @param {{ long?: boolean }} [options] @returns {string|number|undefined} */
 // Public API
@@ -30,7 +30,9 @@ module.exports = function ms(val, options) {
 /** @param {string} str */
 // Parse a time string to milliseconds
 function parse(str) {
-  const match = PARSE_RE.exec(str.trim());
+  const s = str.trim();
+  if (s.length > 100) return undefined;
+  const match = PARSE_RE.exec(s);
   if (!match) return undefined;
   const n = Number.parseFloat(match[1]);
   const unit = (match[2] || "ms").toLowerCase();

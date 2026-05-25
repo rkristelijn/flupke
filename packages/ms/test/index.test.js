@@ -55,3 +55,10 @@ test('throws on invalid input', () => {
   assert.throws(() => ms(null));
   assert.throws(() => ms(''));
 });
+
+test('ReDoS safe: long input does not cause backtracking', () => {
+  const start = performance.now();
+  for (let i = 0; i < 1000; i++) ms('9'.repeat(1000) + 'z');
+  const elapsed = performance.now() - start;
+  assert.ok(elapsed < 50, `Expected < 50ms, got ${elapsed.toFixed(1)}ms`);
+});
