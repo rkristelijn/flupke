@@ -1,0 +1,20 @@
+{
+  "name": "@flupkejs/statuses",
+  "version": "1.0.0",
+  "description": "Drop-in replacement for statuses",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rkristelijn/flupke"
+  }
+}
