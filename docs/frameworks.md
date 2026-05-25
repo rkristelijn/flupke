@@ -1,6 +1,6 @@
 # Framework compatibility
 
-146 packages. 698 tests. CI-verified against 50 frameworks.
+153 packages. 722 tests. CI-verified against 50 frameworks.
 
 ## CI Integration Matrix — 44/50 passing ✓
 
