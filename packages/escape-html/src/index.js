@@ -12,7 +12,7 @@ module.exports = function escapeHtml(str) {
   if (!match) return s;
   let html = '';
   let last = 0;
-  for (var i = match.index; i < s.length; i++) {
+  for (let i = match.index; i < s.length; i++) {
     let ch;
     switch (s.charCodeAt(i)) {
       case 34: ch = '&quot;'; break;
@@ -26,5 +26,5 @@ module.exports = function escapeHtml(str) {
     html += ch;
     last = i + 1;
   }
-  return last !== i ? html + s.substring(last, i) : html;
+  return last !== s.length ? html + s.substring(last) : html;
 };
