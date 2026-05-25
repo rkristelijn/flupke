@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/moment",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Drop-in replacement for moment — uses native Date and Intl",
   "main": "src/index.js",
   "types": "src/index.d.ts",

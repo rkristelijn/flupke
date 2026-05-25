@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/axios",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Drop-in replacement for axios — uses native fetch()",
   "main": "src/index.js",
   "types": "src/index.d.ts",

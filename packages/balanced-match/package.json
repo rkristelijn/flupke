@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/balanced-match",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Find matching braces in a string",
   "main": "src/index.js",
   "types": "src/index.d.ts",
