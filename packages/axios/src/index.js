@@ -51,6 +51,8 @@ function request(url, config, method, data, _credentials) {
   }
 
   request.request = request;
+  request.defaults = defaults;
+  request.interceptors = { request: createInterceptorMgr(), response: createInterceptorMgr() };
   request.get = function(u, c) { return request(u, c, 'get'); };
   request.delete = function(u, c) { return request(u, c, 'delete'); };
   request.head = function(u, c) { return request(u, c, 'head'); };
@@ -66,6 +68,8 @@ function request(url, config, method, data, _credentials) {
   request.isAxiosError = function(e) { return e && e.config !== undefined && e.status !== undefined; };
   return request;
 }
+
+function createInterceptorMgr(){var h=[];return{use:function(f,r){h.push({fulfilled:f,rejected:r});return h.length-1},eject:function(id){h[id]=null},handlers:h}}
 
 module.exports = create({});
 module.exports.default = module.exports;
