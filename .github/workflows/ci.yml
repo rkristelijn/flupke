@@ -15,7 +15,10 @@ jobs:
         with:
           node-version: 22
       - run: npm install --ignore-scripts
-      - run: node --test packages/*/test/*.test.js
+      - run: node --test --experimental-test-coverage packages/*/test/*.test.js 2>&1 | tee /tmp/test-output.txt
+      - name: Generate lcov coverage
+        run: |
+          node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=coverage.lcov packages/*/test/*.test.js || true
       - run: node bench/compare-isolated.js | tee /tmp/bench.txt
       - name: Benchmark summary
         run: |
