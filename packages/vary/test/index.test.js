@@ -8,19 +8,19 @@ describe('vary', () => {
   it('should add field to empty Vary header', () => {
     const res = { getHeader: () => '', setHeader: (n, v) => { res.vary = v; } };
     vary(res, 'Accept-Encoding');
-    assert.strictEqual(res.vary, 'accept-encoding');
+    assert.strictEqual(res.vary, 'Accept-Encoding');
   });
 
   it('should append new field', () => {
-    const res = { getHeader: () => 'accept-encoding', setHeader: (n, v) => { res.vary = v; } };
+    const res = { getHeader: () => 'Accept-Encoding', setHeader: (n, v) => { res.vary = v; } };
     vary(res, 'Accept');
-    assert.strictEqual(res.vary, 'accept-encoding, accept');
+    assert.strictEqual(res.vary, 'Accept-Encoding, Accept');
   });
 
   it('should not duplicate existing field', () => {
-    const res = { getHeader: () => 'accept-encoding', setHeader: (n, v) => { res.vary = v; } };
+    const res = { getHeader: () => 'Accept-Encoding', setHeader: (n, v) => { res.vary = v; } };
     vary(res, 'Accept-Encoding');
-    assert.strictEqual(res.vary, 'accept-encoding');
+    assert.strictEqual(res.vary, 'Accept-Encoding');
   });
 
   it('should be case-insensitive for duplicates', () => {
@@ -35,34 +35,35 @@ describe('vary', () => {
 
   it('should handle multiple fields', () => {
     const res = { 
+      vary: '',
       getHeader: () => res.vary, 
       setHeader: (n, v) => { res.vary = v; } 
     };
     vary(res, 'Accept');
     vary(res, 'Accept-Encoding');
     vary(res, 'Accept-Language');
-    assert.strictEqual(res.vary, 'accept, accept-encoding, accept-language');
+    assert.strictEqual(res.vary, 'Accept, Accept-Encoding, Accept-Language');
   });
 });
 
 describe('vary.append', () => {
   it('should append to header string', () => {
-    const result = vary.append('accept-encoding', 'accept');
-    assert.strictEqual(result, 'accept-encoding, accept');
+    const result = vary.append('Accept-Encoding', 'Accept');
+    assert.strictEqual(result, 'Accept-Encoding, Accept');
   });
 
   it('should handle empty header', () => {
-    const result = vary.append('', 'accept');
-    assert.strictEqual(result, 'accept');
+    const result = vary.append('', 'Accept');
+    assert.strictEqual(result, 'Accept');
   });
 
   it('should handle null header', () => {
-    const result = vary.append(null, 'accept');
-    assert.strictEqual(result, 'accept');
+    const result = vary.append(null, 'Accept');
+    assert.strictEqual(result, 'Accept');
   });
 
   it('should not duplicate', () => {
-    const result = vary.append('accept-encoding', 'Accept-Encoding');
-    assert.strictEqual(result, 'accept-encoding');
+    const result = vary.append('Accept-Encoding', 'accept-encoding');
+    assert.strictEqual(result, 'Accept-Encoding');
   });
 });

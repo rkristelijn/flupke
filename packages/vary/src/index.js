@@ -27,13 +27,11 @@ function append(header, field) {
   const fields = parse(header);
   const normalizedField = field.toLowerCase();
 
-  if (fields.includes(normalizedField)) {
+  if (fields.some(f => f.toLowerCase() === normalizedField)) {
     return header;
   }
 
-  fields.push(normalizedField);
-
-  return fields.join(", ");
+  return header ? header + ', ' + field : field;
 }
 
 /**
