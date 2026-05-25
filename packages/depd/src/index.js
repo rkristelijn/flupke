@@ -8,11 +8,18 @@ module.exports = function depd(namespace) {
     if (typeof process !== "undefined" && process.noDeprecation) return;
     console.warn(`${namespace}: ${message} is deprecated`);
   }
-  deprecate.function = (fn, message) =>
-    util.deprecate(
-      fn,
-      `${namespace}: ${message || `${fn.name} is deprecated`}`,
-    );
+  deprecate.function = (fn, message) => {
+    if (!fn) return fn;
+    const msg = `${namespace}: ${message || `${fn.name} is deprecated`}`;
+    let warned = false;
+    function deprecated() {
+      if (!warned) { warned = true; if (!process.noDeprecation) console.warn(msg); }
+      return fn.apply(this, arguments);
+    }
+    deprecated.prototype = fn.prototype;
+    Object.setPrototypeOf(deprecated, fn);
+    return deprecated;
+  };
   deprecate.property = (obj, prop, message) => {
     let val = obj[prop];
     Object.defineProperty(obj, prop, {

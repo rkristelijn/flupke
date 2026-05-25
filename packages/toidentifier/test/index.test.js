@@ -10,19 +10,19 @@ describe('toidentifier', () => {
   });
 
   it('should handle hyphenated string', () => {
-    assert.strictEqual(toIdentifier('foo-bar'), 'FooBar');
+    assert.strictEqual(toIdentifier('foo-bar'), 'Foobar');
   });
 
   it('should handle underscored string', () => {
-    assert.strictEqual(toIdentifier('foo_bar'), 'FooBar');
+    assert.strictEqual(toIdentifier('foo_bar'), 'Foo_bar');
   });
 
   it('should handle mixed separators', () => {
-    assert.strictEqual(toIdentifier('foo-bar_baz'), 'FooBarBaz');
+    assert.strictEqual(toIdentifier('foo-bar_baz'), 'Foobar_baz');
   });
 
-  it('should lowercase subsequent letters', () => {
-    assert.strictEqual(toIdentifier('FOO BAR'), 'FooBar');
+  it('should preserve case within words', () => {
+    assert.strictEqual(toIdentifier('FOO BAR'), 'FOOBAR');
   });
 
   it('should handle single word', () => {
@@ -34,10 +34,10 @@ describe('toidentifier', () => {
   });
 
   it('should handle leading numbers', () => {
-    assert.strictEqual(toIdentifier('123abc'), '_123abc');
+    assert.strictEqual(toIdentifier('123abc'), '123abc');
   });
 
-  it('should throw on non-string', () => {
-    assert.strictEqual(toIdentifier(123), '_123');
+  it('should coerce non-string', () => {
+    assert.strictEqual(toIdentifier(123), '123');
   });
 });

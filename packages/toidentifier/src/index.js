@@ -8,23 +8,9 @@ function toIdentifier(str) {
     str = String(str);
   }
 
-  // Split by spaces, hyphens, underscores
-  const parts = str.split(/[\s-_]+/);
-
-  // Capitalize first letter of each part
-  const result = parts
-    .map((part) => {
-      if (part.length === 0) return "";
-      return part[0].toUpperCase() + part.slice(1).toLowerCase();
-    })
-    .join("");
-
-  // If starts with number, prepend underscore
-  if (/^\d/.test(result)) {
-    return `_${result}`;
-  }
-
-  return result;
+  return str.split(' ').map(function(part) {
+    return part.slice(0, 1).toUpperCase() + part.slice(1);
+  }).join('').replace(/[^ _0-9a-z]/gi, '');
 }
 
 module.exports = toIdentifier;
