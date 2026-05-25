@@ -1,4 +1,9 @@
+/**
+ * @flupkejs/clsx — Drop-in replacement for clsx — conditional class strings
+ * @see https://www.npmjs.com/package/clsx
+ */
 'use strict';
+// Implementation: native-first, zero dependencies
 module.exports = function classnames(...args) {
   var result = '';
   for (var i = 0; i < args.length; i++) {

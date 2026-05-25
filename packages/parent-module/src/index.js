@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/parent-module — parent-module
+ * @see https://www.npmjs.com/package/parent-module
+ */
 module.exports = function parentModule() {
   const o = Error.prepareStackTrace;
   Error.prepareStackTrace = (_, s) => s;

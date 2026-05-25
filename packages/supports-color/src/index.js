@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/supports-color — Detect terminal color support
+ * @see https://www.npmjs.com/package/supports-color
+ */
 'use strict';
 module.exports = function supportsColor() {
   if (process.env.NO_COLOR) return { hasBasic: false, has256: false, has16m: false };

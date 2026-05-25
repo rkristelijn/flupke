@@ -1,3 +1,8 @@
+/**
+ * @flupkejs/ms — Drop-in replacement for ms — time string parsing/formatting
+ * @see https://www.npmjs.com/package/ms
+ */
+// Time unit constants in milliseconds
 const S = 1000;
 const M = S * 60;
 const H = M * 60;
@@ -5,9 +10,11 @@ const D = H * 24;
 const W = D * 7;
 const Y = D * 365.25;
 
+// Regex matching time strings like "2 days", "1h", "500ms"
 const PARSE_RE = /^(-?\d*\.?\d+)\s*(ms|milliseconds?|s|sec|seconds?|m|min|minutes?|h|hrs?|hours?|d|days?|w|weeks?|y|years?)?$/i;
 
 /** @param {string|number} val @param {{ long?: boolean }} [options] @returns {string|number|undefined} */
+// Public API
 module.exports = function ms(val, options) {
   var type = typeof val;
   if (type === 'string' && val.length > 0) return parse(val);
@@ -16,6 +23,7 @@ module.exports = function ms(val, options) {
 };
 
 /** @param {string} str */
+// Parse a time string to milliseconds
 function parse(str) {
   const match = PARSE_RE.exec(str.trim());
   if (!match) return undefined;
@@ -32,6 +40,7 @@ function parse(str) {
 }
 
 /** @param {number} ms */
+// Format milliseconds to short string (1d, 2h, 3m)
 function fmtShort(ms) {
   var abs = Math.abs(ms);
   if (abs >= D) return Math.round(ms / D) + 'd';
@@ -42,6 +51,7 @@ function fmtShort(ms) {
 }
 
 /** @param {number} ms */
+// Format milliseconds to long string (1 day, 2 hours)
 function fmtLong(ms) {
   var abs = Math.abs(ms);
   if (abs >= D) return plural(ms, abs, D, 'day');

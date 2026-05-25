@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/memoize-one — memoize-one
+ * @see https://www.npmjs.com/package/memoize-one
+ */
 module.exports = function memoizeOne(fn) {
   let lastArgs, lastResult, called = false;
   return function (...args) {

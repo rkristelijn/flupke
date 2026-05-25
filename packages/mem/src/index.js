@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/mem — mem
+ * @see https://www.npmjs.com/package/mem
+ */
 module.exports = function mem(fn, opts = {}) {
   const cache = new Map();
   const keyer = opts.cacheKey || ((...a) => a[0]);

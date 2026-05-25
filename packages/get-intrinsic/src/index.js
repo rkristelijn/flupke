@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/get-intrinsic — Get JS intrinsics
+ * @see https://www.npmjs.com/package/get-intrinsic
+ */
 'use strict';
 const intrinsics = {
   '%Array%': Array,

@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/balanced-match — Find matching braces in a string
+ * @see https://www.npmjs.com/package/balanced-match
+ */
 'use strict';
 module.exports = function balanced(a, b, str) {
   if (typeof a !== 'string' || typeof b !== 'string') {

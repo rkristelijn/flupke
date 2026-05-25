@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/require-directory — require-directory
+ * @see https://www.npmjs.com/package/require-directory
+ */
 const path = require('node:path');
 const fs = require('node:fs');
 module.exports = function requireDirectory(m, dir) {

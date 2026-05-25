@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/execa — execa
+ * @see https://www.npmjs.com/package/execa
+ */
 const { execFile } = require('node:child_process');
 const { promisify } = require('node:util');
 const execFileAsync = promisify(execFile);

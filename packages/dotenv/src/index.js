@@ -1,7 +1,12 @@
+/**
+ * @flupkejs/dotenv — Drop-in replacement for dotenv
+ * @see https://www.npmjs.com/package/dotenv
+ */
 'use strict';
 var fs = require('node:fs');
 var path = require('node:path');
 
+/** Parse a .env file string into key-value pairs */
 function parse(src) {
   var obj = {};
   var lines = src.toString().replace(/\r\n?/g, '\n').split('\n');
@@ -21,6 +26,7 @@ function parse(src) {
   return obj;
 }
 
+/** Load .env file and populate process.env */
 function config(options) {
   var dotenvPath = (options && options.path) || path.resolve(process.cwd(), '.env');
   var encoding = (options && options.encoding) || 'utf8';
@@ -44,4 +50,5 @@ function populate(target, source, options) {
   }
 }
 
+// Public API
 module.exports = { config: config, configDotenv: config, parse: parse, populate: populate };

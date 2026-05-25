@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/p-map — p-map
+ * @see https://www.npmjs.com/package/p-map
+ */
 module.exports = async function pMap(iterable, mapper, opts = {}) {
   const { concurrency = Infinity } = opts;
   const items = [...iterable];

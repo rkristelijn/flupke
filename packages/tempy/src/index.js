@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/tempy — tempy
+ * @see https://www.npmjs.com/package/tempy
+ */
 const os = require('node:os');
 const path = require('node:path');
 const crypto = require('node:crypto');

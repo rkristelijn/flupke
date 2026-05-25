@@ -1,4 +1,10 @@
+/**
+ * @flupkejs/fast-json-stable-stringify — Drop-in replacement for fast-json-stable-stringify
+ * @see https://www.npmjs.com/package/fast-json-stable-stringify
+ */
 'use strict';
+// Implementation: native-first, zero dependencies
+// Public API
 module.exports = function stableStringify(obj, opts) {
   var space = opts && opts.space;
   var cmp = opts && opts.cmp;

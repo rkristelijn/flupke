@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/semver — Version parsing and comparison
+ * @see https://www.npmjs.com/package/semver
+ */
 'use strict';
 function parse(v) {
   const m = String(v).match(/^(\d+)\.(\d+)\.(\d+)(?:-(.+))?$/);

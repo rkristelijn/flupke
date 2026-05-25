@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/once — once
+ * @see https://www.npmjs.com/package/once
+ */
 module.exports = function once(fn) {
   let called = false, result;
   return function (...args) {

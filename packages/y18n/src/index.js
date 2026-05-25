@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/y18n — y18n
+ * @see https://www.npmjs.com/package/y18n
+ */
 module.exports = function y18n(opts = {}) {
   const locale = opts.locale || 'en';
   const cache = {};

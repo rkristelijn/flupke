@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/fast-deep-equal — fast-deep-equal
+ * @see https://www.npmjs.com/package/fast-deep-equal
+ */
 module.exports = function equal(a, b) {
   if (a === b) return true;
   if (a && b && typeof a === 'object' && typeof b === 'object') {

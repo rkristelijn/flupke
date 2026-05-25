@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/side-channel — WeakMap-based private storage
+ * @see https://www.npmjs.com/package/side-channel
+ */
 'use strict';
 const channel = new WeakMap();
 module.exports = {

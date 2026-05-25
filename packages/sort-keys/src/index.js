@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/sort-keys — sort-keys
+ * @see https://www.npmjs.com/package/sort-keys
+ */
 module.exports = function sortKeys(obj, opts = {}) {
   const { deep = false } = opts;
   const sorted = {};

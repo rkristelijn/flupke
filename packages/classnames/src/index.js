@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/classnames — Join class names
+ * @see https://www.npmjs.com/package/classnames
+ */
 'use strict';
 module.exports = function classnames(...args) {
   var result = '';

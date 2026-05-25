@@ -1,5 +1,10 @@
+/**
+ * @flupkejs/depd — Drop-in replacement for depd
+ * @see https://www.npmjs.com/package/depd
+ */
 'use strict';
 var util = require('node:util');
+/** Create a deprecation warning function for a namespace */
 module.exports = function depd(namespace) {
   var warned = Object.create(null);
   function deprecate(message) {

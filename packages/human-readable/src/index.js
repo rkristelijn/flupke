@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/human-readable — human-readable
+ * @see https://www.npmjs.com/package/human-readable
+ */
 const UNITS = ['B','KB','MB','GB','TB','PB'];
 module.exports = function humanReadable(bytes) {
   if (bytes === 0) return '0 B';

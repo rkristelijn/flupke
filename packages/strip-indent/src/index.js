@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/strip-indent — strip-indent
+ * @see https://www.npmjs.com/package/strip-indent
+ */
 module.exports = function stripIndent(str) {
   const match = str.match(/^[ \t]*(?=\S)/gm);
   if (!match) return str;

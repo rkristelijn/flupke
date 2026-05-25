@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/find-up — find-up
+ * @see https://www.npmjs.com/package/find-up
+ */
 const path = require('node:path');
 const fs = require('node:fs/promises');
 module.exports = async function findUp(name, opts = {}) {

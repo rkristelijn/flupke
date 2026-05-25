@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/dotenv-expand — dotenv-expand
+ * @see https://www.npmjs.com/package/dotenv-expand
+ */
 module.exports = function expand(config) {
   const env = config.parsed || {};
   for (const key of Object.keys(env)) {

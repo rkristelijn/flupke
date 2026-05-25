@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/p-queue — p-queue
+ * @see https://www.npmjs.com/package/p-queue
+ */
 class PQueue {
   constructor(opts = {}) { this.concurrency = opts.concurrency || 1; this.active = 0; this.queue = []; }
   add(fn) { return new Promise((resolve, reject) => { this.queue.push({ fn, resolve, reject }); this._next(); }); }

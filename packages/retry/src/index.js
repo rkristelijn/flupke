@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/retry — retry
+ * @see https://www.npmjs.com/package/retry
+ */
 module.exports = async function retry(fn, opts = {}) {
   const { retries = 3, delay = 100 } = opts;
   let lastErr;

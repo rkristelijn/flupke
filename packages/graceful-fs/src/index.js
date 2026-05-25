@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/graceful-fs — graceful-fs
+ * @see https://www.npmjs.com/package/graceful-fs
+ */
 const fs = require('node:fs');
 module.exports = { ...fs };
 const queue = [];

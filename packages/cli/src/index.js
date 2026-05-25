@@ -1,4 +1,10 @@
 #!/usr/bin/env node
+/**
+ * @flupkejs/cli — One command. Safer dependencies.
+ * Scans node_modules, finds replaceable packages, writes overrides.
+ * Supports npm (overrides), yarn (resolutions), pnpm (pnpm.overrides).
+ */
+
 'use strict';
 const fs = require('node:fs');
 const path = require('node:path');
@@ -24,22 +30,26 @@ const REPLACEMENTS = [
   'type-fest','util-deprecate','uuid','which','wrap-ansi','wrappy','y18n','yallist'
 ];
 
+// Detect npm, yarn, or pnpm based on lockfile presence
 function detectPackageManager(dir) {
   if (fs.existsSync(path.join(dir, 'pnpm-lock.yaml'))) return 'pnpm';
   if (fs.existsSync(path.join(dir, 'yarn.lock'))) return 'yarn';
   return 'npm';
 }
 
+// List all installed packages in node_modules
 function findInstalled(dir) {
   const nm = path.join(dir, 'node_modules');
   if (!fs.existsSync(nm)) return [];
   return fs.readdirSync(nm).filter(f => !f.startsWith('.') && !f.startsWith('@'));
 }
 
+// Filter installed packages against known replacements
 function findReplaceable(installed) {
   return REPLACEMENTS.filter(p => installed.includes(p));
 }
 
+// Write overrides to package.json in the correct format per package manager
 function writeOverrides(dir, pm, replaceable) {
   const pkgPath = path.join(dir, 'package.json');
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
@@ -60,6 +70,7 @@ function writeOverrides(dir, pm, replaceable) {
   fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 }
 
+// Main entry point
 function run() {
   const dir = process.cwd();
   const pkgPath = path.join(dir, 'package.json');

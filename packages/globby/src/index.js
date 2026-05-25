@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/globby — globby
+ * @see https://www.npmjs.com/package/globby
+ */
 const fs = require('node:fs');
 const path = require('node:path');
 module.exports = function globby(patterns, opts = {}) {

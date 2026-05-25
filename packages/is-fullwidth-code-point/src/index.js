@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/is-fullwidth-code-point — is-fullwidth-code-point
+ * @see https://www.npmjs.com/package/is-fullwidth-code-point
+ */
 module.exports = function isFullwidthCodePoint(cp) {
   return cp >= 0x1100 && (cp <= 0x115f || cp === 0x2329 || cp === 0x232a ||
     (cp >= 0x2e80 && cp <= 0xa4cf && cp !== 0x303f) ||

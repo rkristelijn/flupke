@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/yargs-parser — yargs-parser
+ * @see https://www.npmjs.com/package/yargs-parser
+ */
 module.exports = function yargsParser(args) {
   if (typeof args === 'string') args = args.split(/\s+/);
   const result = { _: [] };

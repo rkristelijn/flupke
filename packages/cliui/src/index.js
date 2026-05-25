@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/cliui — cliui
+ * @see https://www.npmjs.com/package/cliui
+ */
 module.exports = function cliui(opts = {}) {
   const width = opts.width || 80;
   const rows = [];

@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/debug — debug
+ * @see https://www.npmjs.com/package/debug
+ */
 function debug(namespace) {
   const fn = function (...args) {
     if (!debug.enabled(namespace)) return;

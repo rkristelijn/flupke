@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/lru-cache — Map-based LRU cache
+ * @see https://www.npmjs.com/package/lru-cache
+ */
 'use strict';
 class LRUCache {
   constructor(options) {

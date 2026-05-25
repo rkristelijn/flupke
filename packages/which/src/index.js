@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/which — which
+ * @see https://www.npmjs.com/package/which
+ */
 const path = require('node:path');
 const fs = require('node:fs');
 module.exports = function which(cmd) {

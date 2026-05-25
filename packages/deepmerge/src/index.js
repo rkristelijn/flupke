@@ -1,4 +1,9 @@
+/**
+ * @flupkejs/deepmerge — Drop-in replacement for deepmerge
+ * @see https://www.npmjs.com/package/deepmerge
+ */
 'use strict';
+/** Deep merge two objects recursively */
 function deepmerge(target, source, options) {
   if (!source) return target;
   if (Array.isArray(source)) {
@@ -26,4 +31,5 @@ function deepmerge(target, source, options) {
 deepmerge.all = function(arr, options) {
   return arr.reduce(function(acc, obj) { return deepmerge(acc, obj, options); }, {});
 };
+// Public API
 module.exports = deepmerge;

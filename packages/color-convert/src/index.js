@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/color-convert — RGB/HSL/HEX conversion
+ * @see https://www.npmjs.com/package/color-convert
+ */
 'use strict';
 function rgbToHsl(r, g, b) {
   r /= 255; g /= 255; b /= 255;

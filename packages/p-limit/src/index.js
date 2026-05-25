@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/p-limit — p-limit
+ * @see https://www.npmjs.com/package/p-limit
+ */
 module.exports = function pLimit(concurrency) {
   let active = 0;
   const queue = [];

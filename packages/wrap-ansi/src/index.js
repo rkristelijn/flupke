@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/wrap-ansi — wrap-ansi
+ * @see https://www.npmjs.com/package/wrap-ansi
+ */
 const ansiRegex = /\x1b\[[0-9;]*m/g;
 module.exports = function wrapAnsi(str, cols) {
   const lines = [];

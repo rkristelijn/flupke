@@ -1,5 +1,11 @@
+/**
+ * @flupkejs/escape-html — Drop-in replacement for escape-html
+ * @see https://www.npmjs.com/package/escape-html
+ */
 'use strict';
+// Implementation: native-first, zero dependencies
 var MATCH = /["'&<>]/;
+// Public API
 module.exports = function escapeHtml(str) {
   var s = '' + str;
   var match = MATCH.exec(s);

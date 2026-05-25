@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/pkg-dir — pkg-dir
+ * @see https://www.npmjs.com/package/pkg-dir
+ */
 const path = require('node:path');
 const fs = require('node:fs/promises');
 module.exports = async function pkgDir(cwd = '.') {

@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/color-name — CSS color name to RGB map
+ * @see https://www.npmjs.com/package/color-name
+ */
 'use strict';
 module.exports = Object.freeze({
   aliceblue: [240, 248, 255],

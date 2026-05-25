@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/yallist — yallist
+ * @see https://www.npmjs.com/package/yallist
+ */
 class Node { constructor(v,p,n){this.value=v;this.prev=p||null;this.next=n||null;} }
 class Yallist {
   constructor(arr){this.head=null;this.tail=null;this.length=0;if(arr)for(const v of arr)this.push(v);}

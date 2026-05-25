@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/nanoid — nanoid
+ * @see https://www.npmjs.com/package/nanoid
+ */
 const { randomBytes } = require('node:crypto');
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-';
 module.exports = function nanoid(size = 21) {

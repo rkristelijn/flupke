@@ -1,4 +1,9 @@
+/**
+ * @flupkejs/cookie — Drop-in replacement for cookie
+ * @see https://www.npmjs.com/package/cookie
+ */
 'use strict';
+/** Parse a cookie header string into key-value pairs */
 exports.parse = function parse(str, options) {
   var obj = {};
   if (!str || typeof str !== 'string') return obj;
@@ -17,6 +22,7 @@ exports.parse = function parse(str, options) {
   return obj;
 };
 
+/** Serialize a cookie name-value pair into a Set-Cookie header string */
 exports.serialize = function serialize(name, val, options) {
   var opt = options || {};
   var enc = opt.encode || encodeURIComponent;

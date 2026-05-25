@@ -1,8 +1,14 @@
+/**
+ * @flupkejs/axios — Drop-in replacement for axios — uses native fetch()
+ * @see https://www.npmjs.com/package/axios
+ */
 'use strict';
 // Vendored from redaxios v0.5.1 (MIT) — https://github.com/developit/redaxios
 // 800 bytes, 99% axios-compatible, native fetch under the hood
+// Create an axios-compatible instance backed by native fetch
 function create(defaults) {
-  function merge(a, b, lc) {
+  // Deep merge config objects, lowercase headers
+function merge(a, b, lc) {
     var c = {}, k;
     if (Array.isArray(a)) return a.concat(b);
     for (k in a) c[lc ? k.toLowerCase() : k] = a[k];
@@ -10,7 +16,8 @@ function create(defaults) {
     return c;
   }
 
-  function request(url, config, method, data, _credentials) {
+  // Execute HTTP request using fetch with axios-compatible options
+function request(url, config, method, data, _credentials) {
     if (typeof url !== 'string') { config = url; url = config.url; }
     var response = { config: config };
     var opts = merge(defaults, config);

@@ -1,11 +1,18 @@
+/**
+ * @flupkejs/uuid — Drop-in replacement for uuid — uses native crypto.randomUUID()
+ * @see https://www.npmjs.com/package/uuid
+ */
 'use strict';
+// Implementation: native-first, zero dependencies
 const crypto = require('node:crypto');
 
 const NIL = '00000000-0000-0000-0000-000000000000';
 const MAX = 'ffffffff-ffff-ffff-ffff-ffffffffffff';
 
+/** Generate a random UUID v4 using crypto.randomUUID */
 function v4() { return crypto.randomUUID(); }
 
+/** Generate a time-ordered UUID v7 */
 function v7() {
   const bytes = crypto.getRandomValues(new Uint8Array(16));
   const ts = Date.now();
@@ -30,6 +37,7 @@ function parse(str) {
   return Uint8Array.from(Buffer.from(hex, 'hex'));
 }
 
+/** Validate a UUID string */
 function validate(str) {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-7][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(str);
 }

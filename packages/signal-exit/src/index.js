@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/signal-exit — Signal exit handler
+ * @see https://www.npmjs.com/package/signal-exit
+ */
 'use strict';
 const listeners = new Map();
 function onExit(handler) {

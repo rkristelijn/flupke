@@ -1,4 +1,10 @@
+/**
+ * @flupkejs/qs — Drop-in replacement for qs
+ * @see https://www.npmjs.com/package/qs
+ */
 'use strict';
+// Implementation: native-first, zero dependencies
+/** Parse a querystring into an object */
 function parse(str, options) {
   if (!str) return {};
   if (str[0] === '?') str = str.slice(1);
@@ -15,6 +21,7 @@ function parse(str, options) {
   return result;
 }
 
+/** Stringify an object into a querystring */
 function stringify(obj, options) {
   if (!obj) return '';
   var params = new URLSearchParams();

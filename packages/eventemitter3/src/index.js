@@ -1,6 +1,12 @@
+/**
+ * @flupkejs/eventemitter3 — Drop-in replacement for eventemitter3
+ * @see https://www.npmjs.com/package/eventemitter3
+ */
 'use strict';
+// Public API
 module.exports = class EventEmitter {
   constructor() { this._listeners = Object.create(null); }
+  /** Register an event listener */
   on(event, fn) { (this._listeners[event] = this._listeners[event] || []).push(fn); return this; }
   once(event, fn) {
     var self = this;
@@ -14,6 +20,7 @@ module.exports = class EventEmitter {
     this._listeners[event] = this._listeners[event].filter(function(f) { return f !== fn && f.fn !== fn; });
     return this;
   }
+  /** Emit an event to all registered listeners */
   emit(event) {
     var fns = this._listeners[event];
     if (!fns || !fns.length) return false;

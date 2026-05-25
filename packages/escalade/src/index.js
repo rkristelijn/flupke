@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/escalade — escalade
+ * @see https://www.npmjs.com/package/escalade
+ */
 const path = require('node:path');
 const fs = require('node:fs');
 module.exports = async function escalade(dir, cb) {

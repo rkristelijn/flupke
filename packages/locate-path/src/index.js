@@ -1,3 +1,7 @@
+/**
+ * @flupkejs/locate-path — locate-path
+ * @see https://www.npmjs.com/package/locate-path
+ */
 const path = require('node:path');
 const fs = require('node:fs/promises');
 module.exports = async function locatePath(paths, opts = {}) {
