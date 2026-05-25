@@ -1,6 +1,6 @@
 # Package catalog
 
-138 packages. Generated from `packages/`.
+146 packages. Generated from `packages/`.
 
 | Package | Description | LOC | Has types | Has tests |
 |---------|-------------|-----|-----------|-----------|
@@ -32,8 +32,10 @@
 | `define-data-property` | Object.defineProperty with data descriptor defaults | 2 | ✓ | ✓ |
 | `delay` |  | 9 | ✓ | ✓ |
 | `depd` | Drop-in replacement for depd | 31 | ✓ | ✓ |
+| `destroy` | Drop-in replacement for destroy | 6 | ✓ | ✓ |
 | `dotenv` | Drop-in replacement for dotenv | 58 | ✓ | ✓ |
 | `dotenv-expand` |  | 36 | ✓ | ✓ |
+| `ee-first` | Drop-in replacement for ee-first | 20 | ✓ | ✓ |
 | `emoji-regex` |  | 4 | ✓ | ✓ |
 | `encodeurl` | Drop-in replacement for encodeurl | 83 | ✓ | ✓ |
 | `es-define-property` | Object.defineProperty | 2 | ✓ | ✓ |
@@ -43,6 +45,7 @@
 | `escape-string-regexp` |  | 4 | ✓ | ✓ |
 | `etag` | Drop-in replacement for etag | 50 | ✓ | ✓ |
 | `eventemitter3` | Drop-in replacement for eventemitter3 | 51 | ✓ | ✓ |
+| `events` | Node EventEmitter — native re-export | 2 | ✓ | ✓ |
 | `execa` |  | 17 | ✓ | ✓ |
 | `fast-deep-equal` |  | 20 | ✓ | ✓ |
 | `fast-json-stable-stringify` | Drop-in replacement for fast-json-stable-stringify | 37 | ✓ | ✓ |
@@ -52,7 +55,7 @@
 | `fresh` | Drop-in replacement for fresh | 60 | ✓ | ✓ |
 | `function-bind` | Drop-in replacement for function-bind — uses native Function.prototype.bind | 3 | ✓ | ✓ |
 | `get-caller-file` |  | 12 | ✓ | ✓ |
-| `get-intrinsic` | Get JS intrinsics | 90 | ✓ | ✓ |
+| `get-intrinsic` | Get JS intrinsics | 95 | ✓ | ✓ |
 | `globby` |  | 34 | ✓ | ✓ |
 | `gopd` | Get own property descriptor | 2 | ✓ | ✓ |
 | `graceful-fs` |  | 33 | ✓ | ✓ |
@@ -82,6 +85,7 @@
 | `mem` |  | 16 | ✓ | ✓ |
 | `memoize-one` |  | 22 | ✓ | ✓ |
 | `merge-descriptors` | Drop-in replacement for merge-descriptors | 21 | ✓ | ✓ |
+| `merge-stream` | Drop-in replacement for merge-stream | 11 | ✓ | ✓ |
 | `mime-types` | Drop-in replacement for mime-types | 300 | ✓ | ✓ |
 | `mimic-fn` |  | 8 | ✓ | ✓ |
 | `minipass` |  | 2 | ✓ | ✓ |
@@ -103,8 +107,11 @@
 | `parseurl` | Drop-in replacement for parseurl | 47 | ✓ | ✓ |
 | `path-exists` |  | 23 | ✓ | ✓ |
 | `path-is-absolute` |  | 2 | ✓ | ✓ |
+| `path-key` | Drop-in replacement for path-key | 7 | ✓ | ✓ |
 | `path-to-regexp` | Drop-in replacement for path-to-regexp | 188 | ✓ | ✓ |
 | `path-type` |  | 27 | ✓ | ✓ |
+| `picocolors` | Drop-in replacement for picocolors | 12 | ✓ | ✓ |
+| `picomatch` | Drop-in replacement for picomatch | 35 | ✓ | ✓ |
 | `pify` |  | 9 | ✓ | ✓ |
 | `pkg-dir` |  | 30 | ✓ | ✓ |
 | `qs` | Drop-in replacement for qs | 38 | ✓ | ✓ |
@@ -118,7 +125,7 @@
 | `semver` | Version parsing and comparison | 41 | ✓ | ✓ |
 | `set-function-length` | Set function length property | 10 | ✓ | ✓ |
 | `setprototypeof` | Drop-in replacement for setprototypeof | 8 | ✓ | ✓ |
-| `side-channel` | WeakMap-based private storage | 12 | ✓ | ✓ |
+| `side-channel` | WeakMap-based private storage | 15 | ✓ | ✓ |
 | `signal-exit` | Signal exit handler | 17 | ✓ | ✓ |
 | `slash` | Convert backslashes to forward slashes | 4 | ✓ | ✓ |
 | `slash-trailing` |  | 6 | ✓ | ✓ |
@@ -130,12 +137,13 @@
 | `supports-color` | Detect terminal color support | 14 | ✓ | ✓ |
 | `tempy` |  | 19 | ✓ | ✓ |
 | `toidentifier` | Drop-in replacement for toidentifier | 31 | ✓ | ✓ |
+| `triple-beam` | Drop-in replacement for triple-beam | 5 | ✓ | ✓ |
 | `type-detect` |  | 11 | ✓ | ✓ |
 | `type-fest` |  | 2 | ✓ | ✓ |
 | `unpipe` | Drop-in replacement for unpipe | 15 | ✓ | ✓ |
 | `util-deprecate` | Node util.deprecate | 2 | ✓ | ✓ |
 | `uuid` | Drop-in replacement for uuid — uses native crypto.randomUUID() | 50 | ✓ | ✓ |
-| `vary` | Drop-in replacement for vary | 53 | ✓ | ✓ |
+| `vary` | Drop-in replacement for vary | 51 | ✓ | ✓ |
 | `which` |  | 19 | ✓ | ✓ |
 | `wrap-ansi` |  | 38 | ✓ | ✓ |
 | `wrappy` |  | 12 | ✓ | ✓ |
