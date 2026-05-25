@@ -5,7 +5,7 @@
  */
 function toIdentifier(str) {
   if (typeof str !== "string") {
-    throw new TypeError("argument str must be a string");
+    str = String(str);
   }
 
   // Split by spaces, hyphens, underscores

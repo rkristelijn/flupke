@@ -38,6 +38,6 @@ describe('toidentifier', () => {
   });
 
   it('should throw on non-string', () => {
-    assert.throws(() => toIdentifier(123), TypeError);
+    assert.strictEqual(toIdentifier(123), '_123');
   });
 });

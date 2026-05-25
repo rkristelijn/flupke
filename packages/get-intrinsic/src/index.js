@@ -83,7 +83,12 @@ const intrinsics = {
   "%WeakSet%": typeof WeakSet !== "undefined" ? WeakSet : undefined,
 };
 module.exports = function getIntrinsic(name) {
-  if (!(name in intrinsics))
-    throw new TypeError(`Intrinsic not found: ${name}`);
-  return intrinsics[name];
+  if (name in intrinsics) return intrinsics[name];
+  // Support dot-notation: %Object.defineProperty%
+  const match = name.match(/^%([^.%]+)\.([^%]+)%$/);
+  if (match) {
+    const base = intrinsics['%' + match[1] + '%'];
+    if (base) return base[match[2]];
+  }
+  throw new TypeError(`Intrinsic not found: ${name}`);
 };
