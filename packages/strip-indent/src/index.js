@@ -3,8 +3,14 @@
  * @see https://www.npmjs.com/package/strip-indent
  */
 module.exports = function stripIndent(str) {
-  const match = str.match(/^[ \t]*(?=\S)/gm);
-  if (!match) return str;
-  const indent = Math.min(...match.map((s) => s.length));
-  return str.replace(new RegExp(`^[ \\t]{${indent}}`, "gm"), "");
+  const lines = str.split("\n");
+  let indent = Infinity;
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    let i = 0;
+    while (i < line.length && (line[i] === " " || line[i] === "\t")) i++;
+    if (i < indent) indent = i;
+  }
+  if (indent === 0 || indent === Infinity) return str;
+  return lines.map((line) => line.slice(indent)).join("\n");
 };
