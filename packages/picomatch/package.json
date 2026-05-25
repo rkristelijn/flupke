@@ -1,0 +1,14 @@
+{
+  "name": "@flupkejs/picomatch",
+  "version": "1.0.0",
+  "description": "Drop-in replacement for picomatch",
+  "main": "src/index.js",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT"
+}
