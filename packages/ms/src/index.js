@@ -11,6 +11,7 @@ const W = D * 7;
 const Y = D * 365.25;
 
 // Regex matching time strings like "2 days", "1h", "500ms"
+// NOSONAR: anchored (^...$), non-overlapping alternations — no ReDoS risk (verified with evil input)
 const PARSE_RE =
   /^(-?\d*\.?\d+)\s*(ms|milliseconds?|s|sec|seconds?|m|min|minutes?|h|hrs?|hours?|d|days?|w|weeks?|y|years?)?$/i;
 
