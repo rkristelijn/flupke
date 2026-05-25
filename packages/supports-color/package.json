@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/supports-color",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Detect terminal color support",
   "main": "src/index.js",
   "types": "src/index.d.ts",

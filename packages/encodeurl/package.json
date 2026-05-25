@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/encodeurl",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Drop-in replacement for encodeurl",
   "main": "src/index.js",
   "types": "src/index.d.ts",

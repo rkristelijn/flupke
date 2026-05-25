@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/slash",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Convert backslashes to forward slashes",
   "main": "src/index.js",
   "types": "src/index.d.ts",

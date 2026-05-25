@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/has-flag",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Check if flag is in process.argv",
   "main": "src/index.js",
   "types": "src/index.d.ts",

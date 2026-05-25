@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/content-disposition",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Drop-in replacement for content-disposition",
   "main": "src/index.js",
   "types": "src/index.d.ts",
