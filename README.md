@@ -21,17 +21,29 @@ One command. Safer dependencies.
 npx @flupkejs/cli
 ```
 
+## Why flupke exists
+
+I was poking around `node_modules` and found something disturbing: the biggest frameworks in the ecosystem — Express, Next.js, NestJS — all depend on packages that haven't been touched in 5 years. No tests. No quality checks. No active maintainer. Just dormant code that millions of projects blindly trust.
+
+And there were hundreds of them.
+
+Packages like `ms` (ReDoS vulnerability), `debug` (regex injection via env variable), `function-bind` (uses `Function()` constructor). All sitting at the bottom of the dependency tree, silently running in production.
+
+So I thought: what if we put them all in one place? Same boilerplate. Same quality controls. Same CI. And sure enough — security issues surfaced, performance improvements became obvious, and native platform features made most of these packages unnecessary.
+
+**The result:** 153 packages, all faster than the originals, all zero-dep, all typed, all tested. Two security vulnerabilities responsibly disclosed to upstream maintainers.
+
 ## What flupke does
 
 Every framework ships with transitive dependencies you never chose. flupke replaces them with tested, typed, native-first alternatives:
 
 | Framework | Replaceable deps | After flupke |
 |-----------|-----------------|--------------|
-| Next.js | 43 | Tested, typed, zero-dep |
-| Angular | 19 | Tested, typed, zero-dep |
-| NestJS | 30 | Tested, typed, zero-dep |
-| React (Vite) | 7 | Tested, typed, zero-dep |
-| Vue (Vite) | — | Already lean ✓ |
+| Express | 42 | Tested, typed, zero-dep |
+| NestJS | 44 | Tested, typed, zero-dep |
+| Jest | 54 | Tested, typed, zero-dep |
+| Nuxt | 61 | Tested, typed, zero-dep |
+| Next.js | 2 | Already lean ✓ |
 
 ## The fix
 
