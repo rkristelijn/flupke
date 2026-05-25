@@ -114,7 +114,7 @@ jobs:
           npm install --silent 2>&1 || true
           # Overlay local source (unpublished fixes)
           for pkg in $(ls ${{ github.workspace }}/packages/ | grep -v cli); do
-            for target in $(find node_modules -maxdepth 3 -type d -name "$pkg" 2>/dev/null); do
+            for target in $(find node_modules -type d -name "$pkg" 2>/dev/null); do
               SRC="${{ github.workspace }}/packages/$pkg/src/index.js"
               [ -f "$SRC" ] || continue
               if [ -d "$target/src" ]; then cp "$SRC" "$target/src/index.js"
