@@ -22,7 +22,7 @@ jobs:
           - { name: sveltekit, deps: "@sveltejs/kit svelte vite @sveltejs/adapter-node", verify: "process.exit(0)" }
           - { name: solid, deps: "solid-js vite vite-plugin-solid", verify: "process.exit(0)" }
           # TODO fix es-define-property edge case
-          # - { name: nestjs, deps: "@nestjs/core @nestjs/common @nestjs/platform-express reflect-metadata rxjs", verify: "require('reflect-metadata');const{Module,Controller,Get}=require('@nestjs/common');const{NestFactory}=require('@nestjs/core');class C{t(){return{ok:1}}}Reflect.decorate([Get('/t')],C.prototype,'t');Reflect.decorate([Controller()],C);class M{}Reflect.decorate([Module({controllers:[C]})],M);NestFactory.create(M,{logger:false}).then(async a=>{await a.listen(0);const r=await(await fetch((await a.getUrl())+'/t')).json();if(r.ok!==1)process.exit(1);await a.close()})" }
+          - { name: nestjs, deps: "@nestjs/core @nestjs/common @nestjs/platform-express reflect-metadata rxjs", verify: "require('reflect-metadata');const{Module,Controller,Get}=require('@nestjs/common');const{NestFactory}=require('@nestjs/core');class C{getTest(){return{ok:1}}}Reflect.decorate([Get('/t')],C.prototype,'getTest',Object.getOwnPropertyDescriptor(C.prototype,'getTest'));Reflect.decorate([Controller()],C);class M{}Reflect.decorate([Module({controllers:[C]})],M);NestFactory.create(M,{logger:false}).then(async a=>{await a.listen(0);const r=await(await fetch((await a.getUrl())+'/t')).json();if(r.ok!==1)process.exit(1);await a.close()})" }
           - { name: astro, deps: "astro", verify: "process.exit(0)" }
           # Tier A — sterk groeiend
           - { name: qwik, deps: "@builder.io/qwik", verify: "process.exit(0)" }
@@ -44,7 +44,7 @@ jobs:
           # HTTP & realtime
           - { name: axios, deps: "axios express", verify: "const app=require('express')();app.get('/t',(q,s)=>s.json({ok:1}));const sv=app.listen(0,async()=>{const{data}=await require('axios').get('http://localhost:'+sv.address().port+'/t');if(data.ok!==1)process.exit(1);sv.close()})" }
           # TODO fix es-define-property edge case
-          # - { name: socket.io, deps: "socket.io", verify: "const{Server}=require('socket.io');const s=new Server();s.close();process.exit(0)" }
+          - { name: socket.io, deps: "socket.io", verify: "const{Server}=require("socket.io");const s=new Server();s.close();process.exit(0)" }
           # Testing
           - { name: jest, deps: "jest", verify: "require('jest-cli');process.exit(0)" }
           - { name: mocha, deps: "mocha", verify: "require('mocha');process.exit(0)" }
