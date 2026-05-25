@@ -51,11 +51,11 @@ function parse(str) {
 // Format milliseconds to short string (1d, 2h, 3m)
 function fmtShort(ms) {
   const abs = Math.abs(ms);
-  if (abs >= D) return `${Math.round(ms / D)}d`;
-  if (abs >= H) return `${Math.round(ms / H)}h`;
-  if (abs >= M) return `${Math.round(ms / M)}m`;
-  if (abs >= S) return `${Math.round(ms / S)}s`;
-  return `${ms}ms`;
+  if (abs >= D) return Math.round(ms / D) + 'd';
+  if (abs >= H) return Math.round(ms / H) + 'h';
+  if (abs >= M) return Math.round(ms / M) + 'm';
+  if (abs >= S) return Math.round(ms / S) + 's';
+  return ms + 'ms';
 }
 
 /** @param {number} ms */
@@ -66,10 +66,10 @@ function fmtLong(ms) {
   if (abs >= H) return plural(ms, abs, H, "hour");
   if (abs >= M) return plural(ms, abs, M, "minute");
   if (abs >= S) return plural(ms, abs, S, "second");
-  return `${ms} ms`;
+  return ms + ' ms';
 }
 
 function plural(ms, abs, unit, name) {
   const isPlural = abs >= unit * 1.5;
-  return `${Math.round(ms / unit)} ${name}${isPlural ? "s" : ""}`;
+  return Math.round(ms / unit) + ' ' + name + (isPlural ? 's' : '');
 }
