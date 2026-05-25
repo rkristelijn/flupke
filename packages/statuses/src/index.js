@@ -116,6 +116,7 @@ function statuses(code) {
 }
 
 // Add static properties
+statuses.codes = Object.keys(STATUS_CODES).map(Number);
 statuses.message = STATUS_CODES;
 statuses.code = Object.fromEntries(
   Object.entries(STATUS_CODES).map(([k, v]) => [
