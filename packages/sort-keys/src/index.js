@@ -5,7 +5,8 @@
 module.exports = function sortKeys(obj, opts = {}) {
   const { deep = false } = opts;
   const sorted = {};
-  for (const key of Object.keys(obj).sort()) {
+  const cmp = opts.compare || ((a, b) => a.localeCompare(b));
+  for (const key of Object.keys(obj).sort(cmp)) {
     sorted[key] =
       deep &&
       obj[key] &&

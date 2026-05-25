@@ -69,7 +69,7 @@ const intrinsics = {
   "%Symbol%": typeof Symbol !== "undefined" ? Symbol : undefined,
   "%SyntaxError%": SyntaxError,
   "%ThrowTypeError%": (() => () => {
-    arguments.callee.caller;
+    void arguments.callee.caller;
   })().constructor,
   "%TypedArray%": typeof TypedArray !== "undefined" ? TypedArray : undefined,
   "%TypeError%": TypeError,
