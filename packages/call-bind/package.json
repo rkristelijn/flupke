@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/call-bind",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Function.prototype.call.bind",
   "main": "src/index.js",
   "types": "src/index.d.ts",

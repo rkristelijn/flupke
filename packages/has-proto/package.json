@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/has-proto",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Check if __proto__ exists",
   "main": "src/index.js",
   "types": "src/index.d.ts",

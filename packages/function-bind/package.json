@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/function-bind",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Drop-in replacement for function-bind — uses native Function.prototype.bind",
   "main": "src/index.js",
   "types": "src/index.d.ts",

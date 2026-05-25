@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/statuses",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Drop-in replacement for statuses",
   "main": "src/index.js",
   "types": "src/index.d.ts",
