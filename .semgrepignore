@@ -9,3 +9,6 @@ packages/cross-spawn/
 
 # scripts: internal tooling, not user-facing
 scripts/
+
+# tests: intentionally contain XSS payloads, malicious patterns for validation
+packages/*/test/
