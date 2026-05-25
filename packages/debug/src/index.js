@@ -17,8 +17,10 @@ debug.enabled = (ns) => {
   if (!e) return false;
   if (e === "*") return true;
   return e.split(",").some((p) => {
-    p = p.trim().replace(/\*/g, ".*");
-    return new RegExp(`^${p}$`).test(ns);
+    p = p.trim();
+    // Convert glob pattern to regex safely (escape special chars, then convert *)
+    const escaped = p.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*");
+    return new RegExp(`^${escaped}$`).test(ns);
   });
 };
 module.exports = debug;

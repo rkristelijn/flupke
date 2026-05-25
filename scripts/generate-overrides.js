@@ -29,7 +29,7 @@ const packages = lock.packages || {};
 
 const found = {};
 for (const [depPath] of Object.entries(packages)) {
-  const name = depPath.replace(/.*node_modules\//, '');
+  const name = depPath.slice(depPath.lastIndexOf("node_modules/") + 13);
   if (REPLACEMENTS[name]) {
     found[name] = REPLACEMENTS[name];
   }

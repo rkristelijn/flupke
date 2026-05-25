@@ -42,7 +42,8 @@ function create(defaults) {
       data = JSON.stringify(data);
       headers["content-type"] = "application/json";
     }
-    if (opts.baseURL) url = url.replace(/^(?!.*\/\/)\//, `${opts.baseURL}/`);
+    if (opts.baseURL && !url.includes("//"))
+      url = `${opts.baseURL.replace(/\/$/, "")}/${url.replace(/^\//, "")}`;
     if (opts.params)
       url +=
         (~url.indexOf("?") ? "&" : "?") +
