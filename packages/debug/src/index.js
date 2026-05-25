@@ -18,9 +18,13 @@ debug.enabled = (ns) => {
   if (e === "*") return true;
   return e.split(",").some((p) => {
     p = p.trim();
-    // Convert glob pattern to regex safely (escape special chars, then convert *)
-    const escaped = p.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*");
-    return new RegExp(`^${escaped}$`).test(ns);
+    if (p === ns) return true;
+    // Simple glob: only support trailing * (e.g. "app:*")
+    if (p.endsWith("*") && ns.startsWith(p.slice(0, -1))) return true;
+    // Support prefix* matching (e.g. "http*")
+    const parts = p.split("*");
+    if (parts.length === 2) return ns.startsWith(parts[0]) && ns.endsWith(parts[1]);
+    return false;
   });
 };
 module.exports = debug;

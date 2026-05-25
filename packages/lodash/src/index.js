@@ -88,7 +88,13 @@ exports.kebabCase = function(s) { return s.replace(/([a-z])([A-Z])/g, '$1-$2').r
 exports.snakeCase = function(s) { return s.replace(/([a-z])([A-Z])/g, '$1_$2').replace(/[\s-]+/g, '_').toLowerCase(); };
 exports.capitalize = function(s) { return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase(); };
 exports.upperFirst = function(s) { return s.charAt(0).toUpperCase() + s.slice(1); };
-exports.trim = function(s, chars) { return chars ? s.replace(new RegExp('^['+chars+']+|['+chars+']+$', 'g'), '') : s.trim(); };
+exports.trim = function(s, chars) {
+  if (!chars) return s.trim();
+  let start = 0, end = s.length;
+  while (start < end && chars.includes(s[start])) start++;
+  while (end > start && chars.includes(s[end - 1])) end--;
+  return s.slice(start, end);
+};
 exports.startsWith = function(s, target) { return s.startsWith(target); };
 exports.endsWith = function(s, target) { return s.endsWith(target); };
 exports.repeat = function(s, n) { return s.repeat(n); };
