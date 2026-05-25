@@ -12,8 +12,11 @@ function deepmerge(target, source, options) {
   for (var i = 0; i < keys.length; i++) {
     var key = keys[i];
     var val = source[key];
-    if (val && typeof val === 'object' && !Array.isArray(val) && result[key] && typeof result[key] === 'object') {
+    if (val && typeof val === 'object' && !Array.isArray(val) && result[key] && typeof result[key] === 'object' && !Array.isArray(result[key])) {
       result[key] = deepmerge(result[key], val, options);
+    } else if (Array.isArray(val) && Array.isArray(result[key])) {
+      if (options && options.arrayMerge) result[key] = options.arrayMerge(result[key], val, options);
+      else result[key] = result[key].concat(val);
     } else {
       result[key] = val;
     }
