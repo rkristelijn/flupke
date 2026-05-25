@@ -1,6 +1,6 @@
 # Package catalog
 
-129 packages. Generated from `packages/`.
+138 packages. Generated from `packages/`.
 
 | Package | Description | LOC | Has types | Has tests |
 |---------|-------------|-----|-----------|-----------|
@@ -9,7 +9,7 @@
 | `ansi-styles` | ANSI escape code pairs | 47 | ✓ | ✓ |
 | `axios` | Drop-in replacement for axios — uses native fetch() | 124 | ✓ | ✓ |
 | `balanced-match` | Find matching braces in a string | 28 | ✓ | ✓ |
-| `bytes` | Drop-in replacement for bytes | 69 | ✓ | ✓ |
+| `bytes` | Drop-in replacement for bytes | 72 | ✓ | ✓ |
 | `call-bind` | Function.prototype.call.bind | 2 | ✓ | ✓ |
 | `callsites` |  | 12 | ✓ | ✓ |
 | `camelcase` |  | 4 | ✓ | ✓ |
@@ -48,6 +48,7 @@
 | `fast-json-stable-stringify` | Drop-in replacement for fast-json-stable-stringify | 37 | ✓ | ✓ |
 | `filter-obj` |  | 12 | ✓ | ✓ |
 | `find-up` |  | 20 | ✓ | ✓ |
+| `forwarded` | Drop-in replacement for forwarded | 23 | ✓ | ✓ |
 | `fresh` | Drop-in replacement for fresh | 60 | ✓ | ✓ |
 | `function-bind` | Drop-in replacement for function-bind — uses native Function.prototype.bind | 3 | ✓ | ✓ |
 | `get-caller-file` |  | 12 | ✓ | ✓ |
@@ -64,19 +65,23 @@
 | `indent-string` |  | 9 | ✓ | ✓ |
 | `inflight` |  | 18 | ✓ | ✓ |
 | `inherits` | Drop-in replacement for inherits — uses native Object.create | 22 | ✓ | ✓ |
+| `ipaddr.js` | Drop-in replacement for ipaddr.js | 212 | ✓ | ✓ |
 | `is-array` | Drop-in replacement for isarray — uses native Array.isArray | 3 | ✓ | ✓ |
 | `is-buffer` | Drop-in replacement for is-buffer | 3 | ✓ | ✓ |
 | `is-fullwidth-code-point` |  | 22 | ✓ | ✓ |
 | `is-glob` |  | 4 | ✓ | ✓ |
 | `is-number` |  | 4 | ✓ | ✓ |
 | `is-plain-object` |  | 10 | ✓ | ✓ |
+| `is-promise` | Drop-in replacement for is-promise | 6 | ✓ | ✓ |
 | `is-stream` |  | 8 | ✓ | ✓ |
 | `locate-path` |  | 16 | ✓ | ✓ |
 | `lodash` | Drop-in replacement for lodash — native ES2020+ implementations | 124 | ✓ | ✓ |
 | `lru-cache` | Map-based LRU cache | 47 | ✓ | ✓ |
 | `map-obj` |  | 13 | ✓ | ✓ |
+| `media-typer` | Drop-in replacement for media-typer | 41 | ✓ | ✓ |
 | `mem` |  | 16 | ✓ | ✓ |
 | `memoize-one` |  | 22 | ✓ | ✓ |
+| `merge-descriptors` | Drop-in replacement for merge-descriptors | 21 | ✓ | ✓ |
 | `mime-types` | Drop-in replacement for mime-types | 300 | ✓ | ✓ |
 | `mimic-fn` |  | 8 | ✓ | ✓ |
 | `minipass` |  | 2 | ✓ | ✓ |
@@ -84,6 +89,7 @@
 | `moment` | Drop-in replacement for moment — uses native Date and Intl | 35 | ✓ | ✓ |
 | `ms` | Drop-in replacement for ms — time string parsing/formatting | 76 | ✓ | ✓ |
 | `nanoid` |  | 14 | ✓ | ✓ |
+| `negotiator` | Drop-in replacement for negotiator | 102 | ✓ | ✓ |
 | `normalize-path` |  | 4 | ✓ | ✓ |
 | `object-inspect` | util.inspect wrapper | 2 | ✓ | ✓ |
 | `on-finished` | Drop-in replacement for on-finished | 52 | ✓ | ✓ |
@@ -97,6 +103,7 @@
 | `parseurl` | Drop-in replacement for parseurl | 47 | ✓ | ✓ |
 | `path-exists` |  | 23 | ✓ | ✓ |
 | `path-is-absolute` |  | 2 | ✓ | ✓ |
+| `path-to-regexp` | Drop-in replacement for path-to-regexp | 188 | ✓ | ✓ |
 | `path-type` |  | 27 | ✓ | ✓ |
 | `pify` |  | 9 | ✓ | ✓ |
 | `pkg-dir` |  | 30 | ✓ | ✓ |
@@ -107,6 +114,7 @@
 | `retry` |  | 18 | ✓ | ✓ |
 | `rimraf` |  | 13 | ✓ | ✓ |
 | `safe-buffer` | Drop-in replacement for safe-buffer — delegates to native Buffer.from/alloc | 6 | ✓ | ✓ |
+| `safer-buffer` | Drop-in replacement for safer-buffer | 20 | ✓ | ✓ |
 | `semver` | Version parsing and comparison | 41 | ✓ | ✓ |
 | `set-function-length` | Set function length property | 10 | ✓ | ✓ |
 | `setprototypeof` | Drop-in replacement for setprototypeof | 8 | ✓ | ✓ |
@@ -115,7 +123,7 @@
 | `slash` | Convert backslashes to forward slashes | 4 | ✓ | ✓ |
 | `slash-trailing` |  | 6 | ✓ | ✓ |
 | `sort-keys` |  | 20 | ✓ | ✓ |
-| `statuses` | Drop-in replacement for statuses | 131 | ✓ | ✓ |
+| `statuses` | Drop-in replacement for statuses | 132 | ✓ | ✓ |
 | `string-width` |  | 27 | ✓ | ✓ |
 | `strip-ansi` | Strip ANSI escape codes | 5 | ✓ | ✓ |
 | `strip-indent` |  | 17 | ✓ | ✓ |
@@ -124,6 +132,7 @@
 | `toidentifier` | Drop-in replacement for toidentifier | 31 | ✓ | ✓ |
 | `type-detect` |  | 11 | ✓ | ✓ |
 | `type-fest` |  | 2 | ✓ | ✓ |
+| `unpipe` | Drop-in replacement for unpipe | 15 | ✓ | ✓ |
 | `util-deprecate` | Node util.deprecate | 2 | ✓ | ✓ |
 | `uuid` | Drop-in replacement for uuid — uses native crypto.randomUUID() | 50 | ✓ | ✓ |
 | `vary` | Drop-in replacement for vary | 53 | ✓ | ✓ |
