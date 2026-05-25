@@ -13,6 +13,8 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,15 +27,14 @@ jobs:
 
       - name: Generate changelog
         run: |
-          echo "## v${{ inputs.version }}" > /tmp/release-notes.md
+          echo "## v${RELEASE_VERSION}" > /tmp/release-notes.md
           echo "" >> /tmp/release-notes.md
           git log $(git describe --tags --abbrev=0 2>/dev/null || echo "")..HEAD --pretty=format:"- %s" >> /tmp/release-notes.md
-          cat /tmp/release-notes.md
 
       - name: Update versions
         run: |
           for pkg in packages/*/package.json; do
-            sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${{ inputs.version }}\"/" "$pkg"
+            sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${RELEASE_VERSION}\"/" "$pkg"
           done
 
       - name: Generate catalog
@@ -44,8 +45,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "chore: release v${{ inputs.version }}" || true
-          git tag "v${{ inputs.version }}"
+          git commit -m "chore: release v${RELEASE_VERSION}" || true
+          git tag "v${RELEASE_VERSION}"
           git push origin main --tags
 
       - name: Publish to npm
@@ -62,6 +63,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "v${{ inputs.version }}" \
-            --title "v${{ inputs.version }}" \
+          gh release create "v${RELEASE_VERSION}" \
+            --title "v${RELEASE_VERSION}" \
             --notes-file /tmp/release-notes.md

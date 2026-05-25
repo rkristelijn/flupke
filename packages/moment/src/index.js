@@ -1,16 +1,11 @@
-/**
- * @flupkejs/moment — Drop-in replacement for moment — uses native Date and Intl
- * @see https://www.npmjs.com/package/moment
- */
-'use strict';
 // Vendored from dayjs v1.11.20 (MIT) — https://github.com/iamkun/dayjs
 // Wrapped as moment-compatible API. ~7KB vs moment's 300KB.
-var dayjs = require('./dayjs.min.js');
-var relativeTime = require('./plugin/relativeTime.js');
-var customParseFormat = require('./plugin/customParseFormat.js');
-var duration = require('./plugin/duration.js');
-var isBetween = require('./plugin/isBetween.js');
-var utc = require('./plugin/utc.js');
+const dayjs = require("./dayjs.min.js");
+const relativeTime = require("./plugin/relativeTime.js");
+const customParseFormat = require("./plugin/customParseFormat.js");
+const duration = require("./plugin/duration.js");
+const isBetween = require("./plugin/isBetween.js");
+const utc = require("./plugin/utc.js");
 
 // Enable moment-compatible plugins
 dayjs.extend(relativeTime);
@@ -27,11 +22,13 @@ function moment(input, format) {
 }
 
 // Static methods matching moment API
-moment.utc = function(input, format) { return dayjs.utc(input, format); };
-moment.duration = function(val, unit) { return dayjs.duration(val, unit); };
-moment.isMoment = function(obj) { return dayjs.isDayjs(obj); };
-moment.now = function() { return Date.now(); };
-moment.locale = function(l) { dayjs.locale(l); };
+moment.utc = (input, format) => dayjs.utc(input, format);
+moment.duration = (val, unit) => dayjs.duration(val, unit);
+moment.isMoment = (obj) => dayjs.isDayjs(obj);
+moment.now = () => Date.now();
+moment.locale = (l) => {
+  dayjs.locale(l);
+};
 
 module.exports = moment;
 module.exports.default = moment;

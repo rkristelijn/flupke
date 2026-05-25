@@ -1,2 +1,1 @@
-'use strict';
-module.exports = require('util').isDeepStrictEqual;
+module.exports = require("node:util").isDeepStrictEqual;

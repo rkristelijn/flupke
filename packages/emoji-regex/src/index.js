@@ -1,1 +1,3 @@
-module.exports = function emojiRegex() { return /\p{Emoji_Presentation}/gu; };
+module.exports = function emojiRegex() {
+  return /\p{Emoji_Presentation}/gu;
+};

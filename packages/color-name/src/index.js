@@ -1,8 +1,3 @@
-/**
- * @flupkejs/color-name — CSS color name to RGB map
- * @see https://www.npmjs.com/package/color-name
- */
-'use strict';
 module.exports = Object.freeze({
   aliceblue: [240, 248, 255],
   antiquewhite: [250, 235, 215],
@@ -151,5 +146,5 @@ module.exports = Object.freeze({
   white: [255, 255, 255],
   whitesmoke: [245, 245, 245],
   yellow: [255, 255, 0],
-  yellowgreen: [154, 205, 50]
+  yellowgreen: [154, 205, 50],
 });

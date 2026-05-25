@@ -1,26 +1,29 @@
-/**
- * @flupkejs/deepmerge — Drop-in replacement for deepmerge
- * @see https://www.npmjs.com/package/deepmerge
- */
-'use strict';
 /** Deep merge two objects recursively */
 function deepmerge(target, source, options) {
   if (!source) return target;
   if (Array.isArray(source)) {
-    if (options && options.arrayMerge) return options.arrayMerge(target, source, options);
+    if (options?.arrayMerge) return options.arrayMerge(target, source, options);
     return Array.isArray(target) ? [...target, ...source] : source.slice();
   }
-  var result = {};
-  var keys = Object.keys(target);
-  for (var i = 0; i < keys.length; i++) result[keys[i]] = target[keys[i]];
+  const result = {};
+  let keys = Object.keys(target);
+  for (let i = 0; i < keys.length; i++) result[keys[i]] = target[keys[i]];
   keys = Object.keys(source);
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    var val = source[key];
-    if (val && typeof val === 'object' && !Array.isArray(val) && result[key] && typeof result[key] === 'object' && !Array.isArray(result[key])) {
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    const val = source[key];
+    if (
+      val &&
+      typeof val === "object" &&
+      !Array.isArray(val) &&
+      result[key] &&
+      typeof result[key] === "object" &&
+      !Array.isArray(result[key])
+    ) {
       result[key] = deepmerge(result[key], val, options);
     } else if (Array.isArray(val) && Array.isArray(result[key])) {
-      if (options && options.arrayMerge) result[key] = options.arrayMerge(result[key], val, options);
+      if (options?.arrayMerge)
+        result[key] = options.arrayMerge(result[key], val, options);
       else result[key] = result[key].concat(val);
     } else {
       result[key] = val;
@@ -28,8 +31,7 @@ function deepmerge(target, source, options) {
   }
   return result;
 }
-deepmerge.all = function(arr, options) {
-  return arr.reduce(function(acc, obj) { return deepmerge(acc, obj, options); }, {});
-};
+deepmerge.all = (arr, options) =>
+  arr.reduce((acc, obj) => deepmerge(acc, obj, options), {});
 // Public API
 module.exports = deepmerge;

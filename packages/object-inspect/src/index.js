@@ -1,2 +1,1 @@
-'use strict';
-module.exports = require('util').inspect;
+module.exports = require("node:util").inspect;

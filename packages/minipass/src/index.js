@@ -1,1 +1,1 @@
-module.exports = require('node:stream').Transform;
+module.exports = require("node:stream").Transform;

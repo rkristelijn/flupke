@@ -4,16 +4,16 @@
  */
 'use strict';
 // Implementation: native-first, zero dependencies
-var MATCH = /["'&<>]/;
+const MATCH = /["'&<>]/;
 // Public API
 module.exports = function escapeHtml(str) {
-  var s = '' + str;
-  var match = MATCH.exec(s);
+  const s = '' + str;
+  const match = MATCH.exec(s);
   if (!match) return s;
-  var html = '';
-  var last = 0;
+  let html = '';
+  let last = 0;
   for (var i = match.index; i < s.length; i++) {
-    var ch;
+    let ch;
     switch (s.charCodeAt(i)) {
       case 34: ch = '&quot;'; break;
       case 38: ch = '&amp;'; break;

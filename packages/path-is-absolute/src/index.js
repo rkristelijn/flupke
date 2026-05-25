@@ -1,1 +1,1 @@
-module.exports = require('node:path').isAbsolute;
+module.exports = require("node:path").isAbsolute;

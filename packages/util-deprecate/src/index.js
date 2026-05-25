@@ -1,2 +1,1 @@
-'use strict';
-module.exports = require('util').deprecate;
+module.exports = require("node:util").deprecate;

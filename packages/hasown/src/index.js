@@ -1,5 +1,3 @@
-// @flupkejs/hasown
-'use strict';
-module.exports = Object.hasOwn || function(obj, key) {
-  return Object.prototype.hasOwnProperty.call(obj, key);
-};
+module.exports =
+  Object.hasOwn ||
+  ((obj, key) => Object.prototype.hasOwnProperty.call(obj, key));

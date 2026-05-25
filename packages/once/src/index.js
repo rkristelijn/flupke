@@ -3,9 +3,13 @@
  * @see https://www.npmjs.com/package/once
  */
 module.exports = function once(fn) {
-  let called = false, result;
+  let called = false;
+  let result;
   return function (...args) {
-    if (!called) { called = true; result = fn.apply(this, args); }
+    if (!called) {
+      called = true;
+      result = fn.apply(this, args);
+    }
     return result;
   };
 };

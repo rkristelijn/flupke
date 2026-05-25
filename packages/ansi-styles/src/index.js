@@ -1,8 +1,3 @@
-/**
- * @flupkejs/ansi-styles — ANSI escape code pairs
- * @see https://www.npmjs.com/package/ansi-styles
- */
-'use strict';
 module.exports = {
   reset: [0, 0],
   bold: [1, 22],
@@ -47,5 +42,5 @@ module.exports = {
   bgBlueBright: [104, 49],
   bgMagentaBright: [105, 49],
   bgCyanBright: [106, 49],
-  bgWhiteBright: [107, 49]
+  bgWhiteBright: [107, 49],
 };

@@ -9,12 +9,25 @@ module.exports = function pLimit(concurrency) {
     if (active < concurrency && queue.length) {
       active++;
       const { fn, resolve, reject } = queue.shift();
-      fn().then(v => { active--; resolve(v); next(); }, e => { active--; reject(e); next(); });
+      fn().then(
+        (v) => {
+          active--;
+          resolve(v);
+          next();
+        },
+        (e) => {
+          active--;
+          reject(e);
+          next();
+        },
+      );
     }
   }
-  const limit = function (fn) {
-    return new Promise((resolve, reject) => { queue.push({ fn, resolve, reject }); next(); });
-  };
+  const limit = (fn) =>
+    new Promise((resolve, reject) => {
+      queue.push({ fn, resolve, reject });
+      next();
+    });
   limit.activeCount = () => active;
   limit.pendingCount = () => queue.length;
   return limit;
