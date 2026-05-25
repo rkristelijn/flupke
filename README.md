@@ -8,6 +8,7 @@
 ![frameworks](https://img.shields.io/badge/frameworks%20tested-46-blue)
 [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=rkristelijn_flupke&metric=alert_status)](https://sonarcloud.io/dashboard?id=rkristelijn_flupke)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rkristelijn_flupke&metric=coverage)](https://sonarcloud.io/dashboard?id=rkristelijn_flupke)
+[![codecov](https://codecov.io/gh/rkristelijn/flupke/branch/main/graph/badge.svg)](https://codecov.io/gh/rkristelijn/flupke)
 ![license](https://img.shields.io/npm/l/@flupkejs/cli)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 [![GitHub stars](https://img.shields.io/github/stars/rkristelijn/flupke)](https://github.com/rkristelijn/flupke)

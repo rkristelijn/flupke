@@ -11,14 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: npm install --ignore-scripts
-      - run: node --test --experimental-test-coverage packages/*/test/*.test.js 2>&1 | tee /tmp/test-output.txt
-      - name: Generate lcov coverage
-        run: |
-          node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=coverage.lcov packages/*/test/*.test.js || true
+      - name: Run tests with coverage
+        run: node --test --experimental-test-coverage --test-reporter=spec --test-reporter=lcov --test-reporter-destination=stdout --test-reporter-destination=coverage.lcov packages/*/test/*.test.js
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage.lcov
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
       - run: node bench/compare-isolated.js | tee /tmp/bench.txt
       - name: Benchmark summary
         run: |
