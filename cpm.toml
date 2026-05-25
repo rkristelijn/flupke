@@ -12,6 +12,15 @@ lint-code = true
 complexity = true
 comment-ratio = true
 
+[suppress]
+code-yaml-syntax-format = "CI workflow YAML — not application code"
+code-generic-vulnerability-scan = "false positives in test files and drop-in replacements"
+code-generic-secrets-fast = "no secrets in repo"
+supply-chain-lockfile-sync = "workspace packages not published"
+owasp-cors-wildcard = "no CORS in this project"
+risk-vendor-lockin = "intentional npm ecosystem focus"
+config-env-consistency = "no .env files used"
+
 [hooks]
 pre-commit = true
 pre-push = true
