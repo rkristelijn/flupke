@@ -70,5 +70,45 @@ describe('bytes', () => {
     it('should handle large numbers', () => {
       assert.strictEqual(bytes.format(1024 * 1024 * 1024 * 1024), '1TB');
     });
+
+    it('should handle NaN', () => {
+      assert.strictEqual(bytes.format(NaN), 'NaN');
+    });
+
+    it('should handle negative', () => {
+      assert.strictEqual(bytes.format(-1), '-1');
+    });
+
+    it('should format fractional KB', () => {
+      const result = bytes.format(1500);
+      assert.ok(result.includes('KB'), 'expected KB got ' + result);
+    });
+
+    it('should format fractional MB', () => {
+      const result = bytes.format(5.5 * 1024 * 1024);
+      assert.ok(result.includes('MB'));
+    });
+  });
+
+  describe('parse() edge cases', () => {
+    it('should parse TB', () => {
+      assert.strictEqual(bytes.parse('1TB'), 1024 * 1024 * 1024 * 1024);
+    });
+
+    it('should parse decimal values', () => {
+      assert.strictEqual(bytes.parse('1.5KB'), Math.round(1.5 * 1024));
+    });
+
+    it('should parse PB', () => {
+      assert.strictEqual(bytes.parse('1PB'), 1024 ** 5);
+    });
+
+    it('should return null for NaN number', () => {
+      assert.strictEqual(bytes.parse(NaN), null);
+    });
+
+    it('should return null for empty string', () => {
+      assert.strictEqual(bytes.parse(''), null);
+    });
   });
 });
