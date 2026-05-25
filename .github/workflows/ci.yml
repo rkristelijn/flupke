@@ -16,7 +16,13 @@ jobs:
           node-version: 22
       - run: npm install --ignore-scripts
       - run: node --test packages/*/test/*.test.js
-      - run: node bench/compare-isolated.js
+      - run: node bench/compare-isolated.js | tee /tmp/bench.txt
+      - name: Benchmark summary
+        run: |
+          echo "## Performance Benchmarks" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat /tmp/bench.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
 
   publish:
     if: startsWith(github.ref, 'refs/tags/v')
