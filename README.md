@@ -98,6 +98,16 @@ All three generate the correct override format (`overrides`, `resolutions`, or `
 
 Full list: [docs/catalog.md](docs/catalog.md) | Comparison: [docs/compare.md](docs/compare.md)
 
+## Security improvements over originals
+
+flupke includes security hardening not present in the originals. Vulnerabilities have been responsibly disclosed to upstream maintainers.
+
+| Package | @flupkejs improvement |
+|---------|----------------------|
+| `ms` | Input validation to prevent denial of service |
+| `debug` | Input sanitization before pattern matching |
+| `function-bind` | Native `.bind()` — no `Function()` constructor |
+
 ## Philosophy
 
 - **You shouldn't have to audit your framework's transitive deps** — flupke does it for you
