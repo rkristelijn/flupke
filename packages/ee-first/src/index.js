@@ -1,17 +1,17 @@
 function first(stuff, done) {
-  var thunks = [];
-  for (var i = 0; i < stuff.length; i++) {
-    var arr = stuff[i];
-    var ee = arr[0];
-    var events = arr.slice(1);
-    for (var j = 0; j < events.length; j++) {
-      var event = events[j];
-      var fn = listener(event, done);
+  let thunks = [];
+  for (let i = 0; i < stuff.length; i++) {
+    let arr = stuff[i];
+    let ee = arr[0];
+    let events = arr.slice(1);
+    for (let j = 0; j < events.length; j++) {
+      let event = events[j];
+      let fn = listener(event, done);
       ee.on(event, fn);
       thunks.push({ ee: ee, event: event, fn: fn });
     }
   }
-  function cleanup() { for (var i = 0; i < thunks.length; i++) thunks[i].ee.removeListener(thunks[i].event, thunks[i].fn); }
+  function cleanup() { for (let i = 0; i < thunks.length; i++) thunks[i].ee.removeListener(thunks[i].event, thunks[i].fn); }
   done.cancel = cleanup;
   return cleanup;
 }

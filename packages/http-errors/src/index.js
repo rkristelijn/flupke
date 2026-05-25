@@ -21,8 +21,8 @@ function toIdentifier(str) {
 
 function createError(status, message, props) {
   if (typeof status !== 'number') { props = message; message = status; status = 500; }
-  var msg = message || STATUS_CODES[status] || 'Error';
-  var err = new Error(msg);
+  let msg = message || STATUS_CODES[status] || 'Error';
+  let err = new Error(msg);
   err.status = status;
   err.statusCode = status;
   err.expose = status < 500;
@@ -35,9 +35,9 @@ createError.isHttpError = function(err) {
 };
 
 // Generate named constructors
-for (var code in STATUS_CODES) {
-  var name = toIdentifier(STATUS_CODES[code]);
-  var expose = +code < 500;
+for (let code in STATUS_CODES) {
+  let name = toIdentifier(STATUS_CODES[code]);
+  let expose = +code < 500;
   (function(c, n, e) {
     function HttpError(message) {
       this.message = message || STATUS_CODES[c];
