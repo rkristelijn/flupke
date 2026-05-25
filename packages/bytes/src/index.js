@@ -6,8 +6,11 @@ const UNITS = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
  * @returns {number} Number of bytes
  */
 function parse(val) {
+  if (typeof val === "number" && !Number.isNaN(val)) {
+    return val;
+  }
   if (typeof val !== "string") {
-    throw new TypeError("argument val must be a string");
+    return null;
   }
 
   // Handle plain numbers
@@ -18,7 +21,7 @@ function parse(val) {
 
   const match = val.match(/^(\d+(\.\d+)?)\s*([kKmMgGtTpPzZyY][bB]?)$/);
   if (!match) {
-    return Number.NaN;
+    return null;
   }
 
   const num = Number.parseFloat(match[1]);
@@ -29,7 +32,7 @@ function parse(val) {
   const unitIndex = UNITS.indexOf(unit);
 
   if (unitIndex === -1) {
-    return Number.NaN;
+    return null;
   }
 
   return Math.round(num * 1024 ** unitIndex);
