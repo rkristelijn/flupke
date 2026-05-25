@@ -7,10 +7,10 @@ const path = require('node:path');
 const REPLACEMENTS = [
   'aggregate-error','ansi-regex','ansi-styles','axios','balanced-match','call-bind','callsites',
   'camelcase','classnames','clean-stack','cliui','clsx','color-convert','color-name',
-  'concat-map','cross-spawn','debug','decamelize','deep-equal','deepmerge',
+  'concat-map','cookie','cross-spawn','debug','depd','decamelize','deep-equal','deepmerge',
   'define-data-property','delay',
-  'dotenv-expand','emoji-regex','es-define-property','es-errors','escalade',
-  'escape-string-regexp','eventemitter3','execa','fast-deep-equal','filter-obj','find-up',
+  'dotenv','dotenv-expand','emoji-regex','es-define-property','es-errors','escalade',
+  'escape-html','escape-string-regexp','eventemitter3','execa','fast-deep-equal','fast-json-stable-stringify','filter-obj','find-up',
   'function-bind',
   'get-caller-file','get-intrinsic','globby','gopd','graceful-fs','has-flag','has-proto',
   'has-symbols','hasown','human-readable','import-fresh','indent-string','inflight',
