@@ -12,31 +12,50 @@ jobs:
       fail-fast: false
       matrix:
         framework:
-          # Web frameworks
+          # Web frameworks (backend)
           - { name: express, deps: "express", verify: "require('express')().get('/t',(q,s)=>s.json({ok:1})).listen(0,async function(){const r=await fetch('http://localhost:'+this.address().port+'/t');const d=await r.json();if(d.ok!==1)process.exit(1);this.close()})" }
           - { name: koa, deps: "koa", verify: "const k=new(require('koa'));k.use(c=>{c.body={ok:1}});const s=k.listen(0,async()=>{const r=await(await fetch('http://localhost:'+s.address().port+'/')).json();if(r.ok!==1)process.exit(1);s.close()})" }
           - { name: fastify, deps: "fastify", verify: "const f=require('fastify')();f.get('/',()=>({ok:1}));f.listen({port:0}).then(()=>fetch(f.server.address().address==='::1'?'http://[::1]:'+f.server.address().port+'/':'http://localhost:'+f.server.address().port+'/').then(r=>r.json()).then(d=>{if(d.ok!==1)process.exit(1);f.close()}))" }
           - { name: nestjs, deps: "@nestjs/core @nestjs/common @nestjs/platform-express reflect-metadata rxjs", verify: "require('reflect-metadata');const{Module,Controller,Get}=require('@nestjs/common');const{NestFactory}=require('@nestjs/core');class C{t(){return{ok:1}}}Reflect.decorate([Get('/t')],C.prototype,'t');Reflect.decorate([Controller()],C);class M{}Reflect.decorate([Module({controllers:[C]})],M);NestFactory.create(M,{logger:false}).then(async a=>{await a.listen(0);const r=await(await fetch((await a.getUrl())+'/t')).json();if(r.ok!==1)process.exit(1);await a.close()})" }
           - { name: hapi, deps: "@hapi/hapi", verify: "const h=require('@hapi/hapi');const s=h.server({port:0});s.route({method:'GET',path:'/t',handler:()=>({ok:1})});s.start().then(async()=>{const r=await(await fetch(s.info.uri+'/t')).json();if(r.ok!==1)process.exit(1);await s.stop()})" }
+          # Frontend frameworks
+          - { name: react-vite, deps: "react react-dom vite @vitejs/plugin-react", verify: "require('react');require('vite');process.exit(0)" }
+          - { name: angular, deps: "@angular/core @angular/compiler @angular/platform-browser rxjs zone.js typescript", verify: "require('@angular/core');process.exit(0)" }
+          - { name: solid, deps: "solid-js vite vite-plugin-solid", verify: "process.exit(0)" }
+          - { name: svelte, deps: "svelte @sveltejs/vite-plugin-svelte vite", verify: "require('svelte/compiler');process.exit(0)" }
+          - { name: vue, deps: "vue vite @vitejs/plugin-vue", verify: "require('vue');process.exit(0)" }
+          - { name: remix, deps: "@remix-run/node @remix-run/react react react-dom", verify: "require('@remix-run/node');process.exit(0)" }
+          - { name: astro, deps: "astro", verify: "process.exit(0)" }
+          - { name: next, deps: "next react react-dom", verify: "require('next');process.exit(0)" }
+          - { name: nuxt, deps: "nuxt", verify: "process.exit(0)" }
           # HTTP clients
           - { name: axios, deps: "axios express", verify: "const app=require('express')();app.get('/t',(q,s)=>s.json({ok:1}));const sv=app.listen(0,async()=>{const{data}=await require('axios').get('http://localhost:'+sv.address().port+'/t');if(data.ok!==1)process.exit(1);sv.close()})" }
           # Testing
           - { name: jest, deps: "jest", verify: "const j=require('jest-cli');process.exit(0)" }
           - { name: mocha, deps: "mocha", verify: "require('mocha');process.exit(0)" }
+          - { name: vitest, deps: "vitest", verify: "process.exit(0)" }
+          - { name: playwright, deps: "@playwright/test", verify: "require('@playwright/test');process.exit(0)" }
           # Bundlers
           - { name: webpack, deps: "webpack webpack-cli", verify: "require('webpack');process.exit(0)" }
           - { name: vite, deps: "vite", verify: "process.exit(0)" }
           - { name: esbuild, deps: "esbuild", verify: "require('esbuild').buildSync({stdin:{contents:'let x=1'},write:false});process.exit(0)" }
+          - { name: rollup, deps: "rollup", verify: "require('rollup');process.exit(0)" }
+          - { name: turbopack, deps: "next", verify: "process.exit(0)" }
           # Utilities
           - { name: eslint, deps: "eslint", verify: "require('eslint');process.exit(0)" }
+          - { name: prettier, deps: "prettier", verify: "require('prettier');process.exit(0)" }
           - { name: winston, deps: "winston", verify: "const w=require('winston').createLogger({silent:true});w.info('test');process.exit(0)" }
           - { name: commander, deps: "commander", verify: "require('commander');process.exit(0)" }
           - { name: socket.io, deps: "socket.io", verify: "const{Server}=require('socket.io');const s=new Server();s.close();process.exit(0)" }
           - { name: mongoose, deps: "mongoose", verify: "require('mongoose');process.exit(0)" }
           - { name: typeorm, deps: "typeorm", verify: "require('typeorm');process.exit(0)" }
-          - { name: next, deps: "next react react-dom", verify: "require('next');process.exit(0)" }
+          - { name: prisma, deps: "@prisma/client", verify: "process.exit(0)" }
           - { name: dotenv, deps: "dotenv", verify: "require('dotenv').config();process.exit(0)" }
           - { name: lodash, deps: "lodash", verify: "if(require('lodash').chunk([1,2,3,4],2).length!==2)process.exit(1)" }
+          - { name: zod, deps: "zod", verify: "const z=require('zod');z.string().parse('ok');process.exit(0)" }
+          - { name: trpc, deps: "@trpc/server", verify: "require('@trpc/server');process.exit(0)" }
+          - { name: graphql, deps: "graphql", verify: "require('graphql');process.exit(0)" }
+          - { name: tailwindcss, deps: "tailwindcss", verify: "require('tailwindcss');process.exit(0)" }
 
     steps:
       - uses: actions/checkout@v4
