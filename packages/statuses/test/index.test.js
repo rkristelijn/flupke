@@ -38,19 +38,30 @@ describe('statuses', () => {
   it('should have redirect property', () => {
     assert.strictEqual(statuses.redirect[301], true);
     assert.strictEqual(statuses.redirect[302], true);
+    assert.strictEqual(statuses.redirect[303], true);
+    assert.strictEqual(statuses.redirect[307], true);
+    assert.strictEqual(statuses.redirect[308], true);
     assert.strictEqual(statuses.redirect[200], undefined);
+    assert.strictEqual(statuses.redirect[404], undefined);
   });
 
   it('should have empty property', () => {
     assert.strictEqual(statuses.empty[204], true);
+    assert.strictEqual(statuses.empty[205], true);
     assert.strictEqual(statuses.empty[304], true);
     assert.strictEqual(statuses.empty[200], undefined);
+    assert.strictEqual(statuses.empty[404], undefined);
   });
 
   it('should have retry property', () => {
+    assert.strictEqual(statuses.retry[408], true);
     assert.strictEqual(statuses.retry[429], true);
     assert.strictEqual(statuses.retry[500], true);
+    assert.strictEqual(statuses.retry[502], true);
+    assert.strictEqual(statuses.retry[503], true);
+    assert.strictEqual(statuses.retry[504], true);
     assert.strictEqual(statuses.retry[200], undefined);
+    assert.strictEqual(statuses.retry[404], undefined);
   });
 
   it('should throw on invalid argument type', () => {
