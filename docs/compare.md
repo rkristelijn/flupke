@@ -57,7 +57,7 @@ Every framework pulls in hundreds of transitive dependencies. Many are unmaintai
 | Performance | — | Benchmarked, equal or faster |
 | API | — | Identical (drop-in) |
 
-## All 100 packages implemented
+## All 113 packages implemented
 
 See [catalog.md](./catalog.md) for the full list with LOC, tests, and dependents per package.
 

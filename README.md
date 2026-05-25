@@ -2,7 +2,7 @@
 
 ![cpm score](https://img.shields.io/badge/cpm%20score-94%25-brightgreen)
 ![maturity](https://img.shields.io/badge/maturity-level%204%20optimized-brightgreen)
-![packages](https://img.shields.io/badge/packages-106-blue)
+![packages](https://img.shields.io/badge/packages-113-blue)
 
 One command. Safer dependencies.
 
@@ -81,7 +81,7 @@ All three generate the correct override format (`overrides`, `resolutions`, or `
 
 ## Packages
 
-106 packages. 299 tests. Zero dependencies each.
+113 packages. 435 tests. Zero dependencies each.
 
 | Original | Dependents | flupke LOC | Strategy |
 |----------|-----------|-----------|----------|
