@@ -1,8 +1,18 @@
 # flupke
 
-![cpm score](https://img.shields.io/badge/cpm%20score-94%25-brightgreen)
-![maturity](https://img.shields.io/badge/maturity-level%204%20optimized-brightgreen)
+[![npm](https://img.shields.io/npm/dm/@flupkejs/cli)](https://www.npmjs.com/package/@flupkejs/cli)
+[![version](https://img.shields.io/npm/v/@flupkejs/cli?label=cli)](https://www.npmjs.com/package/@flupkejs/cli)
 ![packages](https://img.shields.io/badge/packages-153-blue)
+![tests](https://img.shields.io/badge/tests-722%20passing-brightgreen)
+![zero deps](https://img.shields.io/badge/dependencies-zero-brightgreen)
+![frameworks](https://img.shields.io/badge/frameworks%20tested-46-blue)
+[![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=rkristelijn_flupke&metric=alert_status)](https://sonarcloud.io/dashboard?id=rkristelijn_flupke)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rkristelijn_flupke&metric=coverage)](https://sonarcloud.io/dashboard?id=rkristelijn_flupke)
+![license](https://img.shields.io/npm/l/@flupkejs/cli)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+[![GitHub stars](https://img.shields.io/github/stars/rkristelijn/flupke)](https://github.com/rkristelijn/flupke)
+[![Last Commit](https://img.shields.io/github/last-commit/rkristelijn/flupke)](https://github.com/rkristelijn/flupke)
+![npm total downloads](https://img.shields.io/npm/dt/@flupkejs/cli)
 
 One command. Safer dependencies.
 
