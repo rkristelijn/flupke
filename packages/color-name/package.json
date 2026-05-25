@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/color-name",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CSS color name to RGB map",
   "main": "src/index.js",
   "types": "src/index.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/qs",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Drop-in replacement for qs",
   "main": "src/index.js",
   "types": "src/index.d.ts",

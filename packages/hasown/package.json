@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/hasown",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Object.hasOwn or polyfill",
   "main": "src/index.js",
   "types": "src/index.d.ts",

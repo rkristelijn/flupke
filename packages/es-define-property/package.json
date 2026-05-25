@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/es-define-property",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Object.defineProperty",
   "main": "src/index.js",
   "types": "src/index.d.ts",

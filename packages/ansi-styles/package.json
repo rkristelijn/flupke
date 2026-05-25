@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/ansi-styles",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "ANSI escape code pairs",
   "main": "src/index.js",
   "types": "src/index.d.ts",

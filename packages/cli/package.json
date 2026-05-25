@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/cli",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "One command. Safer dependencies.",
   "bin": { "flupke": "src/index.js" },
   "files": ["src"],

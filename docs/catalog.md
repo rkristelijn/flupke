@@ -99,7 +99,7 @@
 | `path-is-absolute` |  | 2 | ✓ | ✓ |
 | `path-type` |  | 27 | ✓ | ✓ |
 | `pify` |  | 9 | ✓ | ✓ |
-| `pkg-dir` |  | 19 | ✓ | ✓ |
+| `pkg-dir` |  | 30 | ✓ | ✓ |
 | `qs` | Drop-in replacement for qs | 38 | ✓ | ✓ |
 | `range-parser` | Drop-in replacement for range-parser | 93 | ✓ | ✓ |
 | `require-directory` |  | 17 | ✓ | ✓ |
