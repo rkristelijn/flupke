@@ -24,6 +24,91 @@ jobs:
           cat /tmp/bench.txt >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
 
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --ignore-scripts
+
+      - name: Zero dependencies enforced
+        run: |
+          FAIL=0
+          for pkg in packages/*/package.json; do
+            NAME=$(node -p "require('./$pkg').name")
+            DEPS=$(node -p "Object.keys(require('./$pkg').dependencies||{}).length")
+            if [ "$DEPS" != "0" ]; then
+              echo "✗ $NAME has $DEPS dependencies"
+              FAIL=1
+            fi
+          done
+          [ $FAIL -eq 0 ] && echo "✓ All packages have zero dependencies"
+          exit $FAIL
+
+      - name: Types exist for every package
+        run: |
+          FAIL=0
+          for pkg in packages/*/; do
+            [ -f "$pkg/src/index.d.ts" ] || { echo "✗ $pkg missing types"; FAIL=1; }
+          done
+          [ $FAIL -eq 0 ] && echo "✓ All packages have TypeScript declarations"
+          exit $FAIL
+
+      - name: Tests exist for every package
+        run: |
+          FAIL=0
+          for pkg in packages/*/; do
+            [ -d "$pkg/test" ] || { echo "✗ $pkg missing tests"; FAIL=1; }
+          done
+          [ $FAIL -eq 0 ] && echo "✓ All packages have tests"
+          exit $FAIL
+
+      - name: LOC limits (max 500 per package)
+        run: |
+          FAIL=0
+          for f in packages/*/src/index.js; do
+            LOC=$(wc -l < "$f" | tr -d ' ')
+            PKG=$(echo "$f" | sed 's|packages/||;s|/src/index.js||')
+            if [ "$LOC" -gt 500 ]; then
+              echo "✗ $PKG: $LOC LOC (max 500)"
+              FAIL=1
+            fi
+          done
+          [ $FAIL -eq 0 ] && echo "✓ All packages under 500 LOC"
+          exit $FAIL
+
+      - name: Test-to-code ratio (min 1:1)
+        run: |
+          CODE=$(find packages -path "*/src/index.js" | xargs wc -l | tail -1 | awk '{print $1}')
+          TESTS=$(find packages -path "*/test/*.test.js" | xargs wc -l | tail -1 | awk '{print $1}')
+          RATIO=$(echo "scale=1; $TESTS / $CODE" | bc)
+          echo "Code: $CODE LOC | Tests: $TESTS LOC | Ratio: ${RATIO}:1"
+          if [ $(echo "$TESTS >= $CODE" | bc) -eq 1 ]; then
+            echo "✓ Test-to-code ratio >= 1:1"
+          else
+            echo "⚠ Test-to-code ratio below 1:1 (${RATIO}:1)"
+          fi
+
+      - name: Package size report
+        run: |
+          echo "## Package Quality Metrics" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value | Threshold |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|-----------|" >> $GITHUB_STEP_SUMMARY
+          PKGS=$(ls -d packages/*/ | wc -l | tr -d ' ')
+          TESTS=$(node --test packages/*/test/*.test.js 2>&1 | grep -oP 'tests \K\d+' || echo "?")
+          CODE=$(find packages -path "*/src/index.js" | xargs wc -l | tail -1 | awk '{print $1}')
+          TYPES=$(find packages -name "index.d.ts" | wc -l | tr -d ' ')
+          ZERO_DEP=$(for p in packages/*/package.json; do node -p "Object.keys(require('./$p').dependencies||{}).length"; done | grep -c "^0$")
+          echo "| Packages | $PKGS | — |" >> $GITHUB_STEP_SUMMARY
+          echo "| Tests | $TESTS | — |" >> $GITHUB_STEP_SUMMARY
+          echo "| Total LOC | $CODE | — |" >> $GITHUB_STEP_SUMMARY
+          echo "| Avg LOC/package | $((CODE / PKGS)) | < 500 ✓ |" >> $GITHUB_STEP_SUMMARY
+          echo "| Type declarations | $TYPES/$PKGS | 100% ✓ |" >> $GITHUB_STEP_SUMMARY
+          echo "| Zero-dep packages | $ZERO_DEP/$PKGS | 100% ✓ |" >> $GITHUB_STEP_SUMMARY
+
   publish:
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
