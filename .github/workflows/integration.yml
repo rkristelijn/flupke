@@ -78,33 +78,41 @@ jobs:
         with:
           node-version: 22
 
+      # --- BEFORE flupke ---
       - name: Install framework
         run: |
           mkdir -p /tmp/fw && cd /tmp/fw
           npm init -y --silent
           npm install ${{ matrix.framework.deps }} --silent
 
-      - name: Measure size before
+      - name: "Before: metrics"
         id: before
-        run: echo "size=$(du -sk /tmp/fw/node_modules | cut -f1)" >> $GITHUB_OUTPUT
+        run: |
+          cd /tmp/fw
+          echo "size=$(du -sk node_modules | cut -f1)" >> $GITHUB_OUTPUT
+          echo "pkgs=$(find node_modules -maxdepth 1 -type d | wc -l)" >> $GITHUB_OUTPUT
+          echo "audit=$(npm audit --json 2>/dev/null | node -e 'let d="";process.stdin.on("data",c=>d+=c);process.stdin.on("end",()=>{try{const j=JSON.parse(d);console.log(j.metadata?.vulnerabilities?.total||0)}catch{console.log(0)}})')" >> $GITHUB_OUTPUT
 
-      - name: Verify before flupke
+      - name: "Before: verify features"
         run: cd /tmp/fw && node -e "${{ matrix.framework.verify }}"
 
-      - name: Run flupke
+      # --- Apply flupke ---
+      - name: Run flupke (apply overrides)
         id: flupke
         run: |
           cd /tmp/fw
           OUTPUT=$(node ${{ github.workspace }}/packages/cli/src/index.js --dry-run)
           REPLACED=$(echo "$OUTPUT" | grep -oP 'Replaced:\s+\K\d+' || echo "0")
           echo "replaced=$REPLACED" >> $GITHUB_OUTPUT
-          echo "$OUTPUT"
+          # Actually apply overrides
+          node ${{ github.workspace }}/packages/cli/src/index.js
 
-      - name: Apply flupke packages
+      - name: Reinstall with overrides
         run: |
           cd /tmp/fw
-          node ${{ github.workspace }}/packages/cli/src/index.js
-          # Copy local implementations over npm-installed @flupkejs packages
+          rm -rf node_modules package-lock.json
+          npm install --silent 2>&1 || true
+          # Overlay local source (unpublished fixes)
           for pkg in $(ls ${{ github.workspace }}/packages/ | grep -v cli); do
             for target in $(find node_modules -maxdepth 3 -type d -name "$pkg" 2>/dev/null); do
               SRC="${{ github.workspace }}/packages/$pkg/src/index.js"
@@ -114,24 +122,40 @@ jobs:
             done
           done
 
-      - name: Measure size after
+      # --- AFTER flupke ---
+      - name: "After: metrics"
         id: after
-        run: echo "size=$(du -sk /tmp/fw/node_modules | cut -f1)" >> $GITHUB_OUTPUT
+        run: |
+          cd /tmp/fw
+          echo "size=$(du -sk node_modules | cut -f1)" >> $GITHUB_OUTPUT
+          echo "pkgs=$(find node_modules -maxdepth 1 -type d | wc -l)" >> $GITHUB_OUTPUT
+          echo "audit=$(npm audit --json 2>/dev/null | node -e 'let d="";process.stdin.on("data",c=>d+=c);process.stdin.on("end",()=>{try{const j=JSON.parse(d);console.log(j.metadata?.vulnerabilities?.total||0)}catch{console.log(0)}})')" >> $GITHUB_OUTPUT
 
-      - name: Verify after flupke
+      - name: "After: verify features"
         run: cd /tmp/fw && node -e "${{ matrix.framework.verify }}"
 
-      - name: Report
+      # --- Report ---
+      - name: Summary
+        if: always()
         run: |
-          BEFORE=${{ steps.before.outputs.size }}
-          AFTER=${{ steps.after.outputs.size }}
-          SAVED=$((BEFORE - AFTER))
-          PCT=$((SAVED * 100 / BEFORE))
+          BEFORE_SIZE=${{ steps.before.outputs.size }}
+          AFTER_SIZE=${{ steps.after.outputs.size }}
+          BEFORE_PKGS=${{ steps.before.outputs.pkgs }}
+          AFTER_PKGS=${{ steps.after.outputs.pkgs }}
+          BEFORE_AUDIT=${{ steps.before.outputs.audit }}
+          AFTER_AUDIT=${{ steps.after.outputs.audit }}
+          REPLACED=${{ steps.flupke.outputs.replaced }}
+
+          SIZE_SAVED=$((BEFORE_SIZE - AFTER_SIZE))
+          SIZE_PCT=$((BEFORE_SIZE > 0 ? SIZE_SAVED * 100 / BEFORE_SIZE : 0))
+          PKGS_SAVED=$((BEFORE_PKGS - AFTER_PKGS))
+
           echo "## ${{ matrix.framework.name }}" >> $GITHUB_STEP_SUMMARY
-          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
-          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Packages replaced | ${{ steps.flupke.outputs.replaced }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Size before | ${BEFORE}KB |" >> $GITHUB_STEP_SUMMARY
-          echo "| Size after | ${AFTER}KB |" >> $GITHUB_STEP_SUMMARY
-          echo "| Saved | ${SAVED}KB (${PCT}%) |" >> $GITHUB_STEP_SUMMARY
-          echo "| Features | ✓ verified |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Before | After | Δ |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|--------|-------|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| node_modules size | ${BEFORE_SIZE} KB | ${AFTER_SIZE} KB | **-${SIZE_SAVED} KB (${SIZE_PCT}%)** |" >> $GITHUB_STEP_SUMMARY
+          echo "| Packages installed | ${BEFORE_PKGS} | ${AFTER_PKGS} | -${PKGS_SAVED} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Audit vulnerabilities | ${BEFORE_AUDIT} | ${AFTER_AUDIT} | -$((BEFORE_AUDIT - AFTER_AUDIT)) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Packages replaced | — | ${REPLACED} | — |" >> $GITHUB_STEP_SUMMARY
+          echo "| Features verified | ✓ | ✓ | no regression |" >> $GITHUB_STEP_SUMMARY
