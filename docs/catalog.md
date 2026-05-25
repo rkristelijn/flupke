@@ -1,6 +1,6 @@
 # Package catalog
 
-146 packages. Generated from `packages/`.
+153 packages. Generated from `packages/`.
 
 | Package | Description | LOC | Has types | Has tests |
 |---------|-------------|-----|-----------|-----------|
@@ -9,6 +9,7 @@
 | `ansi-styles` | ANSI escape code pairs | 47 | ✓ | ✓ |
 | `axios` | Drop-in replacement for axios — uses native fetch() | 124 | ✓ | ✓ |
 | `balanced-match` | Find matching braces in a string | 28 | ✓ | ✓ |
+| `base64id` | Drop-in replacement for base64id | 3 | ✓ | ✓ |
 | `bytes` | Drop-in replacement for bytes | 72 | ✓ | ✓ |
 | `call-bind` | Function.prototype.call.bind | 2 | ✓ | ✓ |
 | `callsites` |  | 12 | ✓ | ✓ |
@@ -31,7 +32,7 @@
 | `deepmerge` | Drop-in replacement for deepmerge | 38 | ✓ | ✓ |
 | `define-data-property` | Object.defineProperty with data descriptor defaults | 2 | ✓ | ✓ |
 | `delay` |  | 9 | ✓ | ✓ |
-| `depd` | Drop-in replacement for depd | 31 | ✓ | ✓ |
+| `depd` | Drop-in replacement for depd | 38 | ✓ | ✓ |
 | `destroy` | Drop-in replacement for destroy | 6 | ✓ | ✓ |
 | `dotenv` | Drop-in replacement for dotenv | 58 | ✓ | ✓ |
 | `dotenv-expand` |  | 36 | ✓ | ✓ |
@@ -49,6 +50,7 @@
 | `execa` |  | 17 | ✓ | ✓ |
 | `fast-deep-equal` |  | 20 | ✓ | ✓ |
 | `fast-json-stable-stringify` | Drop-in replacement for fast-json-stable-stringify | 37 | ✓ | ✓ |
+| `fast-levenshtein` | Drop-in replacement for fast-levenshtein | 17 | ✓ | ✓ |
 | `filter-obj` |  | 12 | ✓ | ✓ |
 | `find-up` |  | 20 | ✓ | ✓ |
 | `forwarded` | Drop-in replacement for forwarded | 23 | ✓ | ✓ |
@@ -56,6 +58,8 @@
 | `function-bind` | Drop-in replacement for function-bind — uses native Function.prototype.bind | 3 | ✓ | ✓ |
 | `get-caller-file` |  | 12 | ✓ | ✓ |
 | `get-intrinsic` | Get JS intrinsics | 95 | ✓ | ✓ |
+| `get-stream` | Drop-in replacement for get-stream | 11 | ✓ | ✓ |
+| `glob-to-regexp` | Drop-in replacement for glob-to-regexp | 13 | ✓ | ✓ |
 | `globby` |  | 34 | ✓ | ✓ |
 | `gopd` | Get own property descriptor | 2 | ✓ | ✓ |
 | `graceful-fs` |  | 33 | ✓ | ✓ |
@@ -63,8 +67,10 @@
 | `has-proto` | Check if __proto__ exists | 4 | ✓ | ✓ |
 | `has-symbols` | Check if Symbol exists with iterator | 4 | ✓ | ✓ |
 | `hasown` | Object.hasOwn or polyfill | 4 | ✓ | ✓ |
+| `http-errors` | Drop-in replacement for http-errors | 57 | ✓ | ✓ |
 | `human-readable` |  | 11 | ✓ | ✓ |
 | `import-fresh` |  | 10 | ✓ | ✓ |
+| `imurmurhash` | Drop-in replacement for imurmurhash | 21 | ✓ | ✓ |
 | `indent-string` |  | 9 | ✓ | ✓ |
 | `inflight` |  | 18 | ✓ | ✓ |
 | `inherits` | Drop-in replacement for inherits — uses native Object.create | 22 | ✓ | ✓ |
@@ -74,6 +80,7 @@
 | `is-fullwidth-code-point` |  | 22 | ✓ | ✓ |
 | `is-glob` |  | 4 | ✓ | ✓ |
 | `is-number` |  | 4 | ✓ | ✓ |
+| `is-path-inside` | Drop-in replacement for is-path-inside | 6 | ✓ | ✓ |
 | `is-plain-object` |  | 10 | ✓ | ✓ |
 | `is-promise` | Drop-in replacement for is-promise | 6 | ✓ | ✓ |
 | `is-stream` |  | 8 | ✓ | ✓ |
@@ -136,7 +143,7 @@
 | `strip-indent` |  | 17 | ✓ | ✓ |
 | `supports-color` | Detect terminal color support | 14 | ✓ | ✓ |
 | `tempy` |  | 19 | ✓ | ✓ |
-| `toidentifier` | Drop-in replacement for toidentifier | 31 | ✓ | ✓ |
+| `toidentifier` | Drop-in replacement for toidentifier | 17 | ✓ | ✓ |
 | `triple-beam` | Drop-in replacement for triple-beam | 5 | ✓ | ✓ |
 | `type-detect` |  | 11 | ✓ | ✓ |
 | `type-fest` |  | 2 | ✓ | ✓ |
