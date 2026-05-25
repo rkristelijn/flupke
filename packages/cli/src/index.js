@@ -67,6 +67,7 @@ const REPLACEMENTS = [
   "has-proto",
   "has-symbols",
   "hasown",
+  "http-errors",
   "human-readable",
   "import-fresh",
   "imurmurhash",
