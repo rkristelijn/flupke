@@ -1,3 +1,4 @@
+export const codes: number[];
 export const message: { [code: number]: string };
 export const code: { [message: string]: number };
 export const redirect: { [code: number]: true };

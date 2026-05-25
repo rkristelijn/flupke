@@ -28,13 +28,21 @@ describe('bytes', () => {
       assert.strictEqual(bytes.parse('1Kb'), 1024);
     });
 
-    it('should return NaN for invalid input', () => {
-      assert.ok(isNaN(bytes.parse('invalid')));
-      assert.ok(isNaN(bytes.parse('10x')));
+    it('should return null for invalid input', () => {
+      assert.strictEqual(bytes.parse('invalid'), null);
+      assert.strictEqual(bytes.parse('10x'), null);
     });
 
-    it('should throw on non-string', () => {
-      assert.throws(() => bytes.parse(1024), TypeError);
+    it('should return null for non-string non-number', () => {
+      assert.strictEqual(bytes.parse(null), null);
+      assert.strictEqual(bytes.parse(undefined), null);
+      assert.strictEqual(bytes.parse({}), null);
+    });
+
+    it('should pass through numbers (raw-body compatibility)', () => {
+      assert.strictEqual(bytes.parse(1024), 1024);
+      assert.strictEqual(bytes.parse(0), 0);
+      assert.strictEqual(bytes.parse(100000), 100000);
     });
   });
 

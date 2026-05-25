@@ -57,4 +57,24 @@ describe('statuses', () => {
     assert.throws(() => statuses(null), TypeError);
     assert.throws(() => statuses({}), TypeError);
   });
+
+  it('should have codes array with all numeric status codes', () => {
+    assert.ok(Array.isArray(statuses.codes));
+    assert.ok(statuses.codes.length > 60);
+    assert.ok(statuses.codes.includes(200));
+    assert.ok(statuses.codes.includes(404));
+    assert.ok(statuses.codes.includes(500));
+    assert.ok(statuses.codes.every(c => typeof c === 'number'));
+  });
+
+  it('should be compatible with http-errors usage pattern', () => {
+    // http-errors does: statuses.codes.forEach(code => { statuses.message[code] })
+    const messages = [];
+    statuses.codes.forEach(code => {
+      messages.push(statuses.message[code]);
+    });
+    assert.ok(messages.every(m => typeof m === 'string'));
+    assert.ok(messages.includes('OK'));
+    assert.ok(messages.includes('Not Found'));
+  });
 });
