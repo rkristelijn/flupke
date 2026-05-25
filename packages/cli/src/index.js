@@ -172,9 +172,20 @@ function writeOverrides(dir, pm, replaceable) {
   fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
 }
 
+// Known bundle sizes (gzip KB) of originals vs flupke
+const SIZES = {
+  axios: [13.4, 1.2], moment: [72.0, 7.0], lodash: [25.0, 3.2],
+  uuid: [3.0, 0.1], qs: [8.0, 0.3], deepmerge: [2.0, 0.4],
+  eventemitter3: [3.0, 0.5], classnames: [0.3, 0.2], clsx: [0.3, 0.2],
+  dotenv: [2.5, 0.5], cookie: [1.5, 0.3], 'escape-html': [0.3, 0.2],
+};
+
 // Main entry point
 function run() {
   const dir = process.cwd();
+  const args = process.argv.slice(2);
+  const analyze = args.includes("--analyze");
+  const dryRun = args.includes("--dry-run");
   const pkgPath = path.join(dir, "package.json");
 
   if (!fs.existsSync(pkgPath)) {
@@ -200,8 +211,10 @@ function run() {
   // Before stats
   const totalPkgs = installed.length;
 
-  // Write overrides
-  writeOverrides(dir, pm, replaceable);
+  // Write overrides (unless dry-run)
+  if (!dryRun) {
+    writeOverrides(dir, pm, replaceable);
+  }
 
   // Report
   const field =
@@ -215,12 +228,41 @@ function run() {
     `  Replaced:  ${replaceable.length} packages → @flupkejs/* equivalents`,
   );
   console.log("");
+
+  // Bundle size analysis
+  if (analyze || replaceable.some((p) => SIZES[p])) {
+    let savedKB = 0;
+    let beforeKB = 0;
+    console.log("  Bundle impact (gzip):");
+    for (const p of replaceable) {
+      if (SIZES[p]) {
+        const [orig, flup] = SIZES[p];
+        savedKB += orig - flup;
+        beforeKB += orig;
+        console.log(
+          `    ${p}: ${orig} KB → ${flup} KB (\x1b[32m-${(orig - flup).toFixed(1)} KB\x1b[0m)`,
+        );
+      }
+    }
+    if (savedKB > 0) {
+      console.log("");
+      console.log(
+        `  \x1b[1mTotal bundle savings: -${savedKB.toFixed(1)} KB gzip\x1b[0m`,
+      );
+    }
+    console.log("");
+  }
+
   console.log("  Packages replaced:");
   for (const p of replaceable) {
     console.log(`    ✓ ${p}`);
   }
   console.log("");
-  console.log(`  \x1b[32m✓\x1b[0m ${field} written to package.json`);
+  if (dryRun) {
+    console.log("  \x1b[33m⚠ Dry run — no changes written\x1b[0m");
+  } else {
+    console.log(`  \x1b[32m✓\x1b[0m ${field} written to package.json`);
+  }
   console.log("");
   const cmd =
     pm === "pnpm"
@@ -228,7 +270,7 @@ function run() {
       : pm === "yarn"
         ? "yarn install"
         : "npm install";
-  console.log(`  Run \x1b[1m${cmd}\x1b[0m to apply.`);
+  if (!dryRun) console.log(`  Run \x1b[1m${cmd}\x1b[0m to apply.`);
   console.log("");
 }
 
