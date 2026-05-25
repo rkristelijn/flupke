@@ -16,6 +16,16 @@ test('parse empty string', () => {
   const result = cookie.parse('');
   assert.equal(Object.keys(result).length, 0);
 });
+test('parse ignores entries without =', () => {
+  const result = cookie.parse('foo=bar; invalid; baz=qux');
+  assert.equal(result.foo, 'bar');
+  assert.equal(result.baz, 'qux');
+  assert.equal(result.invalid, undefined);
+});
+test('parse handles = at position 0 (empty key)', () => {
+  const result = cookie.parse('=nokey');
+  assert.equal(result[''], 'nokey');
+});
 test('serialize basic', () => {
   assert.equal(cookie.serialize('foo', 'bar'), 'foo=bar');
 });

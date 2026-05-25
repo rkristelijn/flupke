@@ -3,6 +3,10 @@ const assert = require('node:assert/strict');
 const qs = require('../src/index.js');
 
 test('parse simple', () => { assert.deepEqual(qs.parse('a=1&b=2'), {a:'1',b:'2'}); });
+test('strips leading ? not #', () => {
+  assert.deepEqual(qs.parse('?a=1'), {a:'1'});
+  assert.deepEqual(qs.parse('#a=1'), {'#a': '1'});
+});
 test('parse with ?', () => { assert.deepEqual(qs.parse('?foo=bar'), {foo:'bar'}); });
 test('parse arrays', () => { var r=qs.parse('a=1&a=2'); assert.deepEqual(r, {a:['1','2']}); });
 test('parse empty', () => { assert.deepEqual(qs.parse(''), {}); });

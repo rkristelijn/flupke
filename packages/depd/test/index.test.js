@@ -19,7 +19,12 @@ test('deprecate.property defines getter', () => {
 });
 test('only warns once per message', () => {
   const deprecate = depd('test');
-  // Should not throw
-  deprecate('something');
-  deprecate('something');
+  let count = 0;
+  const origWarn = console.warn;
+  console.warn = () => { count++; };
+  deprecate('once-msg');
+  deprecate('once-msg');
+  deprecate('once-msg');
+  console.warn = origWarn;
+  assert.equal(count, 1);
 });
