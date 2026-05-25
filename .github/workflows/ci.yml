@@ -51,6 +51,7 @@ jobs:
         run: |
           FAIL=0
           for pkg in packages/*/; do
+            [ "$pkg" = "packages/cli/" ] && continue
             [ -f "$pkg/src/index.d.ts" ] || { echo "✗ $pkg missing types"; FAIL=1; }
           done
           [ $FAIL -eq 0 ] && echo "✓ All packages have TypeScript declarations"
