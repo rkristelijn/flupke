@@ -4,9 +4,9 @@
  */
 function unpipe(stream) {
   if (!stream) {
-    throw new TypeError('argument stream is required');
+    throw new TypeError("argument stream is required");
   }
-  if (typeof stream.unpipe === 'function') {
+  if (typeof stream.unpipe === "function") {
     stream.unpipe();
   }
 }

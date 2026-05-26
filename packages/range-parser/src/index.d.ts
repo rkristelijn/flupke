@@ -17,5 +17,5 @@ interface RangeParserOptions {
 export function rangeParser(
   size: number,
   rangeHeader: string,
-  options?: RangeParserOptions
+  options?: RangeParserOptions,
 ): Range[] | number;

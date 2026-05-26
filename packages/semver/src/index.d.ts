@@ -1,4 +1,12 @@
-declare function parse(v: string): { major: number; minor: number; patch: number; prerelease: string; version: string } | null;
+declare function parse(
+  v: string,
+): {
+  major: number;
+  minor: number;
+  patch: number;
+  prerelease: string;
+  version: string;
+} | null;
 declare function compare(a: string, b: string): number;
 declare function gt(a: string, b: string): boolean;
 declare function lt(a: string, b: string): boolean;

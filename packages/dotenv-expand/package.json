@@ -15,5 +15,6 @@
     "./config.js": "./src/index.js",
     "./package.json": "./package.json"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "sideEffects": false
 }

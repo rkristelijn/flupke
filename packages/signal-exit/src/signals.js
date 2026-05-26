@@ -1,2 +1,1 @@
-'use strict';
-module.exports = { signals: ['SIGINT', 'SIGTERM', 'SIGHUP', 'SIGBREAK'] };
+module.exports = { signals: ["SIGINT", "SIGTERM", "SIGHUP", "SIGBREAK"] };

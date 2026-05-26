@@ -1,5 +1,5 @@
-const path = require('node:path');
-const fs = require('node:fs');
+const path = require("node:path");
+const fs = require("node:fs");
 module.exports = function escaladeSync(dir, cb) {
   dir = path.resolve(dir);
   while (true) {

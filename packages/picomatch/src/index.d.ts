@@ -1,5 +1,10 @@
-interface PicomatchOptions { nocase?: boolean; }
-interface Matcher { (str: string): boolean; regex: RegExp; }
+interface PicomatchOptions {
+  nocase?: boolean;
+}
+interface Matcher {
+  (str: string): boolean;
+  regex: RegExp;
+}
 declare function picomatch(glob: string, opts?: PicomatchOptions): Matcher;
 declare namespace picomatch {
   function isMatch(str: string, glob: string, opts?: PicomatchOptions): boolean;

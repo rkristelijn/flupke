@@ -1,2 +1,3 @@
-'use strict';
-module.exports = function onExit() { return function() {}; };
+module.exports = function onExit() {
+  return () => {};
+};

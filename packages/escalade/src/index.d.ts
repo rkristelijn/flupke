@@ -1,2 +1,8 @@
-declare function escalade(dir: string, cb: (dir: string, files: string[]) => string | false | void | Promise<string | false | void>): Promise<string | undefined>;
+declare function escalade(
+  dir: string,
+  cb: (
+    dir: string,
+    files: string[],
+  ) => string | false | undefined | Promise<string | false | undefined>,
+): Promise<string | undefined>;
 export = escalade;

@@ -4,7 +4,16 @@
   "description": "Detect terminal color support",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": ["src"],
-  "exports": { ".": { "types": "./src/index.d.ts", "default": "./src/index.js" }, "./package.json": "./package.json" },
-  "license": "MIT"
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "sideEffects": false
 }

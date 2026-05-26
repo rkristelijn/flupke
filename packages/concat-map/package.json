@@ -1,2 +1,18 @@
-{"name":"@flupkejs/concat-map","version":"1.0.0","main":"src/index.js","types":"src/index.d.ts","files":["src"],"exports": { ".": { "types": "./src/index.d.ts", "default": "./src/index.js" }, "./package.json": "./package.json" },
-  "license":"MIT"}
+{
+  "name": "@flupkejs/concat-map",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "sideEffects": false
+}

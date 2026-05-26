@@ -1,12 +1,30 @@
 {
   "name": "@flupkejs/inherits",
   "version": "1.2.2",
-  "description": "Drop-in replacement for inherits — uses native Object.create",
+  "description": "Drop-in replacement for inherits \u2014 uses native Object.create",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": ["src"],
-  "exports": { ".": { "types": "./src/index.d.ts", "default": "./src/index.js" }, "./package.json": "./package.json" },
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/rkristelijn/flupke" },
-  "keywords": ["inherits", "prototype", "extend", "flupke", "hardened"]
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rkristelijn/flupke"
+  },
+  "keywords": [
+    "inherits",
+    "prototype",
+    "extend",
+    "flupke",
+    "hardened"
+  ],
+  "sideEffects": false
 }

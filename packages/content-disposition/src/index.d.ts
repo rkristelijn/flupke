@@ -16,7 +16,7 @@ interface ParsedContentDisposition {
  */
 export function contentDisposition(
   filename: string,
-  options?: ContentDispositionOptions
+  options?: ContentDispositionOptions,
 ): string;
 
 /**

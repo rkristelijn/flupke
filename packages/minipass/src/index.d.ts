@@ -1,2 +1,2 @@
-import { Transform } from 'node:stream';
+import { Transform } from "node:stream";
 export = Transform;

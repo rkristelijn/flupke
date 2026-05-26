@@ -215,10 +215,18 @@ function writeOverrides(dir, pm, replaceable) {
 
 // Known bundle sizes (gzip KB) of originals vs flupke
 const SIZES = {
-  axios: [13.4, 1.2], moment: [72.0, 7.0], lodash: [25.0, 3.2],
-  uuid: [3.0, 0.1], qs: [8.0, 0.3], deepmerge: [2.0, 0.4],
-  eventemitter3: [3.0, 0.5], classnames: [0.3, 0.2], clsx: [0.3, 0.2],
-  dotenv: [2.5, 0.5], cookie: [1.5, 0.3], 'escape-html': [0.3, 0.2],
+  axios: [13.4, 1.2],
+  moment: [72.0, 7.0],
+  lodash: [25.0, 3.2],
+  uuid: [3.0, 0.1],
+  qs: [8.0, 0.3],
+  deepmerge: [2.0, 0.4],
+  eventemitter3: [3.0, 0.5],
+  classnames: [0.3, 0.2],
+  clsx: [0.3, 0.2],
+  dotenv: [2.5, 0.5],
+  cookie: [1.5, 0.3],
+  "escape-html": [0.3, 0.2],
 };
 
 // Main entry point

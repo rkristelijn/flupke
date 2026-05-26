@@ -1,3 +1,5 @@
-interface DotenvConfig { parsed?: Record<string, string>; }
+interface DotenvConfig {
+  parsed?: Record<string, string>;
+}
 declare function expand(config: DotenvConfig): DotenvConfig;
 export = expand;

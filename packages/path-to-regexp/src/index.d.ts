@@ -1,6 +1,18 @@
 export class TokenData {
-  tokens: Array<{ type: string; name?: string; value?: string; pattern?: string }>;
-  constructor(tokens: Array<{ type: string; name?: string; value?: string; pattern?: string }>);
+  tokens: Array<{
+    type: string;
+    name?: string;
+    value?: string;
+    pattern?: string;
+  }>;
+  constructor(
+    tokens: Array<{
+      type: string;
+      name?: string;
+      value?: string;
+      pattern?: string;
+    }>,
+  );
 }
 
 export class PathError extends Error {}
@@ -28,7 +40,16 @@ export interface MatchOptions {
 }
 
 export function parse(path: string): TokenData;
-export function compile(path: string | TokenData, options?: { encode?: (value: string) => string }): (params?: Record<string, string | number>) => string;
-export function match(path: string | TokenData, options?: MatchOptions): (input: string) => MatchResult | false;
-export function pathToRegexp(path: string | TokenData, options?: MatchOptions): PathToRegexpResult;
+export function compile(
+  path: string | TokenData,
+  options?: { encode?: (value: string) => string },
+): (params?: Record<string, string | number>) => string;
+export function match(
+  path: string | TokenData,
+  options?: MatchOptions,
+): (input: string) => MatchResult | false;
+export function pathToRegexp(
+  path: string | TokenData,
+  options?: MatchOptions,
+): PathToRegexpResult;
 export function stringify(data: TokenData): string;

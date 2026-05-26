@@ -1,7 +1,7 @@
 {
   "name": "@flupkejs/events",
   "version": "1.0.0",
-  "description": "Node EventEmitter — native re-export",
+  "description": "Node EventEmitter \u2014 native re-export",
   "main": "src/index.js",
   "exports": {
     ".": {
@@ -10,5 +10,6 @@
     },
     "./package.json": "./package.json"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "sideEffects": false
 }
