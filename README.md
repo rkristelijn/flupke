@@ -2,10 +2,11 @@
 
 [![npm](https://img.shields.io/npm/dm/@flupkejs/cli)](https://www.npmjs.com/package/@flupkejs/cli)
 [![version](https://img.shields.io/npm/v/@flupkejs/cli?label=cli)](https://www.npmjs.com/package/@flupkejs/cli)
-![packages](https://img.shields.io/badge/packages-153-blue)
-![tests](https://img.shields.io/badge/tests-722%20passing-brightgreen)
+![packages](https://img.shields.io/badge/packages-165-blue)
+![tests](https://img.shields.io/badge/tests-888%20passing-brightgreen)
 ![zero deps](https://img.shields.io/badge/dependencies-zero-brightgreen)
-![frameworks](https://img.shields.io/badge/frameworks%20tested-46-blue)
+![frameworks](https://img.shields.io/badge/frameworks%20tested-51-blue)
+![code reduction](https://img.shields.io/badge/code%20reduction-91%25-brightgreen)
 [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=rkristelijn_flupke&metric=alert_status)](https://sonarcloud.io/dashboard?id=rkristelijn_flupke)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rkristelijn_flupke&metric=coverage)](https://sonarcloud.io/dashboard?id=rkristelijn_flupke)
 [![codecov](https://codecov.io/gh/rkristelijn/flupke/branch/main/graph/badge.svg)](https://codecov.io/gh/rkristelijn/flupke)
@@ -31,7 +32,7 @@ Packages like `ms` (ReDoS vulnerability), `debug` (regex injection via env varia
 
 So I thought: what if we put them all in one place? Same boilerplate. Same quality controls. Same CI. And sure enough — security issues surfaced, performance improvements became obvious, and native platform features made most of these packages unnecessary.
 
-**The result:** 153 packages, all faster than the originals, all zero-dep, all typed, all tested. Two security vulnerabilities responsibly disclosed to upstream maintainers.
+**The result:** 165 packages, all faster than the originals, all zero-dep, all typed, all tested. Two security vulnerabilities responsibly disclosed to upstream maintainers.
 
 ## What flupke does
 
@@ -39,11 +40,14 @@ Every framework ships with transitive dependencies you never chose. flupke repla
 
 | Framework | Replaceable deps | After flupke |
 |-----------|-----------------|--------------|
-| Express | 42 | Tested, typed, zero-dep |
-| NestJS | 44 | Tested, typed, zero-dep |
-| Jest | 54 | Tested, typed, zero-dep |
-| Nuxt | 61 | Tested, typed, zero-dep |
-| Next.js | 2 | Already lean ✓ |
+| Expo | 108 | Tested, typed, zero-dep |
+| Nuxt | 71 | Tested, typed, zero-dep |
+| Ember | 68 | Tested, typed, zero-dep |
+| Jest | 63 | Tested, typed, zero-dep |
+| React Native | 53 | Tested, typed, zero-dep |
+| Express | 44 | Tested, typed, zero-dep |
+| NestJS | 8 | Tested, typed, zero-dep |
+| Next.js | 3 | Already lean ✓ |
 
 ## The fix
 
@@ -77,15 +81,37 @@ React app using `axios`, `moment`, `uuid`, `qs`, `deepmerge`, `eventemitter3`, `
 
 | | @flupke |
 |---|---|
-| Bundle size | 39 KB total (up to 95% smaller per package) |
+| Code reduction | 91% less code than originals |
+| Bundle size | 39 KB total (up to 98% smaller per package) |
 | Performance | Benchmarked, equal or faster |
 | Types | TypeScript strict, generics, type guards |
-| Tests | 100% branch coverage |
+| Tests | 888 tests, 100% branch coverage |
 | Deps | Zero |
 | Maintained | CI, multiple reviewers |
 | Security | Native-only, no dynamic code |
 | API | Identical (drop-in) |
 | Exports | `"exports"` with types condition |
+
+### Cumulative impact
+
+```
+165 packages — 5,093 LOC total (originals: ~57,785 LOC)
+888 tests — 2,792 API signatures verified across 51 frameworks
+43 transitive dependencies eliminated — zero supply chain risk
+```
+
+| Package | Original | Flupke | Reduction |
+|---------|----------|--------|-----------|
+| `moment` | 18,000 | 25 | **-100%** |
+| `lodash` | 17,000 | 289 | **-98%** |
+| `axios` | 3,000 | 113 | **-96%** |
+| `semver` | 1,800 | 40 | **-98%** |
+| `micromatch` | 1,600 | 59 | **-96%** |
+| `picomatch` | 1,500 | 37 | **-98%** |
+| `yargs-parser` | 1,200 | 41 | **-97%** |
+| `glob` | 1,200 | 75 | **-94%** |
+| `minimatch` | 900 | 66 | **-93%** |
+| `qs` | 800 | 34 | **-96%** |
 
 ## Package managers
 
@@ -104,17 +130,21 @@ All three generate the correct override format (`overrides`, `resolutions`, or `
 
 ## Packages
 
-153 packages. 722 tests. Zero dependencies each.
+165 packages. 888 tests. Zero dependencies each.
 
 | Original | Dependents | flupke LOC | Strategy |
 |----------|-----------|-----------|----------|
+| `chalk` | 400+ | 57 | Chainable ANSI via getters |
 | `es-errors` | 316 | 8 | Native Error subclasses |
 | `debug` | 262 | 20 | `console.log` + DEBUG env |
 | `semver` | 201 | 27 | Version parsing rewrite |
 | `strip-ansi` | 181 | 4 | `str.replace(regex, '')` |
 | `graceful-fs` | 160 | 20 | fs + EMFILE retry |
+| `minimatch` | 150+ | 66 | Regex glob + braces |
+| `glob` | 140+ | 75 | `fs.readdir` + minimatch |
 | `inherits` | 159 | 16 | `class extends` native |
 | `safe-buffer` | 140 | 5 | `Buffer.from` native |
+| `micromatch` | 100+ | 59 | picomatch + braces |
 | `ms` | 99 | 57 | Time parser rewrite |
 | `function-bind` | 92 | 2 | `.bind()` native |
 | `rimraf` | 33 | 4 | `fs.rm({recursive:true})` native |
