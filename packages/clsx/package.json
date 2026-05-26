@@ -4,9 +4,7 @@
   "description": "Drop-in replacement for clsx \u2014 conditional class strings",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -19,12 +17,6 @@
     "type": "git",
     "url": "https://github.com/rkristelijn/flupke"
   },
-  "keywords": [
-    "clsx",
-    "classnames",
-    "css",
-    "flupke",
-    "hardened"
-  ],
+  "keywords": ["clsx", "classnames", "css", "flupke", "hardened"],
   "sideEffects": false
 }

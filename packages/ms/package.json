@@ -4,9 +4,7 @@
   "description": "Drop-in replacement for ms \u2014 time string parsing/formatting",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -19,13 +17,6 @@
     "type": "git",
     "url": "https://github.com/rkristelijn/flupke"
   },
-  "keywords": [
-    "ms",
-    "milliseconds",
-    "time",
-    "duration",
-    "flupke",
-    "hardened"
-  ],
+  "keywords": ["ms", "milliseconds", "time", "duration", "flupke", "hardened"],
   "sideEffects": false
 }

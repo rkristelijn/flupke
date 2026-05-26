@@ -1,6 +1,4 @@
-declare function parse(
-  v: string,
-): {
+declare function parse(v: string): {
   major: number;
   minor: number;
   patch: number;

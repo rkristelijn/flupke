@@ -4,9 +4,7 @@
   "description": "Drop-in replacement for uuid \u2014 uses native crypto.randomUUID()",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -19,13 +17,6 @@
     "type": "git",
     "url": "https://github.com/rkristelijn/flupke"
   },
-  "keywords": [
-    "uuid",
-    "v4",
-    "v7",
-    "crypto",
-    "flupke",
-    "hardened"
-  ],
+  "keywords": ["uuid", "v4", "v7", "crypto", "flupke", "hardened"],
   "sideEffects": false
 }
