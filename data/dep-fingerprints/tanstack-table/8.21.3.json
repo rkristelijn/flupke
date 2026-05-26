@@ -1,0 +1,9 @@
+{
+  "framework": "tanstack-table",
+  "npm": "@tanstack/react-table",
+  "version": "8.21.3",
+  "generated": "2026-05-26",
+  "replaceable_count": 0,
+  "total_flupke_packages": 166,
+  "deps": {}
+}

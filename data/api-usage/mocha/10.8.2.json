@@ -1,0 +1,308 @@
+{
+  "framework": "mocha",
+  "npm": "mocha",
+  "version": "10.8.2",
+  "generated": "2026-05-26",
+  "packages_with_usage": 29,
+  "total_signatures": 48,
+  "usage": {
+    "ansi-regex": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "ansi-regex()"
+      }
+    ],
+    "ansi-styles": [
+      {
+        "type": "property",
+        "member": "color",
+        "signature": "ansi-styles.color"
+      },
+      {
+        "type": "property",
+        "member": "bgColor",
+        "signature": "ansi-styles.bgColor"
+      },
+      {
+        "type": "property",
+        "member": "codes",
+        "signature": "ansi-styles.codes"
+      }
+    ],
+    "balanced-match": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "balanced-match(string, string, expr)"
+      }
+    ],
+    "camelcase": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "camelcase(expr)"
+      }
+    ],
+    "debug": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "debug",
+        "signature": "debug.debug(string)"
+      },
+      {
+        "type": "method",
+        "member": "enabled",
+        "signature": "debug.enabled(string)"
+      }
+    ],
+    "decamelize": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "decamelize(expr, string)"
+      }
+    ],
+    "emoji-regex": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "emoji-regex()"
+      }
+    ],
+    "escape-string-regexp": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "escape-string-regexp(expr)"
+      }
+    ],
+    "find-up": [
+      {
+        "type": "method",
+        "member": "sync",
+        "signature": "find-up.sync(expr, object)"
+      },
+      {
+        "type": "method",
+        "member": "sync",
+        "signature": "find-up.sync(expr)"
+      }
+    ],
+    "has-flag": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "has-flag(string)"
+      }
+    ],
+    "inflight": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "inflight(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "inflight(string, expr)"
+      }
+    ],
+    "inherits": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "inherits(expr, expr)"
+      }
+    ],
+    "is-fullwidth-code-point": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "is-fullwidth-code-point(expr)"
+      }
+    ],
+    "is-glob": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "is-glob(expr)"
+      }
+    ],
+    "is-number": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "is-number(expr)"
+      }
+    ],
+    "locate-path": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "locate-path(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "locate-path(array, expr)"
+      },
+      {
+        "type": "method",
+        "member": "sync",
+        "signature": "locate-path.sync(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "sync",
+        "signature": "locate-path.sync(array, expr)"
+      }
+    ],
+    "ms": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "ms(expr)"
+      }
+    ],
+    "normalize-path": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "normalize-path(expr, false)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "normalize-path(expr)"
+      }
+    ],
+    "once": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "once(expr)"
+      }
+    ],
+    "p-limit": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "p-limit(expr)"
+      }
+    ],
+    "path-exists": [
+      {
+        "type": "property",
+        "member": "sync",
+        "signature": "path-exists.sync"
+      }
+    ],
+    "picomatch": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch(expr)"
+      }
+    ],
+    "safe-buffer": [
+      {
+        "type": "method",
+        "member": "allocUnsafe",
+        "signature": "safe-buffer.allocUnsafe(expr)"
+      }
+    ],
+    "string-width": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "string-width(expr)"
+      }
+    ],
+    "strip-ansi": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "strip-ansi(expr)"
+      }
+    ],
+    "supports-color": [
+      {
+        "type": "property",
+        "member": "stderr",
+        "signature": "supports-color.stderr"
+      },
+      {
+        "type": "property",
+        "member": "stdout",
+        "signature": "supports-color.stdout"
+      }
+    ],
+    "wrappy": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "wrappy(expr)"
+      }
+    ],
+    "y18n": [
+      {
+        "type": "property",
+        "member": "__n",
+        "signature": "y18n.__n"
+      },
+      {
+        "type": "method",
+        "member": "getLocale",
+        "signature": "y18n.getLocale()"
+      },
+      {
+        "type": "method",
+        "member": "setLocale",
+        "signature": "y18n.setLocale(expr)"
+      },
+      {
+        "type": "method",
+        "member": "updateLocale",
+        "signature": "y18n.updateLocale(expr)"
+      }
+    ],
+    "yargs-parser": [
+      {
+        "type": "property",
+        "member": "Arguments",
+        "signature": "yargs-parser.Arguments"
+      },
+      {
+        "type": "method",
+        "member": "decamelize",
+        "signature": "yargs-parser.decamelize(expr, string)"
+      },
+      {
+        "type": "method",
+        "member": "looksLikeNumber",
+        "signature": "yargs-parser.looksLikeNumber(expr)"
+      }
+    ]
+  }
+}

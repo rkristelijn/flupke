@@ -1,0 +1,627 @@
+{
+  "framework": "react-native",
+  "npm": "react-native",
+  "version": "0.85.3",
+  "generated": "2026-05-26",
+  "packages_with_usage": 36,
+  "total_signatures": 109,
+  "usage": {
+    "ansi-regex": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "ansi-regex()"
+      }
+    ],
+    "ansi-styles": [
+      {
+        "type": "property",
+        "member": "color",
+        "signature": "ansi-styles.color"
+      },
+      {
+        "type": "property",
+        "member": "bgColor",
+        "signature": "ansi-styles.bgColor"
+      },
+      {
+        "type": "property",
+        "member": "codes",
+        "signature": "ansi-styles.codes"
+      }
+    ],
+    "debug": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string, expr, expr)"
+      },
+      {
+        "type": "property",
+        "member": "enabled",
+        "signature": "debug.enabled"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string, expr, expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug()"
+      },
+      {
+        "type": "property",
+        "member": "colors",
+        "signature": "debug.colors"
+      },
+      {
+        "type": "method",
+        "member": "enable",
+        "signature": "debug.enable(string)"
+      },
+      {
+        "type": "method",
+        "member": "enable",
+        "signature": "debug.enable(string, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "enable",
+        "signature": "debug.enable(string, expr)"
+      }
+    ],
+    "depd": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "depd(string)"
+      },
+      {
+        "type": "method",
+        "member": "function",
+        "signature": "depd.function(expr)"
+      }
+    ],
+    "destroy": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "destroy(expr, true)"
+      }
+    ],
+    "ee-first": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "ee-first(array, string, string, expr)"
+      }
+    ],
+    "emoji-regex": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "emoji-regex()"
+      }
+    ],
+    "encodeurl": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "encodeurl(expr)"
+      }
+    ],
+    "escape-html": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "escape-html(expr)"
+      }
+    ],
+    "escape-string-regexp": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "escape-string-regexp(expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "escape-string-regexp(expr, expr)"
+      }
+    ],
+    "etag": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "etag(expr)"
+      }
+    ],
+    "graceful-fs": [
+      {
+        "type": "method",
+        "member": "readFileSync",
+        "signature": "graceful-fs.readFileSync(expr)"
+      }
+    ],
+    "has-flag": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "has-flag(string)"
+      }
+    ],
+    "http-errors": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "http-errors(expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "http-errors(expr, expr, object)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "http-errors(expr, expr)"
+      }
+    ],
+    "inherits": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "inherits(expr, expr)"
+      }
+    ],
+    "is-fullwidth-code-point": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "is-fullwidth-code-point(expr)"
+      }
+    ],
+    "is-number": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "is-number(expr)"
+      }
+    ],
+    "memoize-one": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "memoize-one(expr)"
+      }
+    ],
+    "mime-types": [
+      {
+        "type": "method",
+        "member": "lookup",
+        "signature": "mime-types.lookup(expr)"
+      }
+    ],
+    "mkdirp": [
+      {
+        "type": "method",
+        "member": "sync",
+        "signature": "mkdirp.sync(expr)"
+      }
+    ],
+    "ms": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "ms(expr)"
+      }
+    ],
+    "negotiator": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "negotiator(expr)"
+      }
+    ],
+    "on-finished": [
+      {
+        "type": "property",
+        "member": "isFinished",
+        "signature": "on-finished.isFinished"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "on-finished(expr, expr)"
+      }
+    ],
+    "parseurl": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "parseurl(expr)"
+      },
+      {
+        "type": "method",
+        "member": "original",
+        "signature": "parseurl.original(expr)"
+      }
+    ],
+    "path-key": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "path-key(object)"
+      }
+    ],
+    "picocolors": [
+      {
+        "type": "property",
+        "member": "isColorSupported",
+        "signature": "picocolors.isColorSupported"
+      },
+      {
+        "type": "method",
+        "member": "createColors",
+        "signature": "picocolors.createColors(true)"
+      },
+      {
+        "type": "method",
+        "member": "createColors",
+        "signature": "picocolors.createColors(false)"
+      },
+      {
+        "type": "method",
+        "member": "yellow",
+        "signature": "picocolors.yellow(string)"
+      },
+      {
+        "type": "method",
+        "member": "red",
+        "signature": "picocolors.red(string)"
+      },
+      {
+        "type": "method",
+        "member": "green",
+        "signature": "picocolors.green(string)"
+      },
+      {
+        "type": "method",
+        "member": "bold",
+        "signature": "picocolors.bold(expr)"
+      },
+      {
+        "type": "method",
+        "member": "bold",
+        "signature": "picocolors.bold(expr, string)"
+      },
+      {
+        "type": "method",
+        "member": "red",
+        "signature": "picocolors.red(expr)"
+      }
+    ],
+    "picomatch": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch(expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "makeRe",
+        "signature": "picomatch.makeRe(expr)"
+      },
+      {
+        "type": "method",
+        "member": "scan",
+        "signature": "picomatch.scan(expr)"
+      },
+      {
+        "type": "method",
+        "member": "parse",
+        "signature": "picomatch.parse(expr, expr)"
+      },
+      {
+        "type": "property",
+        "member": "default",
+        "signature": "picomatch.default"
+      },
+      {
+        "type": "method",
+        "member": "scan",
+        "signature": "picomatch.scan(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch(string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch(expr, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "compileRe",
+        "signature": "picomatch.compileRe(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "makeRe",
+        "signature": "picomatch.makeRe(expr, expr, false, true)"
+      },
+      {
+        "type": "method",
+        "member": "test",
+        "signature": "picomatch.test(expr, expr, expr, object, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch()"
+      },
+      {
+        "type": "method",
+        "member": "test",
+        "signature": "picomatch.test(expr, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "test",
+        "signature": "picomatch.test(string, expr)"
+      },
+      {
+        "type": "property",
+        "member": "test",
+        "signature": "picomatch.test"
+      },
+      {
+        "type": "method",
+        "member": "matchBase",
+        "signature": "picomatch.matchBase(expr, expr, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "matchBase",
+        "signature": "picomatch.matchBase(expr, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "matchBase",
+        "signature": "picomatch.matchBase(string, string)"
+      },
+      {
+        "type": "property",
+        "member": "matchBase",
+        "signature": "picomatch.matchBase"
+      },
+      {
+        "type": "method",
+        "member": "makeRe",
+        "signature": "picomatch.makeRe(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "isMatch",
+        "signature": "picomatch.isMatch(expr, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "isMatch",
+        "signature": "picomatch.isMatch(string, array, string)"
+      },
+      {
+        "type": "method",
+        "member": "isMatch",
+        "signature": "picomatch.isMatch(string, string)"
+      },
+      {
+        "type": "property",
+        "member": "isMatch",
+        "signature": "picomatch.isMatch"
+      },
+      {
+        "type": "property",
+        "member": "parse",
+        "signature": "picomatch.parse"
+      },
+      {
+        "type": "method",
+        "member": "scan",
+        "signature": "picomatch.scan(string)"
+      },
+      {
+        "type": "property",
+        "member": "scan",
+        "signature": "picomatch.scan"
+      },
+      {
+        "type": "method",
+        "member": "parse",
+        "signature": "picomatch.parse(string)"
+      },
+      {
+        "type": "method",
+        "member": "compileRe",
+        "signature": "picomatch.compileRe(expr)"
+      },
+      {
+        "type": "property",
+        "member": "compileRe",
+        "signature": "picomatch.compileRe"
+      },
+      {
+        "type": "method",
+        "member": "toRegex",
+        "signature": "picomatch.toRegex(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "makeRe",
+        "signature": "picomatch.makeRe(string)"
+      },
+      {
+        "type": "property",
+        "member": "makeRe",
+        "signature": "picomatch.makeRe"
+      },
+      {
+        "type": "method",
+        "member": "compileRe",
+        "signature": "picomatch.compileRe(expr, expr, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "toRegex",
+        "signature": "picomatch.toRegex(expr)"
+      },
+      {
+        "type": "property",
+        "member": "toRegex",
+        "signature": "picomatch.toRegex"
+      },
+      {
+        "type": "property",
+        "member": "constants",
+        "signature": "picomatch.constants"
+      }
+    ],
+    "semver": [
+      {
+        "type": "property",
+        "member": "envName",
+        "signature": "semver.envName"
+      },
+      {
+        "type": "property",
+        "member": "caller",
+        "signature": "semver.caller"
+      },
+      {
+        "type": "property",
+        "member": "targets",
+        "signature": "semver.targets"
+      },
+      {
+        "type": "property",
+        "member": "assumptions",
+        "signature": "semver.assumptions"
+      },
+      {
+        "type": "method",
+        "member": "lt",
+        "signature": "semver.lt(expr)"
+      },
+      {
+        "type": "method",
+        "member": "valid",
+        "signature": "semver.valid(expr)"
+      },
+      {
+        "type": "method",
+        "member": "gt",
+        "signature": "semver.gt(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "parse",
+        "signature": "semver.parse(expr)"
+      },
+      {
+        "type": "method",
+        "member": "lt",
+        "signature": "semver.lt(expr, expr)"
+      }
+    ],
+    "setprototypeof": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "setprototypeof(expr, expr)"
+      }
+    ],
+    "statuses": [
+      {
+        "type": "property",
+        "member": "codes",
+        "signature": "statuses.codes"
+      },
+      {
+        "type": "property",
+        "member": "message",
+        "signature": "statuses.message"
+      }
+    ],
+    "string-width": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "string-width(expr)"
+      }
+    ],
+    "strip-ansi": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "strip-ansi(expr)"
+      }
+    ],
+    "supports-color": [
+      {
+        "type": "property",
+        "member": "stderr",
+        "signature": "supports-color.stderr"
+      }
+    ],
+    "toidentifier": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "toidentifier(expr)"
+      }
+    ],
+    "unpipe": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "unpipe(expr)"
+      }
+    ],
+    "yallist": [
+      {
+        "type": "property",
+        "member": "Node",
+        "signature": "yallist.Node"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "yallist()"
+      }
+    ]
+  }
+}
