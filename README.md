@@ -149,7 +149,7 @@ All three generate the correct override format (`overrides`, `resolutions`, or `
 | `function-bind` | 92 | 2 | `.bind()` native |
 | `rimraf` | 33 | 4 | `fs.rm({recursive:true})` native |
 
-Full list: [docs/catalog.md](docs/catalog.md) — Comparison: [docs/compare.md](docs/compare.md)
+Full list: [docs/packages.md](docs/packages.md) — Comparison: [docs/compare.md](docs/compare.md)
 
 ## Security improvements over originals
 
