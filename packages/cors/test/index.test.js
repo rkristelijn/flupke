@@ -132,3 +132,114 @@ test("exposedHeaders", (t, done) => {
     done();
   });
 });
+
+test("default methods header", (t, done) => {
+  const mw = cors();
+  const res = mockRes();
+  mw(mockReq("OPTIONS"), res, () => {});
+  assert.strictEqual(res.headers["Access-Control-Allow-Methods"], "GET,HEAD,PUT,PATCH,POST,DELETE");
+  done();
+});
+
+test("custom methods array", (t, done) => {
+  const mw = cors({ methods: ["GET", "POST"] });
+  const res = mockRes();
+  mw(mockReq("OPTIONS"), res, () => {});
+  assert.strictEqual(res.headers["Access-Control-Allow-Methods"], "GET,POST");
+  done();
+});
+
+test("allowedHeaders from request", (t, done) => {
+  const mw = cors();
+  const res = mockRes();
+  mw(mockReq("OPTIONS", { "access-control-request-headers": "X-Custom" }), res, () => {});
+  assert.strictEqual(res.headers["Access-Control-Allow-Headers"], "X-Custom");
+  done();
+});
+
+test("custom allowedHeaders", (t, done) => {
+  const mw = cors({ allowedHeaders: ["Content-Type", "Authorization"] });
+  const res = mockRes();
+  mw(mockReq("OPTIONS"), res, () => {});
+  assert.strictEqual(res.headers["Access-Control-Allow-Headers"], "Content-Type,Authorization");
+  done();
+});
+
+test("origin false when not allowed", (t, done) => {
+  const mw = cors({ origin: "http://other.com" });
+  const res = mockRes();
+  mw(mockReq(), res, () => {
+    assert.strictEqual(res.headers["Access-Control-Allow-Origin"], "http://other.com");
+    done();
+  });
+});
+
+test("origin rejected returns false", (t, done) => {
+  const mw = cors({ origin: /^http:\/\/foo\.com$/ });
+  const res = mockRes();
+  mw(mockReq("GET", { origin: "http://bar.com" }), res, () => {
+    assert.strictEqual(res.headers["Access-Control-Allow-Origin"], "false");
+    done();
+  });
+});
+
+test("Vary header set for non-wildcard origin", (t, done) => {
+  const mw = cors({ origin: "http://example.com" });
+  const res = mockRes();
+  mw(mockReq(), res, () => {
+    assert.strictEqual(res.headers["Vary"], "Origin");
+    done();
+  });
+});
+
+test("no Vary for wildcard origin", (t, done) => {
+  const mw = cors();
+  const res = mockRes();
+  mw(mockReq(), res, () => {
+    assert.strictEqual(res.headers["Vary"], undefined);
+    done();
+  });
+});
+
+test("optionsSuccessStatus default 204", (t, done) => {
+  const mw = cors();
+  const res = mockRes();
+  mw(mockReq("OPTIONS"), res, () => {});
+  assert.strictEqual(res.statusCode, 204);
+  done();
+});
+
+test("custom optionsSuccessStatus", (t, done) => {
+  const mw = cors({ optionsSuccessStatus: 200 });
+  const res = mockRes();
+  mw(mockReq("OPTIONS"), res, () => {});
+  assert.strictEqual(res.statusCode, 200);
+  done();
+});
+
+test("Content-Length 0 on preflight", (t, done) => {
+  const mw = cors();
+  const res = mockRes();
+  mw(mockReq("OPTIONS"), res, () => {});
+  assert.strictEqual(res.headers["Content-Length"], "0");
+  done();
+});
+
+test("non-OPTIONS sets headers and calls next", (t, done) => {
+  const mw = cors({ credentials: true });
+  const res = mockRes();
+  mw(mockReq("GET"), res, () => {
+    assert.strictEqual(res.headers["Access-Control-Allow-Credentials"], "true");
+    assert.strictEqual(res.ended, false);
+    done();
+  });
+});
+
+test("error in dynamic origin calls next with error", (t, done) => {
+  const mw = cors((req, cb) => cb(new Error("fail")));
+  const res = mockRes();
+  mw(mockReq(), res, (err) => {
+    assert.strictEqual(err.message, "fail");
+    done();
+  });
+});
