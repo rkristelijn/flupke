@@ -3,7 +3,7 @@
  * @see https://www.npmjs.com/package/p-map
  */
 module.exports = async function pMap(iterable, mapper, opts = {}) {
-  const { concurrency = Number.POSITIVE_INFINITY } = opts;
+  const { concurrency = Infinity } = opts;
   const items = [...iterable];
   const results = new Array(items.length);
   let i = 0;

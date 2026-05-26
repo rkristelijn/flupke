@@ -11,7 +11,7 @@ exports.chunk = (arr, size) => {
 exports.compact = (arr) => arr.filter(Boolean);
 // Flatten one level using native flat()
 exports.flatten = (arr) => arr.flat();
-exports.flattenDeep = (arr) => arr.flat(Number.POSITIVE_INFINITY);
+exports.flattenDeep = (arr) => arr.flat(Infinity);
 // Remove duplicates using Set
 exports.uniq = (arr) => [...new Set(arr)];
 exports.uniqBy = (arr, fn) => {

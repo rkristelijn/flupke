@@ -1,12 +1,17 @@
 {
   "name": "@flupkejs/axios",
   "version": "1.2.2",
-  "description": "Drop-in replacement for axios — uses native fetch()",
+  "description": "Drop-in replacement for axios \u2014 uses native fetch()",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "exports": {
-    ".": { "types": "./src/index.d.ts", "default": "./src/index.js" },
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
     "./package.json": "./package.json"
   },
   "license": "MIT",
@@ -14,5 +19,12 @@
     "type": "git",
     "url": "https://github.com/rkristelijn/flupke"
   },
-  "keywords": ["axios", "fetch", "http", "client", "flupke"]
+  "keywords": [
+    "axios",
+    "fetch",
+    "http",
+    "client",
+    "flupke"
+  ],
+  "sideEffects": false
 }

@@ -4,8 +4,12 @@
   "description": "Drop-in replacement for http-errors",
   "main": "src/index.js",
   "exports": {
-    ".": { "types": "./src/index.d.ts", "default": "./src/index.js" },
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
     "./package.json": "./package.json"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "sideEffects": false
 }
