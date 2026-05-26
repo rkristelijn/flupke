@@ -60,7 +60,7 @@ class Yallist {
   }
   toArray() {
     const a = [];
-    this.forEach((v) => a.push(v));
+    for (const v of this) { a.push(v; }
     return a;
   }
 }

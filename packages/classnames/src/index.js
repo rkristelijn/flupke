@@ -1,7 +1,6 @@
 module.exports = function classnames(...args) {
   let result = "";
-  for (let i = 0; i < args.length; i++) {
-    const arg = args[i];
+  for (const arg of args) {
     if (!arg) continue;
     if (typeof arg === "string") {
       result = result ? `${result} ${arg}` : arg;

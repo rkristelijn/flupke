@@ -1,7 +1,6 @@
 const { PassThrough } = require("node:stream");
-module.exports = function mergeStream() {
+module.exports = function mergeStream(...streams) {
   const output = new PassThrough({ objectMode: true });
-  const streams = Array.from(arguments);
   for (const s of streams) s.pipe(output, { end: false });
   let ended = 0;
   for (const s of streams)

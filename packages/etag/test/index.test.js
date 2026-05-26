@@ -43,3 +43,46 @@ describe("etag", () => {
     assert.throws(() => etag(123), TypeError);
   });
 });
+
+  it("should throw with correct message on null", () => {
+    assert.throws(() => etag(null), { message: /must not be null/ });
+  });
+
+  it("should throw with correct message on undefined", () => {
+    assert.throws(() => etag(undefined), { message: /must not be null/ });
+  });
+
+  it("should handle Stats object", () => {
+    const stat = { ino: 1234, size: 5678, mtime: new Date("2024-01-01") };
+    const result = etag(stat);
+    assert.ok(result.startsWith('"'));
+    assert.ok(result.endsWith('"'));
+    assert.ok(result.length > 5);
+  });
+
+  it("should generate weak etag for Stats", () => {
+    const stat = { ino: 1, size: 100, mtime: new Date() };
+    const result = etag(stat, { weak: true });
+    assert.ok(result.startsWith('W/"'));
+  });
+
+  it("should generate weak etag for Buffer", () => {
+    const result = etag(Buffer.from("test"), { weak: true });
+    assert.ok(result.startsWith('W/"'));
+  });
+
+  it("strong etag does not have W/ prefix", () => {
+    assert.ok(!etag("x").startsWith("W/"));
+    assert.ok(!etag(Buffer.from("x")).startsWith("W/"));
+  });
+
+  it("different Stats produce different etags", () => {
+    const s1 = { ino: 1, size: 100, mtime: new Date("2024-01-01") };
+    const s2 = { ino: 2, size: 100, mtime: new Date("2024-01-01") };
+    assert.notStrictEqual(etag(s1), etag(s2));
+  });
+
+  it("etag format is quoted string", () => {
+    const result = etag("hello");
+    assert.match(result, /^"[^"]+"$/);
+  });

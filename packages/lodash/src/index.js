@@ -61,19 +61,19 @@ exports.sortBy = (arr, fn) => {
 exports.groupBy = (arr, fn) => {
   const f = typeof fn === "string" ? (o) => o[fn] : fn;
   const r = {};
-  arr.forEach((x) => {
+  for (const x of arr) {
     const k = f(x);
     (r[k] = r[k] || []).push(x);
-  });
+  }
   return r;
 };
 // Index array elements by key function
 exports.keyBy = (arr, fn) => {
   const f = typeof fn === "string" ? (o) => o[fn] : fn;
   const r = {};
-  arr.forEach((x) => {
+  for (const x of arr) {
     r[f(x)] = x;
-  });
+  }
   return r;
 };
 // Find first element matching predicate or partial object
@@ -118,9 +118,9 @@ exports.get = (obj, path, def) => {
         .replace(/\[(\d+)]/g, ".$1")
         .split(".");
   let r = obj;
-  for (let i = 0; i < keys.length; i++) {
+  for (const key of keys) {
     if (r == null) return def;
-    r = r[keys[i]];
+    r = r[key];
   }
   return r === undefined ? def : r;
 };
@@ -142,9 +142,9 @@ exports.set = (obj, path, val) => {
 // Create object with only specified keys
 exports.pick = (obj, keys) => {
   const r = {};
-  keys.forEach((k) => {
+  for (const k of keys) {
     if (k in obj) r[k] = obj[k];
-  });
+  }
   return r;
 };
 // Create object without specified keys
@@ -177,8 +177,8 @@ exports.isEqual = (a, b) => {
   const ka = Object.keys(a);
   const kb = Object.keys(b);
   if (ka.length !== kb.length) return false;
-  for (let i = 0; i < ka.length; i++) {
-    if (!exports.isEqual(a[ka[i]], b[ka[i]])) return false;
+  for (const key of ka) {
+    if (!exports.isEqual(a[key], b[key])) return false;
   }
   return true;
 };

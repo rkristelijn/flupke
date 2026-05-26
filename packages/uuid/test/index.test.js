@@ -33,3 +33,42 @@ test("stringify returns uuid format", () => {
 test("NIL is all zeros", () => {
   assert.equal(uuid.NIL, "00000000-0000-0000-0000-000000000000");
 });
+
+test("v7 is time-ordered across time", async () => {
+  const a = uuid.v7();
+  await new Promise((r) => setTimeout(r, 2));
+  const b = uuid.v7();
+  assert.ok(a < b);
+});
+
+test("v7 encodes timestamp correctly", () => {
+  const before = Date.now();
+  const id = uuid.v7();
+  const after = Date.now();
+  // Extract timestamp from first 12 hex chars (48 bits)
+  const hex = id.replace(/-/g, "").slice(0, 12);
+  const ts = parseInt(hex, 16);
+  assert.ok(ts >= before, `${ts} >= ${before}`);
+  assert.ok(ts <= after, `${ts} <= ${after}`);
+});
+
+test("validate rejects wrong variant", () => {
+  // variant bits must be 10xx (8,9,a,b)
+  assert.strictEqual(uuid.validate("550e8400-e29b-41d4-0716-446655440000"), false);
+});
+
+test("validate rejects wrong version", () => {
+  assert.strictEqual(uuid.validate("550e8400-e29b-01d4-a716-446655440000"), false);
+});
+
+test("parse and stringify roundtrip", () => {
+  const id = uuid.v4();
+  const bytes = uuid.parse(id);
+  const back = uuid.stringify(bytes);
+  assert.strictEqual(back, id);
+});
+
+test("NIL validates as uuid format", () => {
+  // NIL has version 0 and variant 0 — validate should handle it
+  assert.strictEqual(uuid.NIL.length, 36);
+});

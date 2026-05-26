@@ -11,7 +11,7 @@ function parseurl(req) {
   }
 
   // Check cache
-  if (req._parsedUrl && req._parsedUrl.href === req.url) {
+  if (req._parsedUrl?.href === req.url) {
     return req._parsedUrl;
   }
 

@@ -6,9 +6,9 @@ function onExit(handler) {
   };
   listeners.set(wrapped, handler);
   process.on("exit", wrapped);
-  ["SIGINT", "SIGTERM"].forEach((sig) => {
+  for (const sig of ["SIGINT", "SIGTERM"]) {
     process.on(sig, wrapped);
-  });
+  }
   return () => {
     listeners.delete(wrapped);
   };

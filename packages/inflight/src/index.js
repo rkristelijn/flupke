@@ -12,6 +12,6 @@ module.exports = function inflight(key, cb) {
   map.set(key, cbs);
   return (...args) => {
     map.delete(key);
-    cbs.forEach((fn) => fn(...args));
+    for (const fn of cbs) { fn(...args; }
   };
 };

@@ -9,9 +9,9 @@ module.exports = function y18n(opts = {}) {
     locale,
     __(str, ...args) {
       let result = cache[locale]?.[str] || str;
-      args.forEach((a, i) => {
+      for (const a of args) {
         result = result.replace(/%[sd]/, a);
-      });
+      }
       return result;
     },
     setLocale(l) {

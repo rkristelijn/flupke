@@ -22,6 +22,7 @@ module.exports = function yargsParser(args) {
           : true;
     } else if (arg.startsWith("-") && arg.length > 1) {
       const chars = arg.slice(1);
+      // Index needed: checks last-char position and mutates outer loop index
       for (let j = 0; j < chars.length; j++) {
         if (
           j === chars.length - 1 &&

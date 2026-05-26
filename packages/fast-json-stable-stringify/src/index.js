@@ -12,8 +12,7 @@ module.exports = function stableStringify(obj, opts) {
     if (typeof node === "string") return JSON.stringify(node);
     if (Array.isArray(node)) {
       const arrOut = [];
-      for (let i = 0; i < node.length; i++)
-        arrOut.push(stringify(node[i]) || "null");
+      for (const item of node) arrOut.push(stringify(item) || "null");
       return `[${arrOut.join(",")}]`;
     }
     if (typeof node.toJSON === "function") return stringify(node.toJSON());
@@ -24,8 +23,7 @@ module.exports = function stableStringify(obj, opts) {
     seen.push(node);
     const keys = Object.keys(node).sort(cmp);
     const out = [];
-    for (let i = 0; i < keys.length; i++) {
-      const key = keys[i];
+    for (const key of keys) {
       if (node[key] === undefined) continue;
       const val = stringify(node[key]);
       if (val) out.push(`${JSON.stringify(key)}:${val}`);

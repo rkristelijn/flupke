@@ -29,9 +29,9 @@ function create(defaults) {
     const opts = merge(defaults, config);
     const headers = {};
     data = data || opts.data;
-    (opts.transformRequest || []).forEach((fn) => {
+    for (const fn of opts.transformRequest || []) {
       data = fn(data, opts.headers) || data;
-    });
+    }
     if (opts.auth) headers.authorization = opts.auth;
     if (
       data &&
@@ -100,7 +100,7 @@ function create(defaults) {
   request.defaults = defaults;
   request.create = create;
   request.isAxiosError = (e) =>
-    e && e.config !== undefined && e.status !== undefined;
+    e?.config !== undefined && e?.status !== undefined;
   return request;
 }
 
