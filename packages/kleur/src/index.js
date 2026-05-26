@@ -2,11 +2,12 @@ const { FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM } = process.env;
 const isTTY = process.stdout?.isTTY;
 
 const $ = {
-  enabled:
+  enabled: !!(
     !NODE_DISABLE_COLORS &&
     NO_COLOR == null &&
     TERM !== "dumb" &&
-    ((FORCE_COLOR != null && FORCE_COLOR !== "0") || isTTY),
+    ((FORCE_COLOR != null && FORCE_COLOR !== "0") || isTTY)
+  ),
 };
 
 function init(open, close) {

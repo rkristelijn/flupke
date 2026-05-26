@@ -60,8 +60,12 @@ class Yallist {
   }
   toArray() {
     const a = [];
-    for (const v of this) { a.push(v; }
+    for (const v of this) a.push(v);
     return a;
+  }
+  *[Symbol.iterator]() {
+    let n = this.head;
+    while (n) { yield n.value; n = n.next; }
   }
 }
 module.exports = Yallist;
