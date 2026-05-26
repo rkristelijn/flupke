@@ -16,7 +16,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const FRAMEWORKS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/frameworks.json'), 'utf8')).frameworks;
 const OUT_DIR = path.join(ROOT, 'data/api-usage');
-const TMP_BASE = path.join(ROOT, '.tmp/api-scan');
+const TMP_BASE = path.join(process.env.TMPDIR || "/tmp", "flupke-api-scan");
 
 const FLUPKE_PACKAGES = new Set(
   fs.readdirSync(path.join(ROOT, 'packages'))
