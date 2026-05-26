@@ -1,5 +1,7 @@
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
+// Force colors on for testing (CI has no TTY)
+process.env.FORCE_COLOR = "3";
 const chalk = require("../src/index.js");
 
 test("red", () => {
