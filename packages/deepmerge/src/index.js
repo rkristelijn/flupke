@@ -6,11 +6,8 @@ function deepmerge(target, source, options) {
     return Array.isArray(target) ? [...target, ...source] : source.slice();
   }
   const result = {};
-  let keys = Object.keys(target);
-  for (let i = 0; i < keys.length; i++) result[keys[i]] = target[keys[i]];
-  keys = Object.keys(source);
-  for (let i = 0; i < keys.length; i++) {
-    const key = keys[i];
+  for (const key of Object.keys(target)) result[key] = target[key];
+  for (const key of Object.keys(source)) {
     const val = source[key];
     if (
       val &&

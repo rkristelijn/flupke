@@ -4,9 +4,7 @@
   "description": "Drop-in replacement for lodash \u2014 native ES2020+ implementations",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -19,11 +17,6 @@
     "type": "git",
     "url": "https://github.com/rkristelijn/flupke"
   },
-  "keywords": [
-    "lodash",
-    "utility",
-    "native",
-    "flupke"
-  ],
+  "keywords": ["lodash", "utility", "native", "flupke"],
   "sideEffects": false
 }

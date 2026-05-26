@@ -4,9 +4,7 @@
   "description": "Drop-in replacement for moment \u2014 uses native Date and Intl",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -19,12 +17,6 @@
     "type": "git",
     "url": "https://github.com/rkristelijn/flupke"
   },
-  "keywords": [
-    "moment",
-    "date",
-    "time",
-    "format",
-    "flupke"
-  ],
+  "keywords": ["moment", "date", "time", "format", "flupke"],
   "sideEffects": false
 }

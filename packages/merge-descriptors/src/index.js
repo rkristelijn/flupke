@@ -8,8 +8,7 @@
 function mergeDescriptors(dest, src, redefine) {
   if (redefine === undefined) redefine = true;
   const names = Object.getOwnPropertyNames(src);
-  for (let i = 0; i < names.length; i++) {
-    const name = names[i];
+  for (const name of names) {
     if (!redefine && Object.hasOwn(dest, name)) continue;
     const descriptor = Object.getOwnPropertyDescriptor(src, name);
     Object.defineProperty(dest, name, descriptor);

@@ -30,7 +30,7 @@ function stringify(bytes) {
 }
 
 function parse(str) {
-  const hex = str.replace(/-/g, "");
+  const hex = str.replaceAll("-", "");
   return Uint8Array.from(Buffer.from(hex, "hex"));
 }
 

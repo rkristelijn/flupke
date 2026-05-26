@@ -29,7 +29,7 @@ function fresh(reqHeaders, resHeaders) {
       for (const clientETag of clientETags) {
         const normalizedClientETag = clientETag
           .replace(/^W\//, "")
-          .replace(/"/g, "");
+          .replaceAll('"', "");
         if (normalizedClientETag === serverETag) {
           return true;
         }

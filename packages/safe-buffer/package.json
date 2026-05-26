@@ -4,9 +4,7 @@
   "description": "Drop-in replacement for safe-buffer \u2014 delegates to native Buffer.from/alloc",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -19,12 +17,6 @@
     "type": "git",
     "url": "https://github.com/rkristelijn/flupke"
   },
-  "keywords": [
-    "safe-buffer",
-    "buffer",
-    "alloc",
-    "flupke",
-    "hardened"
-  ],
+  "keywords": ["safe-buffer", "buffer", "alloc", "flupke", "hardened"],
   "sideEffects": false
 }

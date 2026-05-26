@@ -1,0 +1,65 @@
+{
+  "framework": "winston",
+  "npm": "winston",
+  "version": "3.19.0",
+  "generated": "2026-05-26",
+  "packages_with_usage": 5,
+  "total_signatures": 9,
+  "usage": {
+    "inherits": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "inherits(expr, expr)"
+      }
+    ],
+    "is-stream": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "is-stream(expr)"
+      }
+    ],
+    "ms": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "ms(expr)"
+      }
+    ],
+    "safe-buffer": [
+      {
+        "type": "property",
+        "member": "isEncoding",
+        "signature": "safe-buffer.isEncoding"
+      },
+      {
+        "type": "method",
+        "member": "allocUnsafe",
+        "signature": "safe-buffer.allocUnsafe(expr)"
+      }
+    ],
+    "triple-beam": [
+      {
+        "type": "property",
+        "member": "configs",
+        "signature": "triple-beam.configs"
+      },
+      {
+        "type": "property",
+        "member": "MESSAGE",
+        "signature": "triple-beam.MESSAGE"
+      },
+      {
+        "type": "property",
+        "member": "LEVEL",
+        "signature": "triple-beam.LEVEL"
+      },
+      {
+        "type": "property",
+        "member": "SPLAT",
+        "signature": "triple-beam.SPLAT"
+      }
+    ]
+  }
+}

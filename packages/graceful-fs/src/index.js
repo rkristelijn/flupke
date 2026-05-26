@@ -14,7 +14,7 @@ function retry() {
   running = true;
   const { method, args, cb } = queue.shift();
   fs[method](...args, (err, ...res) => {
-    if (err && err.code === "EMFILE") {
+    if (err?.code === "EMFILE") {
       queue.unshift({ method, args, cb });
       setTimeout(retry, 1);
     } else {
@@ -23,10 +23,10 @@ function retry() {
     }
   });
 }
-["open", "readFile", "writeFile", "readdir", "stat", "lstat"].forEach((m) => {
+for (const m of ["open", "readFile", "writeFile", "readdir", "stat", "lstat"]) {
   module.exports[m] = (...args) => {
     const cb = args.pop();
     queue.push({ method: m, args, cb });
     if (!running) retry();
   };
-});
+}

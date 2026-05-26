@@ -50,3 +50,54 @@ test("matches original parse", () => {
 test("matches original serialize", () => {
   assert.equal(cookie.serialize("a", "b"), origCookie.serialize("a", "b"));
 });
+
+test("parse returns empty for non-string", () => {
+  assert.deepEqual(cookie.parse(null), {});
+  assert.deepEqual(cookie.parse(undefined), {});
+});
+
+test("parse trims whitespace from keys and values", () => {
+  const result = cookie.parse("  foo  =  bar  ");
+  assert.strictEqual(result.foo, "bar");
+});
+
+test("parse strips quotes from values", () => {
+  const result = cookie.parse('foo="bar"');
+  assert.strictEqual(result.foo, "bar");
+});
+
+test("parse first value wins for duplicate keys", () => {
+  const result = cookie.parse("a=1; a=2");
+  assert.strictEqual(result.a, "1");
+});
+
+test("parse handles decode errors gracefully", () => {
+  const result = cookie.parse("foo=%E0%A4%A");
+  assert.ok("foo" in result);
+});
+
+test("serialize with maxAge", () => {
+  const result = cookie.serialize("a", "b", { maxAge: 3600 });
+  assert.ok(result.includes("Max-Age=3600"));
+});
+
+test("serialize with expires", () => {
+  const d = new Date("2024-01-01");
+  const result = cookie.serialize("a", "b", { expires: d });
+  assert.ok(result.includes("Expires="));
+});
+
+test("serialize with sameSite string", () => {
+  const result = cookie.serialize("a", "b", { sameSite: "Lax" });
+  assert.ok(result.includes("SameSite=Lax"));
+});
+
+test("serialize with domain", () => {
+  const result = cookie.serialize("a", "b", { domain: ".example.com" });
+  assert.ok(result.includes("Domain=.example.com"));
+});
+
+test("serialize with custom encode", () => {
+  const result = cookie.serialize("a", "hello world", { encode: (v) => v });
+  assert.strictEqual(result, "a=hello world");
+});

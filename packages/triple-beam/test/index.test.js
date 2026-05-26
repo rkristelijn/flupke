@@ -9,3 +9,12 @@ it("exports symbols", () => {
 it("uses Symbol.for", () => {
   assert.strictEqual(LEVEL, Symbol.for("level"));
 });
+
+it("exports configs with npm/syslog/cli", () => {
+  const { configs } = require("../src/index.js");
+  assert.ok(configs.npm.levels);
+  assert.ok(configs.syslog.levels);
+  assert.ok(configs.cli.levels);
+  assert.strictEqual(configs.npm.levels.error, 0);
+  assert.strictEqual(configs.syslog.levels.emerg, 0);
+});

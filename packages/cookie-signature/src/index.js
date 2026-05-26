@@ -19,7 +19,7 @@ function sign(val, secret) {
     .digest("base64")
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
-    .replace(/=/g, "")}`;
+    .replaceAll("=", "")}`;
 }
 
 /**
@@ -48,7 +48,7 @@ function unsign(val, secret) {
     .digest("base64")
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
-    .replace(/=/g, "");
+    .replaceAll("=", "");
 
   if (signature === expected) {
     return original;

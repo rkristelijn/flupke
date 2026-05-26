@@ -5,8 +5,8 @@ const path = require("node:path");
 function parse(src) {
   const obj = {};
   const lines = src.toString().replace(/\r\n?/g, "\n").split("\n");
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
+  for (const raw of lines) {
+    const line = raw.trim();
     if (!line || line[0] === "#") continue;
     const idx = line.indexOf("=");
     if (idx === -1) continue;

@@ -18,7 +18,6 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@stryker-mutator/core": "9.6.1",
-    "@stryker-mutator/javascript-mutator": "4.0.0",
     "cookie": "1.1.1",
     "depd": "2.0.0",
     "dotenv": "17.4.2",

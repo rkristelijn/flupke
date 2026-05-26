@@ -4,11 +4,11 @@ exports.parse = function parse(str, options) {
   if (!str || typeof str !== "string") return obj;
   const dec = options?.decode || decodeURIComponent;
   const pairs = str.split(";");
-  for (let i = 0; i < pairs.length; i++) {
-    const idx = pairs[i].indexOf("=");
+  for (const pair of pairs) {
+    const idx = pair.indexOf("=");
     if (idx < 0) continue;
-    const key = pairs[i].substring(0, idx).trim();
-    let val = pairs[i].substring(idx + 1).trim();
+    const key = pair.substring(0, idx).trim();
+    let val = pair.substring(idx + 1).trim();
     if (val[0] === '"') val = val.slice(1, -1);
     if (obj[key] === undefined) {
       try {

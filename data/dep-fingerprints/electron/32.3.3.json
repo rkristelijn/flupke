@@ -1,0 +1,23 @@
+{
+  "framework": "electron",
+  "npm": "electron",
+  "version": "32.3.3",
+  "generated": "2026-05-26",
+  "replaceable_count": 13,
+  "total_flupke_packages": 166,
+  "deps": {
+    "debug": "4.4.3",
+    "define-data-property": "1.1.4",
+    "es-define-property": "1.0.1",
+    "es-errors": "1.3.0",
+    "escape-string-regexp": "4.0.0",
+    "get-stream": "5.2.0",
+    "gopd": "1.2.0",
+    "graceful-fs": "4.2.11",
+    "ms": "2.1.3",
+    "once": "1.4.0",
+    "semver": "6.3.1",
+    "type-fest": "0.13.1",
+    "wrappy": "1.0.2"
+  }
+}
