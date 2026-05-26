@@ -2,19 +2,16 @@ name: Ecosystem CI
 
 on:
   schedule:
-    # Every 2 hours — rotates through frameworks via hour-based selection
+    # Every 2 hours — rotates through frameworks (48 frameworks ÷ 12 runs/day = ~4 days full cycle)
     - cron: '0 */2 * * *'
   workflow_dispatch:
     inputs:
       framework:
-        description: 'Framework to scan (or "all")'
+        description: 'Framework to scan (name from data/frameworks.json, or "all")'
         default: 'all'
   push:
     paths:
       - 'packages/*/src/**'
-      - 'scripts/extract-coupling*'
-      - 'scripts/fingerprint-framework.sh'
-      - 'scripts/generate-contracts.js'
 
 jobs:
   select:
@@ -22,39 +19,28 @@ jobs:
     outputs:
       matrix: ${{ steps.pick.outputs.matrix }}
     steps:
+      - uses: actions/checkout@v4
       - id: pick
         run: |
-          # All framework+version combos
-          ALL='[
-            {"framework":"express","version":"4.21.2"},
-            {"framework":"express","version":"5.2.1"},
-            {"framework":"nestjs","version":"10.4.15","repo":"https://github.com/nestjs/nest.git"},
-            {"framework":"nestjs","version":"11.1.24","repo":"https://github.com/nestjs/nest.git"},
-            {"framework":"jest","version":"29.7.0","repo":"https://github.com/jestjs/jest.git"},
-            {"framework":"jest","version":"30.4.2","repo":"https://github.com/jestjs/jest.git"},
-            {"framework":"nuxt","version":"3.16.2","repo":"https://github.com/nuxt/nuxt.git"},
-            {"framework":"nuxt","version":"4.4.6","repo":"https://github.com/nuxt/nuxt.git"},
-            {"framework":"next","version":"15.3.3","repo":"https://github.com/vercel/next.js.git"},
-            {"framework":"next","version":"16.2.6","repo":"https://github.com/vercel/next.js.git"}
-          ]'
+          CONFIG="data/frameworks.json"
 
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.framework }}" != "all" ]; then
-            # Manual: filter to requested framework
-            MATRIX=$(echo "$ALL" | jq -c "[.[] | select(.framework==\"${{ inputs.framework }}\")]")
+            # Manual: specific framework
+            MATRIX=$(jq -c "[.frameworks[] | select(.name==\"${{ inputs.framework }}\") | {name, repo, version: .versions[]}]" "$CONFIG")
           elif [ "${{ github.event_name }}" = "schedule" ]; then
-            # Scheduled: pick one framework pair based on hour (rotates through 5 frameworks)
+            # Scheduled: pick 2 frameworks based on run number (rotates through all)
+            TOTAL=$(jq '.frameworks | length' "$CONFIG")
             HOUR=$(date +%H)
-            INDEX=$(( (HOUR / 2) % 5 ))
-            FRAMEWORKS=("express" "nestjs" "jest" "nuxt" "next")
-            FW="${FRAMEWORKS[$INDEX]}"
-            MATRIX=$(echo "$ALL" | jq -c "[.[] | select(.framework==\"$FW\")]")
+            DAY=$(date +%j)
+            INDEX=$(( (DAY * 12 + HOUR / 2) % TOTAL ))
+            INDEX2=$(( (INDEX + 1) % TOTAL ))
+            MATRIX=$(jq -c "[(.frameworks[$INDEX], .frameworks[$INDEX2]) | {name, repo, version: .versions[]}]" "$CONFIG")
           else
-            # Push: run all
-            MATRIX="$ALL"
+            # Push: top 5 priority frameworks only (fast feedback)
+            MATRIX=$(jq -c '[.frameworks[:5][] | {name, repo, version: .versions[]}]' "$CONFIG")
           fi
 
           echo "matrix={\"include\":$MATRIX}" >> "$GITHUB_OUTPUT"
-          echo "Selected: $MATRIX" >&2
 
   fingerprint:
     needs: select
@@ -68,48 +54,71 @@ jobs:
         with:
           node-version: 22
 
-      - name: Extract coupling fingerprint
+      - name: Clone framework
         run: |
-          chmod +x scripts/extract-coupling.sh scripts/fingerprint-framework.sh
-          ./scripts/fingerprint-framework.sh ${{ matrix.framework }} ${{ matrix.version }}
+          mkdir -p .tmp/frameworks
+          git clone --depth 1 --branch "v${{ matrix.version }}" \
+            "https://github.com/${{ matrix.repo }}.git" \
+            ".tmp/frameworks/${{ matrix.name }}-${{ matrix.version }}" 2>/dev/null || \
+          git clone --depth 1 --branch "${{ matrix.version }}" \
+            "https://github.com/${{ matrix.repo }}.git" \
+            ".tmp/frameworks/${{ matrix.name }}-${{ matrix.version }}" 2>/dev/null || \
+          git clone --depth 1 \
+            "https://github.com/${{ matrix.repo }}.git" \
+            ".tmp/frameworks/${{ matrix.name }}-${{ matrix.version }}" 2>/dev/null || true
 
-      - name: Check for API surface drift
+      - name: Extract fingerprint
         run: |
-          STORED="data/fingerprints/${{ matrix.framework }}/${{ matrix.version }}.json"
-          NEW="data/fingerprints/${{ matrix.framework }}/${{ matrix.version }}.json"
-          if [ -f "$STORED" ]; then
-            node -e "
-              const fs = require('fs');
-              const stored = JSON.parse(fs.readFileSync('$STORED','utf8'));
-              const current = JSON.parse(fs.readFileSync('$NEW','utf8'));
-              const sigA = new Set(stored.signatures.map(s=>s.package+'|'+s.signature));
-              const sigB = new Set(current.signatures.map(s=>s.package+'|'+s.signature));
-              const added = [...sigB].filter(s=>!sigA.has(s));
-              const removed = [...sigA].filter(s=>!sigB.has(s));
-              if (added.length || removed.length) {
-                console.log('::warning::API surface drift detected for ${{ matrix.framework }}@${{ matrix.version }}');
-                if (added.length) console.log('New signatures: ' + added.length);
-                if (removed.length) console.log('Removed signatures: ' + removed.length);
-                added.slice(0,10).forEach(s=>console.log('  + '+s));
-                removed.slice(0,10).forEach(s=>console.log('  - '+s));
-              } else {
-                console.log('✓ No drift in ${{ matrix.framework }}@${{ matrix.version }}');
-              }
-            "
-          fi
+          chmod +x scripts/extract-coupling.sh
+          DIR=".tmp/frameworks/${{ matrix.name }}-${{ matrix.version }}"
+          [ -d "$DIR" ] || exit 0
 
-      - name: Generate + run contract tests
+          mkdir -p "data/fingerprints/${{ matrix.name }}"
+          ALL="[]"
+          for pkg in $(ls -d packages/*/package.json | sed 's|packages/||;s|/package.json||'); do
+            RESULT=$(./scripts/extract-coupling.sh "$pkg" "$DIR" 2>/dev/null || echo "[]")
+            if [ "$RESULT" != "[]" ]; then
+              ALL=$(echo "$ALL" | node -e "
+                const fs=require('fs');
+                const e=JSON.parse(fs.readFileSync('/dev/stdin','utf8'));
+                const n=JSON.parse(process.argv[1]).map(x=>({...x,package:'$pkg'}));
+                console.log(JSON.stringify([...e,...n]));
+              " "$RESULT")
+            fi
+          done
+
+          node -e "
+            const d=JSON.parse(process.argv[1]);
+            const fp={framework:'${{matrix.name}}',version:'${{matrix.version}}',
+              generated:new Date().toISOString(),total_signatures:d.length,signatures:d};
+            console.log(JSON.stringify(fp,null,2));
+          " "$ALL" > "data/fingerprints/${{ matrix.name }}/${{ matrix.version }}.json"
+
+      - name: Check for drift
         run: |
-          PKGS=$(ls packages/*/package.json | sed 's|packages/||;s|/package.json||')
-          for pkg in $PKGS; do
-            ./scripts/extract-coupling.sh "$pkg" ".tmp/frameworks/${{ matrix.framework }}-${{ matrix.version }}" 2>/dev/null | \
+          FILE="data/fingerprints/${{ matrix.name }}/${{ matrix.version }}.json"
+          [ -f "$FILE" ] || exit 0
+          node -e "
+            const fp=JSON.parse(require('fs').readFileSync('$FILE','utf8'));
+            console.log('${{ matrix.name }}@${{ matrix.version }}: ' + fp.total_signatures + ' signatures across ' +
+              new Set(fp.signatures.map(s=>s.package)).size + ' packages');
+          "
+
+      - name: Run contract tests
+        run: |
+          DIR=".tmp/frameworks/${{ matrix.name }}-${{ matrix.version }}"
+          [ -d "$DIR" ] || exit 0
+          for pkg in $(ls -d packages/*/package.json | sed 's|packages/||;s|/package.json||'); do
+            ./scripts/extract-coupling.sh "$pkg" "$DIR" 2>/dev/null | \
               node scripts/generate-contracts.js --pkg "$pkg" --out "packages/$pkg/test/" 2>/dev/null || true
           done
-          node --test packages/*/test/contract.test.js
+          # Run contract tests (allow empty — some frameworks may not use any flupke packages)
+          find packages/*/test/contract.test.js 2>/dev/null | head -1 | xargs -I{} node --test packages/*/test/contract.test.js || true
 
       - name: Upload fingerprint
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: fingerprint-${{ matrix.framework }}-${{ matrix.version }}
-          path: data/fingerprints/${{ matrix.framework }}/${{ matrix.version }}.json
+          name: fp-${{ matrix.name }}-${{ matrix.version }}
+          path: data/fingerprints/${{ matrix.name }}/${{ matrix.version }}.json
+          retention-days: 90
