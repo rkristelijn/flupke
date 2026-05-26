@@ -46,3 +46,32 @@ test("string numbers", () => {
 test("throws on invalid", () => {
   assert.throws(() => fill("foo", "bar"), TypeError);
 });
+
+test("step as object (options)", () => {
+  const result = fill(1, 5, { transform: (v) => `#${v}` });
+  assert.deepStrictEqual(result, ["#1", "#2", "#3", "#4", "#5"]);
+});
+
+test("single char range with step", () => {
+  assert.deepStrictEqual(fill("a", "z", 5), ["a", "f", "k", "p", "u", "z"]);
+});
+
+test("descending char range", () => {
+  assert.deepStrictEqual(fill("d", "a"), ["d", "c", "b", "a"]);
+});
+
+test("negative descending", () => {
+  assert.deepStrictEqual(fill(2, -2), ["2", "1", "0", "-1", "-2"]);
+});
+
+test("pad option", () => {
+  assert.deepStrictEqual(fill(1, 100, 49, { pad: true }), ["001", "050", "099"]);
+});
+
+test("single number returns single element", () => {
+  assert.deepStrictEqual(fill(5, 5), ["5"]);
+});
+
+test("single char returns single element", () => {
+  assert.deepStrictEqual(fill("a", "a"), ["a"]);
+});
