@@ -13,7 +13,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const FRAMEWORKS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/frameworks.json'), 'utf8')).frameworks;
 const OUT_DIR = path.join(ROOT, 'data/dep-fingerprints');
-const TMP_BASE = path.join(ROOT, '.tmp/dep-fp');
+const TMP_BASE = path.join(process.env.TMPDIR || "/tmp", "flupke-dep-fp");
 
 // Get flupke package names from packages/ directory
 const FLUPKE_PACKAGES = new Set(
