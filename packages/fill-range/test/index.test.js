@@ -75,3 +75,40 @@ test("single number returns single element", () => {
 test("single char returns single element", () => {
   assert.deepStrictEqual(fill("a", "a"), ["a"]);
 });
+
+test("multi-char string treated as number", () => {
+  assert.deepStrictEqual(fill("10", "13"), ["10", "11", "12", "13"]);
+});
+
+test("throws for non-numeric multi-char strings", () => {
+  assert.throws(() => fill("foo", "bar"), TypeError);
+});
+
+test("NaN check triggers on invalid multi-char", () => {
+  assert.throws(() => fill("foo", "bar"), TypeError);
+  assert.throws(() => fill("abc", "def"), TypeError);
+});
+
+test("zero-padded detection from string format", () => {
+  assert.deepStrictEqual(fill("001", "003"), ["001", "002", "003"]);
+  assert.deepStrictEqual(fill(1, 3), ["1", "2", "3"]);
+});
+
+test("ascending vs descending numbers", () => {
+  assert.deepStrictEqual(fill(1, 3), ["1", "2", "3"]);
+  assert.deepStrictEqual(fill(3, 1), ["3", "2", "1"]);
+});
+
+test("ascending vs descending chars", () => {
+  assert.deepStrictEqual(fill("a", "c"), ["a", "b", "c"]);
+  assert.deepStrictEqual(fill("c", "a"), ["c", "b", "a"]);
+});
+
+test("negative to positive range", () => {
+  const result = fill(-1, 1);
+  assert.deepStrictEqual(result, ["-1", "0", "1"]);
+});
+
+test("error message is correct", () => {
+  assert.throws(() => fill("abc", "def"), { message: /fill-range/ });
+});
