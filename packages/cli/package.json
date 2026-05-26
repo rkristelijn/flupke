@@ -5,7 +5,10 @@
   "bin": { "flupke": "src/index.js" },
   "files": ["src"],
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/rkristelijn/flupke" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rkristelijn/flupke"
+  },
   "keywords": ["flupke", "security", "supply-chain", "overrides", "cli"],
   "engines": { "node": ">=18" }
 }

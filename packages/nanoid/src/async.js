@@ -1,2 +1,1 @@
-'use strict';
-module.exports = { nanoid: require('./index.js') };
+module.exports = { nanoid: require("./index.js") };

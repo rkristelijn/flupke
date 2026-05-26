@@ -1,1 +1,11 @@
-{"name":"@flupkejs/fast-levenshtein","version":"1.0.0","description":"Drop-in replacement for fast-levenshtein","main":"src/index.js","exports":{".":{"types":"./src/index.d.ts","default":"./src/index.js"},"./package.json":"./package.json"},"license":"MIT"}
+{
+  "name": "@flupkejs/fast-levenshtein",
+  "version": "1.0.0",
+  "description": "Drop-in replacement for fast-levenshtein",
+  "main": "src/index.js",
+  "exports": {
+    ".": { "types": "./src/index.d.ts", "default": "./src/index.js" },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT"
+}

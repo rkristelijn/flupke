@@ -13,7 +13,10 @@ module.exports = function depd(namespace) {
     const msg = `${namespace}: ${message || `${fn.name} is deprecated`}`;
     let warned = false;
     function deprecated() {
-      if (!warned) { warned = true; if (!process.noDeprecation) console.warn(msg); }
+      if (!warned) {
+        warned = true;
+        if (!process.noDeprecation) console.warn(msg);
+      }
       return fn.apply(this, arguments);
     }
     deprecated.prototype = fn.prototype;

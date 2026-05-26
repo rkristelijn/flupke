@@ -5,9 +5,15 @@
 function SideChannel() {
   const wm = new WeakMap();
   return {
-    get(key) { return wm.get(key); },
-    set(key, value) { wm.set(key, value); },
-    has(key) { return wm.has(key); },
+    get(key) {
+      return wm.get(key);
+    },
+    set(key, value) {
+      wm.set(key, value);
+    },
+    has(key) {
+      return wm.has(key);
+    },
   };
 }
 

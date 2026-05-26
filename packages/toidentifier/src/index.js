@@ -8,9 +8,11 @@ function toIdentifier(str) {
     str = String(str);
   }
 
-  return str.split(' ').map(function(part) {
-    return part.slice(0, 1).toUpperCase() + part.slice(1);
-  }).join('').replace(/[^ _0-9a-z]/gi, '');
+  return str
+    .split(" ")
+    .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
+    .join("")
+    .replace(/[^ _0-9a-z]/gi, "");
 }
 
 module.exports = toIdentifier;

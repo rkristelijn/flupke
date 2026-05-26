@@ -1,4 +1,4 @@
-import { Stats } from 'fs';
+import type { Stats } from "node:fs";
 
 interface EtagOptions {
   weak?: boolean;
@@ -12,5 +12,5 @@ interface EtagOptions {
  */
 export function etag(
   entity: string | Buffer | Stats,
-  options?: EtagOptions
+  options?: EtagOptions,
 ): string;

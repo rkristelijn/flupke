@@ -3,9 +3,7 @@
   "version": "1.2.2",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "exports": {
     ".": {
       "types": "./src/index.d.ts",

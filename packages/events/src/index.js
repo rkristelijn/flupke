@@ -1,1 +1,1 @@
-module.exports = require('node:events');
+module.exports = require("node:events");

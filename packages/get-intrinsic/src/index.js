@@ -87,7 +87,7 @@ module.exports = function getIntrinsic(name) {
   // Support dot-notation: %Object.defineProperty%
   const match = name.match(/^%([^.%]+)\.([^%]+)%$/);
   if (match) {
-    const base = intrinsics['%' + match[1] + '%'];
+    const base = intrinsics[`%${match[1]}%`];
     if (base) return base[match[2]];
   }
   throw new TypeError(`Intrinsic not found: ${name}`);

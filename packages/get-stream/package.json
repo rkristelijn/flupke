@@ -1,1 +1,11 @@
-{"name":"@flupkejs/get-stream","version":"1.0.0","description":"Drop-in replacement for get-stream","main":"src/index.js","exports":{".":{"types":"./src/index.d.ts","default":"./src/index.js"},"./package.json":"./package.json"},"license":"MIT"}
+{
+  "name": "@flupkejs/get-stream",
+  "version": "1.0.0",
+  "description": "Drop-in replacement for get-stream",
+  "main": "src/index.js",
+  "exports": {
+    ".": { "types": "./src/index.d.ts", "default": "./src/index.js" },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT"
+}

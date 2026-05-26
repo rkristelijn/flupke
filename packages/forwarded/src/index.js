@@ -5,12 +5,12 @@
  * @returns {string[]}
  */
 function forwarded(req) {
-  if (!req) throw new TypeError('argument req is required');
-  const socketAddr = req.connection && req.connection.remoteAddress || '';
-  const header = req.headers && req.headers['x-forwarded-for'] || '';
+  if (!req) throw new TypeError("argument req is required");
+  const socketAddr = req.connection?.remoteAddress || "";
+  const header = req.headers?.["x-forwarded-for"] || "";
   const addrs = [socketAddr];
   if (header) {
-    const parts = header.split(',');
+    const parts = header.split(",");
     for (let i = parts.length - 1; i >= 0; i--) {
       const addr = parts[i].trim();
       if (addr) addrs.push(addr);

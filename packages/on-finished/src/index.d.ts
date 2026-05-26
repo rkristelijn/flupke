@@ -12,7 +12,7 @@ interface Response {
  */
 export function onFinished(
   msg: Response,
-  listener: (err: null, msg: Response) => void
+  listener: (err: null, msg: Response) => void,
 ): () => void;
 
 /**
