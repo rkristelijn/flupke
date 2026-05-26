@@ -55,3 +55,49 @@ describe("fresh", () => {
     assert.strictEqual(result, true);
   });
 });
+
+  it("should return false when no validators present", () => {
+    assert.strictEqual(fresh({}, { etag: '"abc"' }), false);
+  });
+
+  it("should return false when headers are empty", () => {
+    assert.strictEqual(fresh({}, {}), false);
+  });
+
+  it("should return false when no etag in response for if-none-match", () => {
+    assert.strictEqual(fresh({ "if-none-match": '"abc"' }, {}), false);
+  });
+
+  it("should handle weak ETag on client side", () => {
+    assert.strictEqual(fresh({ "if-none-match": 'W/"abc"' }, { etag: '"abc"' }), true);
+  });
+
+  it("should return false for mismatched weak ETags", () => {
+    assert.strictEqual(fresh({ "if-none-match": 'W/"abc"' }, { etag: '"xyz"' }), false);
+  });
+
+  it("should return false when if-modified-since is invalid date", () => {
+    assert.strictEqual(fresh({ "if-modified-since": "invalid" }, { "last-modified": "Mon, 01 Jan 2024 00:00:00 GMT" }), false);
+  });
+
+  it("should return false when last-modified is invalid date", () => {
+    assert.strictEqual(fresh({ "if-modified-since": "Mon, 01 Jan 2024 00:00:00 GMT" }, { "last-modified": "invalid" }), false);
+  });
+
+  it("should return true when dates are equal", () => {
+    const d = "Mon, 01 Jan 2024 00:00:00 GMT";
+    assert.strictEqual(fresh({ "if-modified-since": d }, { "last-modified": d }), true);
+  });
+
+  it("should handle multiple ETags in if-none-match", () => {
+    assert.strictEqual(fresh({ "if-none-match": '"a", "b", "c"' }, { etag: '"b"' }), true);
+    assert.strictEqual(fresh({ "if-none-match": '"a", "b", "c"' }, { etag: '"d"' }), false);
+  });
+
+  it("should prefer ETag over modified-since when both present", () => {
+    const result = fresh(
+      { "if-none-match": '"abc"', "if-modified-since": "Mon, 01 Jan 2020 00:00:00 GMT" },
+      { etag: '"abc"', "last-modified": "Mon, 01 Jan 2024 00:00:00 GMT" }
+    );
+    assert.strictEqual(result, true);
+  });
