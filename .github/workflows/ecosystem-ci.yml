@@ -1,0 +1,77 @@
+name: Ecosystem CI
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Weekly Monday 6am UTC
+  workflow_dispatch:
+  push:
+    paths:
+      - 'packages/*/src/**'
+      - 'scripts/extract-coupling.sh'
+      - 'scripts/extract-coupling-parse.js'
+      - 'scripts/generate-contracts.js'
+
+jobs:
+  fingerprint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - framework: express
+            version: '4.21.2'
+          - framework: express
+            version: '5.2.1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Extract coupling fingerprint
+        run: |
+          chmod +x scripts/extract-coupling.sh scripts/fingerprint-framework.sh
+          ./scripts/fingerprint-framework.sh ${{ matrix.framework }} ${{ matrix.version }}
+
+      - name: Diff against stored fingerprint
+        run: |
+          STORED="data/fingerprints/${{ matrix.framework }}/${{ matrix.version }}.json"
+          NEW=".tmp/fingerprints/${{ matrix.framework }}/${{ matrix.version }}.json"
+          if [ -f "$STORED" ] && [ -f "$NEW" ]; then
+            node -e "
+              const fs = require('fs');
+              const a = JSON.parse(fs.readFileSync('$STORED','utf8'));
+              const b = JSON.parse(fs.readFileSync('$NEW','utf8'));
+              const sigA = new Set(a.signatures.map(s=>s.package+'|'+s.signature));
+              const sigB = new Set(b.signatures.map(s=>s.package+'|'+s.signature));
+              const added = [...sigB].filter(s=>!sigA.has(s));
+              const removed = [...sigA].filter(s=>!sigB.has(s));
+              if (added.length || removed.length) {
+                console.log('::warning::API surface changed for ${{ matrix.framework }}@${{ matrix.version }}');
+                added.forEach(s=>console.log('+ '+s));
+                removed.forEach(s=>console.log('- '+s));
+                process.exit(1);
+              }
+              console.log('No changes in ${{ matrix.framework }}@${{ matrix.version }} fingerprint');
+            "
+          fi
+
+      - name: Generate contract tests
+        run: |
+          EXPRESS_DEPS="debug etag parseurl on-finished cookie content-type content-disposition encodeurl escape-html http-errors merge-descriptors mime-types depd vary statuses range-parser once"
+          for pkg in $EXPRESS_DEPS; do
+            if [ -d "packages/$pkg" ]; then
+              ./scripts/extract-coupling.sh "$pkg" ".tmp/frameworks/${{ matrix.framework }}-${{ matrix.version }}" 2>/dev/null | \
+                node scripts/generate-contracts.js --pkg "$pkg" --out "packages/$pkg/test/" 2>/dev/null || true
+            fi
+          done
+
+      - name: Run contract tests
+        run: node --test packages/*/test/contract.test.js
+
+      - name: Upload fingerprint
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fingerprint-${{ matrix.framework }}-${{ matrix.version }}
+          path: data/fingerprints/${{ matrix.framework }}/${{ matrix.version }}.json
