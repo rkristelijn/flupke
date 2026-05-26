@@ -131,6 +131,7 @@ function splitTop(str) {
 }
 
 function compile(pattern) {
+  if (pattern.length > 65536) return pattern; // DoS protection
   // Return regex-optimized form (non-expanded)
   return pattern
     .replace(/\{(-?\w+)\.\.(-?\w+)\}/g, (_, a, b) => `(${a}|${b})`)
