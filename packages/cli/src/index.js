@@ -245,14 +245,20 @@ function run() {
     process.exit(1);
   }
 
+  const version = require(path.join(__dirname, "..", "package.json")).version;
+
   console.log("");
-  console.log("  \x1b[1mflupke\x1b[0m — dependency cleanup");
+  console.log(`  \x1b[1mflupke\x1b[0m v${version} — dependency cleanup`);
   console.log("");
 
   if (uninstall) {
+    console.log("  Unflupking...");
+    console.log("");
     const changed = removeOverrides(dir);
     if (changed) {
       console.log("  \x1b[32m✓\x1b[0m Overrides removed from package.json");
+      console.log("");
+      console.log(`  \x1b[1mYou have been unflupked. ᕕ( ᐛ )ᕗ\x1b[0m`);
     } else {
       console.log("  No flupke overrides found to remove.");
     }
@@ -261,6 +267,8 @@ function run() {
   }
 
   const pm = detectPackageManager(dir);
+  console.log("  Flupking...");
+  console.log("");
   const installed = findInstalled(pm);
   const replaceable = REPLACEMENTS.filter((p) => installed.includes(p));
 
