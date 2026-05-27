@@ -304,11 +304,20 @@ function run() {
     const nm = path.join(dir, "node_modules");
     let nmSize = 0;
     try {
-      const du = require("node:child_process").execSync(`du -sk "${nm}"`, { encoding: "utf8" });
-      nmSize = parseInt(du.split("\t")[0], 10);
+      function dirSize(p) {
+        let size = 0;
+        const entries = fs.readdirSync(p, { withFileTypes: true });
+        for (const entry of entries) {
+          const full = path.join(p, entry.name);
+          if (entry.isDirectory()) size += dirSize(full);
+          else size += fs.statSync(full).size;
+        }
+        return size;
+      }
+      nmSize = dirSize(nm);
     } catch {}
     if (nmSize > 0) {
-      const mb = (nmSize / 1024).toFixed(0);
+      const mb = (nmSize / 1024 / 1024).toFixed(0);
       console.log(`  Storage:   ${mb} MB in node_modules`);
     }
   }
