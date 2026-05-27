@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/object-inspect",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "util.inspect wrapper",
   "main": "src/index.js",
   "types": "src/index.d.ts",

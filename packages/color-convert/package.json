@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/color-convert",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "RGB/HSL/HEX conversion",
   "main": "src/index.js",
   "types": "src/index.d.ts",
