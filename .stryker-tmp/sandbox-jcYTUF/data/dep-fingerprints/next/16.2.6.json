@@ -1,0 +1,13 @@
+{
+  "framework": "next",
+  "npm": "next",
+  "version": "16.2.6",
+  "generated": "2026-05-26",
+  "replaceable_count": 3,
+  "total_flupke_packages": 166,
+  "deps": {
+    "nanoid": "3.3.12",
+    "picocolors": "1.1.1",
+    "semver": "7.8.1"
+  }
+}

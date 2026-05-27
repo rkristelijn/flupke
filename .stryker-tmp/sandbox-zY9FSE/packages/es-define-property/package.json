@@ -1,0 +1,17 @@
+{
+  "name": "@flupkejs/es-define-property",
+  "version": "1.2.2",
+  "description": "Object.defineProperty",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "sideEffects": false
+}

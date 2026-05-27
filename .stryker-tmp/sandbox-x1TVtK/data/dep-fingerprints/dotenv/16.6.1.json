@@ -1,0 +1,11 @@
+{
+  "framework": "dotenv",
+  "npm": "dotenv",
+  "version": "16.6.1",
+  "generated": "2026-05-26",
+  "replaceable_count": 1,
+  "total_flupke_packages": 166,
+  "deps": {
+    "dotenv": "16.6.1"
+  }
+}

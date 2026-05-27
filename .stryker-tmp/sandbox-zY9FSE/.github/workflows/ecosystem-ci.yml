@@ -1,0 +1,133 @@
+name: Ecosystem CI
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+    inputs:
+      framework:
+        description: 'Framework name (from data/frameworks.json) or "all"'
+        default: 'all'
+  push:
+    paths:
+      - 'packages/*/src/**'
+
+jobs:
+  select:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.pick.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: pick
+        run: |
+          # Resolve latest version per major from npm
+          MATRIX=$(node -e "
+            const {execSync} = require('child_process');
+            const config = require('./data/frameworks.json');
+            let frameworks = config.frameworks;
+
+            // Filter if specific framework requested
+            const input = '${{ inputs.framework }}';
+            if (input && input !== 'all' && '${{ github.event_name }}' === 'workflow_dispatch') {
+              frameworks = frameworks.filter(f => f.name === input);
+            } else if ('${{ github.event_name }}' === 'schedule') {
+              // Rotate: pick 2 frameworks per run
+              const total = frameworks.length;
+              const hour = new Date().getUTCHours();
+              const day = Math.floor(Date.now() / 86400000);
+              const idx = (day * 12 + Math.floor(hour / 2)) % total;
+              frameworks = [frameworks[idx], frameworks[(idx + 1) % total]];
+            } else if ('${{ github.event_name }}' === 'push') {
+              // Push: top 5 only
+              frameworks = frameworks.slice(0, 5);
+            }
+
+            const matrix = [];
+            for (const fw of frameworks) {
+              for (const major of fw.majors) {
+                try {
+                  const ver = execSync('npm view ' + fw.npm + '@' + major + ' version 2>/dev/null', {encoding:'utf8'}).trim();
+                  if (ver) matrix.push({name: fw.name, repo: fw.repo, npm: fw.npm, version: ver});
+                } catch { /* skip if major doesn't exist */ }
+              }
+            }
+            console.log(JSON.stringify({include: matrix}));
+          ")
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+
+  fingerprint:
+    needs: select
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.select.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Clone ${{ matrix.name }}@${{ matrix.version }}
+        run: |
+          mkdir -p .tmp/frameworks
+          git clone --depth 1 --branch "v${{ matrix.version }}" \
+            "https://github.com/${{ matrix.repo }}.git" \
+            ".tmp/frameworks/${{ matrix.name }}-${{ matrix.version }}" 2>/dev/null || \
+          git clone --depth 1 --branch "${{ matrix.version }}" \
+            "https://github.com/${{ matrix.repo }}.git" \
+            ".tmp/frameworks/${{ matrix.name }}-${{ matrix.version }}" 2>/dev/null || \
+          git clone --depth 1 \
+            "https://github.com/${{ matrix.repo }}.git" \
+            ".tmp/frameworks/${{ matrix.name }}-${{ matrix.version }}" 2>/dev/null || true
+
+      - name: Extract fingerprint
+        run: |
+          chmod +x scripts/extract-coupling.sh
+          DIR=".tmp/frameworks/${{ matrix.name }}-${{ matrix.version }}"
+          [ -d "$DIR" ] || exit 0
+
+          mkdir -p "data/fingerprints/${{ matrix.name }}"
+          ALL="[]"
+          for pkg in $(ls -d packages/*/package.json | sed 's|packages/||;s|/package.json||'); do
+            RESULT=$(./scripts/extract-coupling.sh "$pkg" "$DIR" 2>/dev/null || echo "[]")
+            if [ "$RESULT" != "[]" ]; then
+              ALL=$(echo "$ALL" | node -e "
+                const fs=require('fs');
+                const e=JSON.parse(fs.readFileSync('/dev/stdin','utf8'));
+                const n=JSON.parse(process.argv[1]).map(x=>({...x,package:'$pkg'}));
+                console.log(JSON.stringify([...e,...n]));
+              " "$RESULT")
+            fi
+          done
+
+          node -e "
+            const d=JSON.parse(process.argv[1]);
+            const fp={framework:'${{matrix.name}}',version:'${{matrix.version}}',
+              generated:new Date().toISOString(),total_signatures:d.length,signatures:d};
+            require('fs').writeFileSync('data/fingerprints/${{matrix.name}}/${{matrix.version}}.json',
+              JSON.stringify(fp,null,2));
+            console.log('${{matrix.name}}@${{matrix.version}}: '+d.length+' signatures');
+          " "$ALL"
+
+      - name: Generate + run contract tests
+        run: |
+          DIR=".tmp/frameworks/${{ matrix.name }}-${{ matrix.version }}"
+          [ -d "$DIR" ] || exit 0
+          for pkg in $(ls -d packages/*/package.json | sed 's|packages/||;s|/package.json||'); do
+            ./scripts/extract-coupling.sh "$pkg" "$DIR" 2>/dev/null | \
+              node scripts/generate-contracts.js --pkg "$pkg" --out "packages/$pkg/test/" 2>/dev/null || true
+          done
+          find packages/*/test/contract.test.js -type f 2>/dev/null | head -1 >/dev/null && \
+            node --test packages/*/test/contract.test.js || echo "No contract tests generated"
+
+      - name: Upload fingerprint
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fp-${{ matrix.name }}-${{ matrix.version }}
+          path: data/fingerprints/${{ matrix.name }}/${{ matrix.version }}.json
+          retention-days: 90

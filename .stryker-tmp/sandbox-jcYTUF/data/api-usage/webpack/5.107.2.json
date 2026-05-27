@@ -1,0 +1,102 @@
+{
+  "framework": "webpack",
+  "npm": "webpack",
+  "version": "5.107.2",
+  "generated": "2026-05-26",
+  "packages_with_usage": 6,
+  "total_signatures": 16,
+  "usage": {
+    "events": [
+      {
+        "type": "property",
+        "member": "prototype",
+        "signature": "events.prototype"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "events()"
+      }
+    ],
+    "fast-deep-equal": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "fast-deep-equal(expr, expr)"
+      }
+    ],
+    "glob-to-regexp": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "glob-to-regexp(expr, object, expr)"
+      }
+    ],
+    "graceful-fs": [
+      {
+        "type": "method",
+        "member": "lstat",
+        "signature": "graceful-fs.lstat(expr, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "existsSync",
+        "signature": "graceful-fs.existsSync(expr)"
+      },
+      {
+        "type": "method",
+        "member": "readdir",
+        "signature": "graceful-fs.readdir(expr, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "statSync",
+        "signature": "graceful-fs.statSync(expr, string, expr)"
+      },
+      {
+        "type": "method",
+        "member": "statSync",
+        "signature": "graceful-fs.statSync(expr, expr)"
+      }
+    ],
+    "has-flag": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "has-flag(string)"
+      }
+    ],
+    "picocolors": [
+      {
+        "type": "method",
+        "member": "yellow",
+        "signature": "picocolors.yellow(string)"
+      },
+      {
+        "type": "method",
+        "member": "red",
+        "signature": "picocolors.red(string)"
+      },
+      {
+        "type": "method",
+        "member": "green",
+        "signature": "picocolors.green(string)"
+      },
+      {
+        "type": "method",
+        "member": "bold",
+        "signature": "picocolors.bold(expr)"
+      },
+      {
+        "type": "method",
+        "member": "bold",
+        "signature": "picocolors.bold(expr, string)"
+      },
+      {
+        "type": "method",
+        "member": "red",
+        "signature": "picocolors.red(expr)"
+      }
+    ]
+  }
+}

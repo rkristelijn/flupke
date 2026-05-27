@@ -1,0 +1,17 @@
+{
+  "name": "@flupkejs/object-inspect",
+  "version": "1.2.2",
+  "description": "util.inspect wrapper",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "sideEffects": false
+}

@@ -1,0 +1,50 @@
+{
+  "framework": "nestjs",
+  "npm": "@nestjs/core",
+  "version": "10.4.22",
+  "generated": "2026-05-26",
+  "packages_with_usage": 5,
+  "total_signatures": 6,
+  "usage": {
+    "ansi-styles": [
+      {
+        "type": "property",
+        "member": "color",
+        "signature": "ansi-styles.color"
+      },
+      {
+        "type": "property",
+        "member": "bgColor",
+        "signature": "ansi-styles.bgColor"
+      }
+    ],
+    "debug": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string)"
+      }
+    ],
+    "has-flag": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "has-flag(string)"
+      }
+    ],
+    "path-to-regexp": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "path-to-regexp(expr, expr)"
+      }
+    ],
+    "supports-color": [
+      {
+        "type": "property",
+        "member": "stderr",
+        "signature": "supports-color.stderr"
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "framework": "fastify",
+  "npm": "fastify",
+  "version": "4.29.1",
+  "generated": "2026-05-26",
+  "packages_with_usage": 5,
+  "total_signatures": 10,
+  "usage": {
+    "cookie": [
+      {
+        "type": "method",
+        "member": "serialize",
+        "signature": "cookie.serialize(expr, expr)"
+      }
+    ],
+    "fast-deep-equal": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "fast-deep-equal(expr, expr)"
+      }
+    ],
+    "forwarded": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "forwarded(expr)"
+      }
+    ],
+    "ipaddr.js": [
+      {
+        "type": "property",
+        "member": "isValid",
+        "signature": "ipaddr.js.isValid"
+      },
+      {
+        "type": "property",
+        "member": "parse",
+        "signature": "ipaddr.js.parse"
+      }
+    ],
+    "semver": [
+      {
+        "type": "method",
+        "member": "gt",
+        "signature": "semver.gt(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "satisfies",
+        "signature": "semver.satisfies(expr, expr, object)"
+      },
+      {
+        "type": "method",
+        "member": "gte",
+        "signature": "semver.gte(expr, string)"
+      },
+      {
+        "type": "method",
+        "member": "lt",
+        "signature": "semver.lt(expr, string)"
+      },
+      {
+        "type": "method",
+        "member": "satisfies",
+        "signature": "semver.satisfies(expr, string)"
+      }
+    ]
+  }
+}

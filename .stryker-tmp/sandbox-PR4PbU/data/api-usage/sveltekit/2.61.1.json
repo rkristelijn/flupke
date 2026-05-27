@@ -1,0 +1,115 @@
+{
+  "framework": "sveltekit",
+  "npm": "@sveltejs/kit",
+  "version": "2.61.1",
+  "generated": "2026-05-26",
+  "packages_with_usage": 5,
+  "total_signatures": 19,
+  "usage": {
+    "clsx": [
+      {
+        "type": "call",
+        "member": "clsx",
+        "signature": "clsx.clsx(expr)"
+      }
+    ],
+    "cookie": [
+      {
+        "type": "call",
+        "member": "parse",
+        "signature": "cookie.parse(expr, object)"
+      },
+      {
+        "type": "call",
+        "member": "serialize",
+        "signature": "cookie.serialize(expr, expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": "serialize",
+        "signature": "cookie.serialize(expr, expr, object, expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": "serialize",
+        "signature": "cookie.serialize(expr, expr, object, expr)"
+      }
+    ],
+    "deepmerge": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "deepmerge(expr, expr)"
+      }
+    ],
+    "picocolors": [
+      {
+        "type": "property",
+        "member": "isColorSupported",
+        "signature": "picocolors.isColorSupported"
+      },
+      {
+        "type": "method",
+        "member": "createColors",
+        "signature": "picocolors.createColors(true)"
+      },
+      {
+        "type": "property",
+        "member": "yellow",
+        "signature": "picocolors.yellow"
+      },
+      {
+        "type": "property",
+        "member": "cyan",
+        "signature": "picocolors.cyan"
+      },
+      {
+        "type": "property",
+        "member": "gray",
+        "signature": "picocolors.gray"
+      },
+      {
+        "type": "property",
+        "member": "magenta",
+        "signature": "picocolors.magenta"
+      },
+      {
+        "type": "property",
+        "member": "green",
+        "signature": "picocolors.green"
+      }
+    ],
+    "picomatch": [
+      {
+        "type": "property",
+        "member": "default",
+        "signature": "picomatch.default"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "scan",
+        "signature": "picomatch.scan(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "scan",
+        "signature": "picomatch.scan(expr)"
+      },
+      {
+        "type": "method",
+        "member": "makeRe",
+        "signature": "picomatch.makeRe(expr, object)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch(expr)"
+      }
+    ]
+  }
+}

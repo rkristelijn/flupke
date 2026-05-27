@@ -1,0 +1,61 @@
+// @ts-nocheck
+interface Chalk {
+  (...text: unknown[]): string;
+  level: number;
+  supportsColor: {
+    level: number;
+    hasBasic: boolean;
+    has256: boolean;
+    has16m: boolean;
+  };
+  rgb(r: number, g: number, b: number): Chalk;
+  bgRgb(r: number, g: number, b: number): Chalk;
+  hex(color: string): Chalk;
+  bgHex(color: string): Chalk;
+  visible(...text: unknown[]): string;
+  reset: Chalk;
+  bold: Chalk;
+  dim: Chalk;
+  italic: Chalk;
+  underline: Chalk;
+  inverse: Chalk;
+  hidden: Chalk;
+  strikethrough: Chalk;
+  black: Chalk;
+  red: Chalk;
+  green: Chalk;
+  yellow: Chalk;
+  blue: Chalk;
+  magenta: Chalk;
+  cyan: Chalk;
+  white: Chalk;
+  gray: Chalk;
+  grey: Chalk;
+  blackBright: Chalk;
+  redBright: Chalk;
+  greenBright: Chalk;
+  yellowBright: Chalk;
+  blueBright: Chalk;
+  magentaBright: Chalk;
+  cyanBright: Chalk;
+  whiteBright: Chalk;
+  bgBlack: Chalk;
+  bgRed: Chalk;
+  bgGreen: Chalk;
+  bgYellow: Chalk;
+  bgBlue: Chalk;
+  bgMagenta: Chalk;
+  bgCyan: Chalk;
+  bgWhite: Chalk;
+  bgBlackBright: Chalk;
+  bgRedBright: Chalk;
+  bgGreenBright: Chalk;
+  bgYellowBright: Chalk;
+  bgBlueBright: Chalk;
+  bgMagentaBright: Chalk;
+  bgCyanBright: Chalk;
+  bgWhiteBright: Chalk;
+}
+
+declare const chalk: Chalk;
+export = chalk;

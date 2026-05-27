@@ -1,0 +1,13 @@
+{
+  "name": "@flupkejs/kleur",
+  "version": "1.0.0",
+  "description": "Drop-in replacement for kleur",
+  "main": "src/index.js",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    }
+  },
+  "license": "MIT"
+}

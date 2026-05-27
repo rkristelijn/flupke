@@ -1,0 +1,17 @@
+{
+  "name": "@flupkejs/color-convert",
+  "version": "1.2.2",
+  "description": "RGB/HSL/HEX conversion",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "sideEffects": false
+}

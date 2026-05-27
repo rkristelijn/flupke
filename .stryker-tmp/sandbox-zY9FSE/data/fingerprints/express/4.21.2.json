@@ -1,0 +1,918 @@
+{
+  "framework": "express",
+  "version": "4.21.2",
+  "generated": "2026-05-26T07:13:14.936Z",
+  "packages_used": 21,
+  "total_signatures": 101,
+  "signatures": [
+    {
+      "type": "call",
+      "member": null,
+      "signature": "content-disposition(expr)",
+      "args": "name || path",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 574,
+      "package": "content-disposition"
+    },
+    {
+      "type": "method",
+      "member": "parse",
+      "signature": "content-type.parse(expr)",
+      "args": "type",
+      "file": ".tmp/frameworks/express-4.21.2/lib/utils.js",
+      "line": 252,
+      "package": "content-type"
+    },
+    {
+      "type": "method",
+      "member": "format",
+      "signature": "content-type.format(expr)",
+      "args": "parsed",
+      "file": ".tmp/frameworks/express-4.21.2/lib/utils.js",
+      "line": 258,
+      "package": "content-type"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "cookie-signature(expr, expr)",
+      "args": "val, secret",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 876,
+      "package": "cookie-signature"
+    },
+    {
+      "type": "method",
+      "member": "serialize",
+      "signature": "cookie.serialize(expr, expr)",
+      "args": "name, String(val",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 892,
+      "package": "cookie"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"new %o\", expr)",
+      "args": "'new %o', path",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/layer.js",
+      "line": 38,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"dispatching %s %s\", expr, expr)",
+      "args": "'dispatching %s %s', req.method, req.url",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/index.js",
+      "line": 139,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"trim prefix (%\")",
+      "args": "'trim prefix (%s",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/index.js",
+      "line": 307,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"%s %s : %s\", expr, expr, expr)",
+      "args": "'%s %s : %s', layer.name, layerPath, req.originalUrl",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/index.js",
+      "line": 323,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"use %o %s\", expr, expr)",
+      "args": "'use %o %s', path, fn.name || '<anonymous>'",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/index.js",
+      "line": 473,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"%s %o\", expr, expr)",
+      "args": "'%s %o', method, this.path",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/route.js",
+      "line": 219,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"booting in %s mode\", expr)",
+      "args": "'booting in %s mode', env",
+      "file": ".tmp/frameworks/express-4.21.2/lib/application.js",
+      "line": 94,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"no routes defined on app\")",
+      "args": "'no routes defined on app'",
+      "file": ".tmp/frameworks/express-4.21.2/lib/application.js",
+      "line": 176,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\".use app under %s\", expr)",
+      "args": "'.use app under %s', path",
+      "file": ".tmp/frameworks/express-4.21.2/lib/application.js",
+      "line": 230,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"set \\\"%s\\\" to %o\", expr, expr)",
+      "args": "'set \"%s\" to %o', setting, val",
+      "file": ".tmp/frameworks/express-4.21.2/lib/application.js",
+      "line": 375,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"require \\\"%s\\\"\", expr)",
+      "args": "'require \"%s\"', mod",
+      "file": ".tmp/frameworks/express-4.21.2/lib/view.js",
+      "line": 78,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"lookup \\\"%s\\\"\", expr)",
+      "args": "'lookup \"%s\"', name",
+      "file": ".tmp/frameworks/express-4.21.2/lib/view.js",
+      "line": 108,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"render \\\"%s\\\"\", expr)",
+      "args": "'render \"%s\"', this.path",
+      "file": ".tmp/frameworks/express-4.21.2/lib/view.js",
+      "line": 134,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "debug(\"stat \\\"%s\\\"\", expr)",
+      "args": "'stat \"%s\"', path",
+      "file": ".tmp/frameworks/express-4.21.2/lib/view.js",
+      "line": 175,
+      "package": "debug"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"router.param(f\")",
+      "args": "'router.param(fn",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/index.js",
+      "line": 100,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"router.param(' + JSON.stringify(nam\")",
+      "args": "'router.param(' + JSON.stringify(name",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/index.js",
+      "line": 111,
+      "package": "depd"
+    },
+    {
+      "type": "method",
+      "member": "function",
+      "signature": "depd.function(expr, \"app.del: Use app.delete instead\")",
+      "args": "app.delete, 'app.del: Use app.delete instead'",
+      "file": ".tmp/frameworks/express-4.21.2/lib/application.js",
+      "line": 529,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"req.param(' + args + \")",
+      "args": "'req.param(' + args + '",
+      "file": ".tmp/frameworks/express-4.21.2/lib/request.js",
+      "line": 243,
+      "package": "depd"
+    },
+    {
+      "type": "method",
+      "member": "function",
+      "signature": "depd.function(expr)",
+      "args": "function host(",
+      "file": ".tmp/frameworks/express-4.21.2/lib/request.js",
+      "line": 454,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.status(' + JSON.stringify(cod\")",
+      "args": "'res.status(' + JSON.stringify(code",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 69,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.send(bod\", expr)",
+      "args": "'res.send(body, status",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 124,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.send(statu\", expr)",
+      "args": "'res.send(status, body",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 127,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.send(statu\")",
+      "args": "'res.send(status",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 140,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.json(ob\", expr)",
+      "args": "'res.json(obj, status",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 257,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.json(statu\", expr)",
+      "args": "'res.json(status, obj",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 260,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.jsonp(ob\", expr)",
+      "args": "'res.jsonp(obj, status",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 300,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.jsonp(statu\", expr)",
+      "args": "'res.jsonp(status, obj",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 303,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.clearCookie: Passing \\\"options.maxAge\\\" is deprecated. In v5.0.0 of Expres\", expr, expr)",
+      "args": "'res.clearCookie: Passing \"options.maxAge\" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option.'",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 827,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.clearCookie: Passing \\\"options.expires\\\" is deprecated. In v5.0.0 of Expres\", expr, expr)",
+      "args": "'res.clearCookie: Passing \"options.expires\" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option.'",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 830,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.location(\\\"back\")",
+      "args": "'res.location(\"back\"",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 919,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.redirect(ur\", expr)",
+      "args": "'res.redirect(url, status",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 957,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "depd(\"res.vary\")",
+      "args": "'res.vary(",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 1004,
+      "package": "depd"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "encodeurl(expr)",
+      "args": "loc",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 925,
+      "package": "encodeurl"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "escape-html(expr)",
+      "args": "address",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 972,
+      "package": "escape-html"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "etag(expr, expr)",
+      "args": "buf, options",
+      "file": ".tmp/frameworks/express-4.21.2/lib/utils.js",
+      "line": 276,
+      "package": "etag"
+    },
+    {
+      "type": "property",
+      "member": "prototype",
+      "signature": "events.prototype",
+      "args": null,
+      "file": ".tmp/frameworks/express-4.21.2/lib/express.js",
+      "line": 42,
+      "package": "events"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "http-errors(400, \"failed to parseInt '+nu\")",
+      "args": "400, 'failed to parseInt '+num",
+      "file": ".tmp/frameworks/express-4.21.2/examples/params/index.js",
+      "line": 26,
+      "package": "http-errors"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "http-errors(404, \"failed to find user\")",
+      "args": "404, 'failed to find user'",
+      "file": ".tmp/frameworks/express-4.21.2/examples/params/index.js",
+      "line": 38,
+      "package": "http-errors"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "merge-descriptors(expr, expr, false)",
+      "args": "app, EventEmitter.prototype, false",
+      "file": ".tmp/frameworks/express-4.21.2/lib/express.js",
+      "line": 42,
+      "package": "merge-descriptors"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "on-finished(expr, expr)",
+      "args": "res, onfinish",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 1124,
+      "package": "on-finished"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "parseurl(expr)",
+      "args": "req",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/index.js",
+      "line": 539,
+      "package": "parseurl"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "path-to-regexp(expr, expr, expr)",
+      "args": "path, this.keys = [], opts",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/layer.js",
+      "line": 45,
+      "package": "path-to-regexp"
+    },
+    {
+      "type": "property",
+      "member": "parse",
+      "signature": "qs.parse",
+      "args": null,
+      "file": ".tmp/frameworks/express-4.21.2/lib/middleware/query.js",
+      "line": 27,
+      "package": "qs"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "range-parser(expr, expr, expr)",
+      "args": "size, range, options",
+      "file": ".tmp/frameworks/express-4.21.2/lib/request.js",
+      "line": 215,
+      "package": "range-parser"
+    },
+    {
+      "type": "method",
+      "member": "isBuffer",
+      "signature": "safe-buffer.isBuffer(expr)",
+      "args": "body",
+      "file": ".tmp/frameworks/express-4.21.2/lib/utils.js",
+      "line": 272,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(expr, expr)",
+      "args": "body, encoding",
+      "file": ".tmp/frameworks/express-4.21.2/lib/utils.js",
+      "line": 273,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"wahoo\")",
+      "args": "'wahoo'",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 103,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "byteLength",
+      "signature": "safe-buffer.byteLength(expr, expr)",
+      "args": "chunk, encoding",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 190,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "byteLength",
+      "signature": "safe-buffer.byteLength(expr)",
+      "args": "body",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 983,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"tobi\")",
+      "args": "'tobi'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.static.js",
+      "line": 412,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"6e616d6520697320cec5d4\", \"hex\")",
+      "args": "'6e616d6520697320cec5d4', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 112,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"6e616d6520697320e8aeba\", \"hex\")",
+      "args": "'6e616d6520697320e8aeba', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 120,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "alloc",
+      "signature": "safe-buffer.alloc(1028, \".\")",
+      "args": "1028, '.'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 127,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000ad3d31b05a360148c64000087e5a14704040000\", \"hex\")",
+      "args": "'1f8b080000000000000ad3d31b05a360148c64000087e5a14704040000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 151,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "alloc",
+      "signature": "safe-buffer.alloc(10240, \".\")",
+      "args": "10240, '.'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 180,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000ad3d31b05a360148c64000087e5a1470404\", \"hex\")",
+      "args": "'1f8b080000000000000ad3d31b05a360148c64000087e5a1470404', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 194,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000bcb4bcc4d55c82c5678b16e170072b3e0200b000000\", \"hex\")",
+      "args": "'1f8b080000000000000bcb4bcc4d55c82c5678b16e170072b3e0200b000000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 211,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"00000000\", \"hex\")",
+      "args": "'00000000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 385,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000bcb4bcc4d55c82c5678b16e170072b3e0200b0000\", \"hex\")",
+      "args": "'1f8b080000000000000bcb4bcc4d55c82c5678b16e170072b3e0200b0000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 467,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "alloc",
+      "signature": "safe-buffer.alloc(1024 * 100, \".\")",
+      "args": "1024 * 100, '.'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 477,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"789ccb4bcc4d55c82c5678b16e17001a6f050e\", \"hex\")",
+      "args": "'789ccb4bcc4d55c82c5678b16e17001a6f050e', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 558,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"000000000000\", \"hex\")",
+      "args": "'000000000000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.text.js",
+      "line": 574,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "alloc",
+      "signature": "safe-buffer.alloc(4, \".\")",
+      "args": "4, '.'",
+      "file": ".tmp/frameworks/express-4.21.2/test/res.attachment.js",
+      "line": 41,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(expr)",
+      "args": "res.text",
+      "file": ".tmp/frameworks/express-4.21.2/test/support/utils.js",
+      "line": 31,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000ad3d31b05a360148c64000087e5a147040400\", \"hex\")",
+      "args": "'1f8b080000000000000ad3d31b05a360148c64000087e5a147040400', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.raw.js",
+      "line": 187,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000bcb4bcc4db57db16e170099a4bad608000000\", \"hex\")",
+      "args": "'1f8b080000000000000bcb4bcc4db57db16e170099a4bad608000000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.raw.js",
+      "line": 202,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"000102\", \"hex\")",
+      "args": "'000102', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.raw.js",
+      "line": 231,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"0102\", \"hex\")",
+      "args": "'0102', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.raw.js",
+      "line": 356,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000bcb4bcc4db57db16e170099a4bad6080000\", \"hex\")",
+      "args": "'1f8b080000000000000bcb4bcc4db57db16e170099a4bad6080000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.raw.js",
+      "line": 442,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"6e616d653de8aeba\", \"hex\")",
+      "args": "'6e616d653de8aeba', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.raw.js",
+      "line": 480,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"789ccb4bcc4db57db16e17001068042f\", \"hex\")",
+      "args": "'789ccb4bcc4db57db16e17001068042f', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.raw.js",
+      "line": 504,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "alloc",
+      "signature": "safe-buffer.alloc(1024, \".\")",
+      "args": "1024, '.'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 151,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000aab562a2e2952b252d21b05a360148c58a0540b0066f7ce1e0a040000\", \"hex\")",
+      "args": "'1f8b080000000000000aab562a2e2952b252d21b05a360148c58a0540b0066f7ce1e0a040000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 176,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000aab562a2e2952b252d21b05a360148c58a0540b0066f7ce1e0a0400\", \"hex\")",
+      "args": "'1f8b080000000000000aab562a2e2952b252d21b05a360148c58a0540b0066f7ce1e0a0400', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 219,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000bab56ca4bcc4d55b2527ab16e97522d00515be1cc0e000000\", \"hex\")",
+      "args": "'1f8b080000000000000bab56ca4bcc4d55b2527ab16e97522d00515be1cc0e000000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 234,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"feff007b0022006e0061006d00650022003a00228bba0022007d\", \"hex\")",
+      "args": "'feff007b0022006e0061006d00650022003a00228bba0022007d', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 513,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000bab56cc4d55b2527ab16e97522d00515be1cc0e000000\", \"hex\")",
+      "args": "'1f8b080000000000000bab56cc4d55b2527ab16e97522d00515be1cc0e000000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 608,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"7b226e616d65223a22e8aeba227d\", \"hex\")",
+      "args": "'7b226e616d65223a22e8aeba227d', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 643,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"7b2274657374223a22c3a5227d\", \"hex\")",
+      "args": "'7b2274657374223a22c3a5227d', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 658,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"7b226e616d65223a22cec5d4227d\", \"hex\")",
+      "args": "'7b226e616d65223a22cec5d4227d', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 672,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"789cab56ca4bcc4d55b2527ab16e97522d00274505ac\", \"hex\")",
+      "args": "'789cab56ca4bcc4d55b2527ab16e97522d00274505ac', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 709,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000bedc1010d000000c2a0f74f6d0f071400000000000000\", \"hex\")",
+      "args": "'1f8b080000000000000bedc1010d000000c2a0f74f6d0f071400000000000000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 742,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"0000000000000000000000000000000000000000000000000000000000000000\", \"hex\")",
+      "args": "'0000000000000000000000000000000000000000000000000000000000000000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 743,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"0000000000000000004f0625b3b71650c30000\", \"hex\")",
+      "args": "'0000000000000000004f0625b3b71650c30000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.json.js",
+      "line": 744,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000a2b2e29b2d51b05a360148c580000a0351f9204040000\", \"hex\")",
+      "args": "'1f8b080000000000000a2b2e29b2d51b05a360148c580000a0351f9204040000', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.urlencoded.js",
+      "line": 297,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"1f8b080000000000000a2b2e29b2d51b05a360148c580000a0351f92040400\", \"hex\")",
+      "args": "'1f8b080000000000000a2b2e29b2d51b05a360148c580000a0351f92040400', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.urlencoded.js",
+      "line": 340,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"746573743dc3a5\", \"hex\")",
+      "args": "'746573743dc3a5', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.urlencoded.js",
+      "line": 745,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"6e616d653dcec5d4\", \"hex\")",
+      "args": "'6e616d653dcec5d4', 'hex'",
+      "file": ".tmp/frameworks/express-4.21.2/test/express.urlencoded.js",
+      "line": 759,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"hi\")",
+      "args": "'hi'",
+      "file": ".tmp/frameworks/express-4.21.2/test/res.send.js",
+      "line": 174,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"hello\")",
+      "args": "'hello'",
+      "file": ".tmp/frameworks/express-4.21.2/test/res.send.js",
+      "line": 189,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "alloc",
+      "signature": "safe-buffer.alloc(999, \"-\")",
+      "args": "999, '-'",
+      "file": ".tmp/frameworks/express-4.21.2/test/res.send.js",
+      "line": 204,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"hey\")",
+      "args": "'hey'",
+      "file": ".tmp/frameworks/express-4.21.2/test/res.send.js",
+      "line": 217,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "method",
+      "member": "from",
+      "signature": "safe-buffer.from(\"express!\")",
+      "args": "'express!'",
+      "file": ".tmp/frameworks/express-4.21.2/test/utils.js",
+      "line": 19,
+      "package": "safe-buffer"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "setprototypeof(expr, expr)",
+      "args": "router, proto",
+      "file": ".tmp/frameworks/express-4.21.2/lib/router/index.js",
+      "line": 51,
+      "package": "setprototypeof"
+    },
+    {
+      "type": "property",
+      "member": "message",
+      "signature": "statuses.message",
+      "args": null,
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 142,
+      "package": "statuses"
+    },
+    {
+      "type": "call",
+      "member": null,
+      "signature": "vary(expr, expr)",
+      "args": "this, field",
+      "file": ".tmp/frameworks/express-4.21.2/lib/response.js",
+      "line": 1008,
+      "package": "vary"
+    }
+  ]
+}

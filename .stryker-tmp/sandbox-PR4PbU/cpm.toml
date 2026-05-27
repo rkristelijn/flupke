@@ -1,0 +1,83 @@
+[project]
+name = "flupke"
+version = "1.0.0"
+lang = "typescript"
+build = "npm"
+
+[checks]
+file-size = true
+source-lines = 500
+format-code = true
+lint-code = true
+complexity = true
+comment-ratio = true
+check-mutations = false
+
+[suppress]
+code-yaml-syntax-format = "CI workflow YAML — not application code"
+code-generic-vulnerability-scan = "false positives in test files and drop-in replacements"
+code-generic-secrets-fast = "no secrets in repo"
+supply-chain-lockfile-sync = "workspace packages not published"
+owasp-cors-wildcard = "no CORS in this project"
+risk-vendor-lockin = "intentional npm ecosystem focus"
+config-env-consistency = "no .env files used"
+
+[hooks]
+pre-commit = true
+pre-push = true
+commit-msg = true
+
+[code-smells]
+# Packages excluded from code smell checks (they ARE regex/glob libraries)
+exclude = ["cli", "picomatch", "path-to-regexp", "glob-to-regexp"]
+
+[code-smells.allow]
+# Each entry: "file:line:rule" = "justification"
+"yargs-parser/src/index.js:26:S4138" = "index needed: last-char check + outer loop index mutation"
+"qs/src/index.js:10:S7735" = "false positive: forEach with if/else is not a negated condition"
+
+[process]
+maturity-target = 5
+
+[quality.thresholds]
+line-coverage = 95
+branch-coverage = 90
+mutation-score = 85
+
+[perf]
+exclude = ["cli", "picomatch", "path-to-regexp", "glob-to-regexp"]
+
+[perf.allow]
+# await-in-loop: these packages ARE sequential by design
+"escalade/src/index.js:11:P003" = "directory traversal must be sequential (parent-first)"
+"find-up/src/index.js:12:P003" = "directory traversal must be sequential"
+"locate-path/src/index.js:11:P003" = "sequential path checking by design"
+"p-locate/src/index.js:4:P003" = "concurrency-limited iteration by design"
+"p-map/src/index.js:13:P003" = "concurrency-limited parallel map"
+"p-map/src/index.js:20:P003" = "concurrency-limited parallel map"
+"p-retry/src/index.js:14:P003" = "retry loop must be sequential"
+"p-retry/src/index.js:22:P003" = "retry loop must be sequential"
+"pkg-dir/src/index.js:11:P003" = "directory traversal must be sequential"
+"retry/src/index.js:10:P003" = "retry loop must be sequential"
+"retry/src/index.js:13:P003" = "retry loop must be sequential"
+"glob/src/index.js:62:P003" = "recursive directory walk"
+# arguments: needed for transparent .apply(this, arguments) forwarding
+"depd/src/index.js:20:P006" = "must forward all args + this binding via .apply"
+"eventemitter3/src/index.js:15:P006" = "must forward all args to listener"
+"eventemitter3/src/index.js:35:P006" = "must slice args for emit"
+"get-intrinsic/src/index.js:72:P006" = "arguments.callee.caller detection"
+"lodash/src/index.js:38:P006" = "variadic template function"
+"lodash/src/index.js:221:P006" = "debounce must forward all args"
+"lodash/src/index.js:240:P006" = "throttle must forward all args"
+"lodash/src/index.js:251:P006" = "once must forward all args"
+"lodash/src/index.js:260:P006" = "memoize must forward all args for cache key"
+"lodash/src/index.js:262:P006" = "memoize must forward all args"
+# delete: required for EventEmitter semantics
+"eventemitter3/src/index.js:23:P002" = "delete listener — required for removeListener semantics"
+"eventemitter3/src/index.js:40:P002" = "delete all listeners — required for removeAllListeners"
+"import-fresh/src/index.js:7:P002" = "delete require.cache — the whole point of import-fresh"
+# includes in loop: small bounded arrays
+"braces/src/index.js:127:P004" = "small string char check, not hot path"
+"lodash/src/index.js:298:P004" = "trim chars — bounded input"
+# Object.keys pattern
+"statuses/src/index.js:119:P008" = "init-time only, not hot path"

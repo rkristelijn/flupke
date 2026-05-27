@@ -1,0 +1,25 @@
+{
+  "framework": "tailwindcss",
+  "npm": "tailwindcss",
+  "version": "3.4.19",
+  "generated": "2026-05-26",
+  "replaceable_count": 15,
+  "total_flupke_packages": 166,
+  "deps": {
+    "braces": "3.0.3",
+    "es-errors": "1.3.0",
+    "fill-range": "7.1.1",
+    "function-bind": "1.1.2",
+    "hasown": "2.0.3",
+    "is-glob": "4.0.3",
+    "is-number": "7.0.0",
+    "micromatch": "4.0.8",
+    "nanoid": "3.3.12",
+    "normalize-path": "3.0.0",
+    "object-assign": "4.1.1",
+    "picocolors": "1.1.1",
+    "picomatch": "2.3.2",
+    "pify": "2.3.0",
+    "util-deprecate": "1.0.2"
+  }
+}

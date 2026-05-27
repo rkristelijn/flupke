@@ -1,0 +1,3 @@
+// @ts-nocheck
+declare function equal(a: unknown, b: unknown): boolean;
+export = equal;

@@ -1,0 +1,116 @@
+{
+  "framework": "remix",
+  "npm": "@remix-run/node",
+  "version": "2.17.4",
+  "generated": "2026-05-26",
+  "packages_with_usage": 8,
+  "total_signatures": 18,
+  "usage": {
+    "call-bind": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "call-bind(expr)"
+      }
+    ],
+    "cookie": [
+      {
+        "type": "method",
+        "member": "serialize",
+        "signature": "cookie.serialize(expr, expr, expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "serialize",
+        "signature": "cookie.serialize(string, object)"
+      },
+      {
+        "type": "call",
+        "member": "parse",
+        "signature": "cookie.parse()"
+      },
+      {
+        "type": "call",
+        "member": "serialize",
+        "signature": "cookie.serialize()"
+      },
+      {
+        "type": "call",
+        "member": "parse",
+        "signature": "cookie.parse(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": "serialize",
+        "signature": "cookie.serialize(expr, expr)"
+      }
+    ],
+    "define-data-property": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "define-data-property(expr)"
+      }
+    ],
+    "function-bind": [
+      {
+        "type": "method",
+        "member": "call",
+        "signature": "function-bind.call(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "call",
+        "signature": "function-bind.call(expr)"
+      }
+    ],
+    "get-intrinsic": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "get-intrinsic(string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "get-intrinsic(expr, expr)"
+      }
+    ],
+    "gopd": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "gopd(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "gopd(expr, string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "gopd(expr)"
+      }
+    ],
+    "has-symbols": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "has-symbols()"
+      }
+    ],
+    "hasown": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "hasown(expr, string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "hasown(expr, expr)"
+      }
+    ]
+  }
+}

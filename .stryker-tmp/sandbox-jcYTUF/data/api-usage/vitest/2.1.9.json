@@ -1,0 +1,59 @@
+{
+  "framework": "vitest",
+  "npm": "vitest",
+  "version": "2.1.9",
+  "generated": "2026-05-26",
+  "packages_with_usage": 2,
+  "total_signatures": 9,
+  "usage": {
+    "debug": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(expr)"
+      }
+    ],
+    "picocolors": [
+      {
+        "type": "property",
+        "member": "isColorSupported",
+        "signature": "picocolors.isColorSupported"
+      },
+      {
+        "type": "method",
+        "member": "createColors",
+        "signature": "picocolors.createColors(true)"
+      },
+      {
+        "type": "property",
+        "member": "yellow",
+        "signature": "picocolors.yellow"
+      },
+      {
+        "type": "property",
+        "member": "cyan",
+        "signature": "picocolors.cyan"
+      },
+      {
+        "type": "property",
+        "member": "gray",
+        "signature": "picocolors.gray"
+      },
+      {
+        "type": "property",
+        "member": "magenta",
+        "signature": "picocolors.magenta"
+      },
+      {
+        "type": "property",
+        "member": "green",
+        "signature": "picocolors.green"
+      }
+    ]
+  }
+}

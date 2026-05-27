@@ -1,0 +1,21 @@
+{
+  "framework": "axios",
+  "npm": "axios",
+  "version": "1.16.1",
+  "generated": "2026-05-26",
+  "replaceable_count": 11,
+  "total_flupke_packages": 166,
+  "deps": {
+    "axios": "1.16.1",
+    "debug": "4.4.3",
+    "es-define-property": "1.0.1",
+    "es-errors": "1.3.0",
+    "function-bind": "1.1.2",
+    "get-intrinsic": "1.3.0",
+    "gopd": "1.2.0",
+    "has-symbols": "1.1.0",
+    "hasown": "2.0.3",
+    "mime-types": "2.1.35",
+    "ms": "2.1.3"
+  }
+}

@@ -1,0 +1,553 @@
+{
+  "framework": "jest",
+  "npm": "jest",
+  "version": "29.7.0",
+  "generated": "2026-05-26",
+  "packages_with_usage": 44,
+  "total_signatures": 91,
+  "usage": {
+    "ansi-regex": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "ansi-regex()"
+      }
+    ],
+    "ansi-styles": [
+      {
+        "type": "property",
+        "member": "color",
+        "signature": "ansi-styles.color"
+      },
+      {
+        "type": "property",
+        "member": "bgColor",
+        "signature": "ansi-styles.bgColor"
+      },
+      {
+        "type": "property",
+        "member": "codes",
+        "signature": "ansi-styles.codes"
+      }
+    ],
+    "balanced-match": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "balanced-match(string, string, expr)"
+      }
+    ],
+    "camelcase": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "camelcase(expr)"
+      }
+    ],
+    "concat-map": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "concat-map(expr, expr)"
+      }
+    ],
+    "cross-spawn": [
+      {
+        "type": "method",
+        "member": "_parse",
+        "signature": "cross-spawn._parse(expr, expr, expr)"
+      }
+    ],
+    "debug": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string, expr)"
+      }
+    ],
+    "emoji-regex": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "emoji-regex()"
+      }
+    ],
+    "escape-string-regexp": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "escape-string-regexp(expr)"
+      }
+    ],
+    "find-up": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "find-up(string, object)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "find-up(expr, object)"
+      },
+      {
+        "type": "method",
+        "member": "sync",
+        "signature": "find-up.sync(string, object)"
+      }
+    ],
+    "function-bind": [
+      {
+        "type": "method",
+        "member": "call",
+        "signature": "function-bind.call(expr, expr)"
+      }
+    ],
+    "get-stream": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "get-stream(expr, object, expr)"
+      },
+      {
+        "type": "method",
+        "member": "buffer",
+        "signature": "get-stream.buffer(expr, object)"
+      }
+    ],
+    "graceful-fs": [
+      {
+        "type": "property",
+        "member": "changedFiles",
+        "signature": "graceful-fs.changedFiles"
+      },
+      {
+        "type": "property",
+        "member": "removedFiles",
+        "signature": "graceful-fs.removedFiles"
+      },
+      {
+        "type": "property",
+        "member": "hasteMap",
+        "signature": "graceful-fs.hasteMap"
+      },
+      {
+        "type": "property",
+        "member": "duplicates",
+        "signature": "graceful-fs.duplicates"
+      },
+      {
+        "type": "property",
+        "member": "map",
+        "signature": "graceful-fs.map"
+      },
+      {
+        "type": "property",
+        "member": "mocks",
+        "signature": "graceful-fs.mocks"
+      },
+      {
+        "type": "property",
+        "member": "module",
+        "signature": "graceful-fs.module"
+      },
+      {
+        "type": "property",
+        "member": "dependencies",
+        "signature": "graceful-fs.dependencies"
+      },
+      {
+        "type": "property",
+        "member": "sha1",
+        "signature": "graceful-fs.sha1"
+      }
+    ],
+    "has-flag": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "has-flag(string)"
+      }
+    ],
+    "hasown": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "hasown(expr, expr)"
+      }
+    ],
+    "imurmurhash": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "imurmurhash(expr)"
+      }
+    ],
+    "inflight": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "inflight(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "inflight(string, expr)"
+      }
+    ],
+    "inherits": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "inherits(expr, expr)"
+      }
+    ],
+    "is-fullwidth-code-point": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "is-fullwidth-code-point(expr)"
+      }
+    ],
+    "is-number": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "is-number(expr)"
+      }
+    ],
+    "is-stream": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "is-stream(expr)"
+      }
+    ],
+    "locate-path": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "locate-path(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "locate-path(array, expr)"
+      },
+      {
+        "type": "method",
+        "member": "sync",
+        "signature": "locate-path.sync(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "sync",
+        "signature": "locate-path.sync(array, expr)"
+      }
+    ],
+    "merge-stream": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "merge-stream()"
+      }
+    ],
+    "mimic-fn": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "mimic-fn(expr, expr)"
+      }
+    ],
+    "normalize-path": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "normalize-path(expr, false)"
+      }
+    ],
+    "once": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "once(expr)"
+      }
+    ],
+    "onetime": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "onetime(expr)"
+      }
+    ],
+    "p-limit": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "p-limit(expr)"
+      }
+    ],
+    "path-exists": [
+      {
+        "type": "property",
+        "member": "sync",
+        "signature": "path-exists.sync"
+      }
+    ],
+    "path-is-absolute": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "path-is-absolute(expr)"
+      }
+    ],
+    "path-key": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "path-key(object)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "path-key()"
+      }
+    ],
+    "picocolors": [
+      {
+        "type": "property",
+        "member": "isColorSupported",
+        "signature": "picocolors.isColorSupported"
+      },
+      {
+        "type": "method",
+        "member": "createColors",
+        "signature": "picocolors.createColors(true)"
+      },
+      {
+        "type": "method",
+        "member": "createColors",
+        "signature": "picocolors.createColors(false)"
+      },
+      {
+        "type": "method",
+        "member": "yellow",
+        "signature": "picocolors.yellow(string)"
+      },
+      {
+        "type": "method",
+        "member": "red",
+        "signature": "picocolors.red(string)"
+      },
+      {
+        "type": "method",
+        "member": "green",
+        "signature": "picocolors.green(string)"
+      },
+      {
+        "type": "method",
+        "member": "bold",
+        "signature": "picocolors.bold(expr)"
+      },
+      {
+        "type": "method",
+        "member": "bold",
+        "signature": "picocolors.bold(expr, string)"
+      },
+      {
+        "type": "method",
+        "member": "red",
+        "signature": "picocolors.red(expr)"
+      }
+    ],
+    "picomatch": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "picomatch(expr)"
+      },
+      {
+        "type": "method",
+        "member": "makeRe",
+        "signature": "picomatch.makeRe(expr)"
+      },
+      {
+        "type": "method",
+        "member": "scan",
+        "signature": "picomatch.scan(expr)"
+      },
+      {
+        "type": "method",
+        "member": "parse",
+        "signature": "picomatch.parse(expr, expr)"
+      }
+    ],
+    "pkg-dir": [
+      {
+        "type": "method",
+        "member": "sync",
+        "signature": "pkg-dir.sync(expr)"
+      }
+    ],
+    "resolve-from": [
+      {
+        "type": "method",
+        "member": "silent",
+        "signature": "resolve-from.silent(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "silent",
+        "signature": "resolve-from.silent(expr, string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "resolve-from(expr)"
+      },
+      {
+        "type": "method",
+        "member": "silent",
+        "signature": "resolve-from.silent(expr)"
+      }
+    ],
+    "semver": [
+      {
+        "type": "property",
+        "member": "envName",
+        "signature": "semver.envName"
+      },
+      {
+        "type": "property",
+        "member": "caller",
+        "signature": "semver.caller"
+      },
+      {
+        "type": "property",
+        "member": "targets",
+        "signature": "semver.targets"
+      },
+      {
+        "type": "property",
+        "member": "assumptions",
+        "signature": "semver.assumptions"
+      },
+      {
+        "type": "method",
+        "member": "lt",
+        "signature": "semver.lt(expr)"
+      },
+      {
+        "type": "method",
+        "member": "valid",
+        "signature": "semver.valid(expr)"
+      },
+      {
+        "type": "method",
+        "member": "gt",
+        "signature": "semver.gt(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "parse",
+        "signature": "semver.parse(expr)"
+      },
+      {
+        "type": "method",
+        "member": "lt",
+        "signature": "semver.lt(expr, expr)"
+      },
+      {
+        "type": "method",
+        "member": "satisfies",
+        "signature": "semver.satisfies(expr, string, object)"
+      },
+      {
+        "type": "method",
+        "member": "satisfies",
+        "signature": "semver.satisfies(expr, string)"
+      }
+    ],
+    "signal-exit": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "signal-exit(expr)"
+      }
+    ],
+    "string-width": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "string-width(expr)"
+      }
+    ],
+    "strip-ansi": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "strip-ansi(expr)"
+      }
+    ],
+    "supports-color": [
+      {
+        "type": "property",
+        "member": "stderr",
+        "signature": "supports-color.stderr"
+      },
+      {
+        "type": "property",
+        "member": "stdout",
+        "signature": "supports-color.stdout"
+      }
+    ],
+    "type-detect": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "type-detect(expr)"
+      }
+    ],
+    "which": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "which(expr)"
+      }
+    ],
+    "wrappy": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "wrappy(expr)"
+      }
+    ],
+    "yallist": [
+      {
+        "type": "property",
+        "member": "Node",
+        "signature": "yallist.Node"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "yallist()"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@flupkejs/eventemitter3",
+  "version": "1.2.2",
+  "description": "Drop-in replacement for eventemitter3",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rkristelijn/flupke"
+  },
+  "sideEffects": false
+}

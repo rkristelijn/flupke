@@ -1,0 +1,13 @@
+{
+  "framework": "vite",
+  "npm": "vite",
+  "version": "6.4.2",
+  "generated": "2026-05-26",
+  "replaceable_count": 3,
+  "total_flupke_packages": 166,
+  "deps": {
+    "nanoid": "3.3.12",
+    "picocolors": "1.1.1",
+    "picomatch": "4.0.4"
+  }
+}

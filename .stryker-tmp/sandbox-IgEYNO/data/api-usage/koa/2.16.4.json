@@ -1,0 +1,269 @@
+{
+  "framework": "koa",
+  "npm": "koa",
+  "version": "2.16.4",
+  "generated": "2026-05-26",
+  "packages_with_usage": 27,
+  "total_signatures": 41,
+  "usage": {
+    "content-disposition": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "content-disposition(expr, expr)"
+      }
+    ],
+    "content-type": [
+      {
+        "type": "method",
+        "member": "parse",
+        "signature": "content-type.parse(expr)"
+      }
+    ],
+    "debug": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "debug(string, expr)"
+      }
+    ],
+    "deep-equal": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "deep-equal(expr, expr)"
+      }
+    ],
+    "depd": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "depd(string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "depd(string, expr)"
+      },
+      {
+        "type": "method",
+        "member": "property",
+        "signature": "depd.property(expr, string, string)"
+      }
+    ],
+    "destroy": [
+      {
+        "type": "method",
+        "member": "bind",
+        "signature": "destroy.bind(null, expr)"
+      }
+    ],
+    "ee-first": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "ee-first(array, string, string, expr)"
+      }
+    ],
+    "encodeurl": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "encodeurl(expr)"
+      }
+    ],
+    "escape-html": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "escape-html(expr)"
+      }
+    ],
+    "fresh": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "fresh()"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "fresh(expr, expr)"
+      }
+    ],
+    "function-bind": [
+      {
+        "type": "method",
+        "member": "call",
+        "signature": "function-bind.call(expr, expr)"
+      }
+    ],
+    "get-intrinsic": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "get-intrinsic(string)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "get-intrinsic(expr, expr)"
+      }
+    ],
+    "gopd": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "gopd(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "gopd(expr, string)"
+      }
+    ],
+    "has-symbols": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "has-symbols()"
+      }
+    ],
+    "hasown": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "hasown(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "hasown(expr, string)"
+      }
+    ],
+    "http-errors": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "http-errors(expr, expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "http-errors(expr)"
+      }
+    ],
+    "inherits": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "inherits(expr, expr)"
+      }
+    ],
+    "media-typer": [
+      {
+        "type": "method",
+        "member": "parse",
+        "signature": "media-typer.parse(expr)"
+      },
+      {
+        "type": "method",
+        "member": "format",
+        "signature": "media-typer.format(expr)"
+      }
+    ],
+    "mime-types": [
+      {
+        "type": "method",
+        "member": "lookup",
+        "signature": "mime-types.lookup(expr)"
+      },
+      {
+        "type": "method",
+        "member": "contentType",
+        "signature": "mime-types.contentType(expr)"
+      }
+    ],
+    "negotiator": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "negotiator(expr)"
+      }
+    ],
+    "on-finished": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "on-finished(expr, expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "on-finished(expr, expr, expr)"
+      }
+    ],
+    "parseurl": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "parseurl(expr)"
+      }
+    ],
+    "safe-buffer": [
+      {
+        "type": "method",
+        "member": "from",
+        "signature": "safe-buffer.from(expr, string)"
+      }
+    ],
+    "setprototypeof": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "setprototypeof(expr, expr)"
+      }
+    ],
+    "statuses": [
+      {
+        "type": "property",
+        "member": "codes",
+        "signature": "statuses.codes"
+      },
+      {
+        "type": "property",
+        "member": "empty",
+        "signature": "statuses.empty"
+      },
+      {
+        "type": "property",
+        "member": "redirect",
+        "signature": "statuses.redirect"
+      }
+    ],
+    "toidentifier": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "toidentifier(expr)"
+      }
+    ],
+    "vary": [
+      {
+        "type": "call",
+        "member": null,
+        "signature": "vary(expr)"
+      },
+      {
+        "type": "call",
+        "member": null,
+        "signature": "vary(expr, expr)"
+      }
+    ]
+  }
+}

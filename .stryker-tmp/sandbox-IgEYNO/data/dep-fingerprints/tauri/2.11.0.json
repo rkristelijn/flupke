@@ -1,0 +1,9 @@
+{
+  "framework": "tauri",
+  "npm": "@tauri-apps/api",
+  "version": "2.11.0",
+  "generated": "2026-05-26",
+  "replaceable_count": 0,
+  "total_flupke_packages": 166,
+  "deps": {}
+}

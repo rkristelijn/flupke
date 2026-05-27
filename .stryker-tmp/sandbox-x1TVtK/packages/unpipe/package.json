@@ -1,0 +1,15 @@
+{
+  "name": "@flupkejs/unpipe",
+  "version": "1.0.0",
+  "description": "Drop-in replacement for unpipe",
+  "main": "src/index.js",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "sideEffects": false
+}

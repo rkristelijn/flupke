@@ -1,0 +1,21 @@
+/**
+ * Merge property descriptors from src to dest.
+ * @param {object} dest
+ * @param {object} src
+ * @param {boolean} [redefine=true]
+ * @returns {object} dest
+ */
+// @ts-nocheck
+
+function mergeDescriptors(dest, src, redefine) {
+  if (redefine === undefined) redefine = true;
+  const names = Object.getOwnPropertyNames(src);
+  for (const name of names) {
+    if (!redefine && Object.hasOwn(dest, name)) continue;
+    const descriptor = Object.getOwnPropertyDescriptor(src, name);
+    Object.defineProperty(dest, name, descriptor);
+  }
+  return dest;
+}
+
+module.exports = mergeDescriptors;
