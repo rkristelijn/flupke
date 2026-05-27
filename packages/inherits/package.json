@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/inherits",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "Drop-in replacement for inherits \u2014 uses native Object.create",
   "main": "src/index.js",
   "types": "src/index.d.ts",
