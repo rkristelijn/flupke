@@ -1,9 +1,0 @@
-{
-  "framework": "tanstack-query",
-  "npm": "@tanstack/react-query",
-  "version": "5.100.14",
-  "generated": "2026-05-26",
-  "replaceable_count": 0,
-  "total_flupke_packages": 166,
-  "deps": {}
-}

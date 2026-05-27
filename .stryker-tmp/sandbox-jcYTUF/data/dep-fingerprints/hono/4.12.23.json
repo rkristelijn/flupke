@@ -1,9 +1,0 @@
-{
-  "framework": "hono",
-  "npm": "hono",
-  "version": "4.12.23",
-  "generated": "2026-05-26",
-  "replaceable_count": 0,
-  "total_flupke_packages": 166,
-  "deps": {}
-}

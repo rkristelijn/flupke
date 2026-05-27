@@ -1,4 +1,0 @@
-// @ts-nocheck
-module.exports = function hasFlag(flag) {
-  return process.argv.includes(`--${flag}`);
-};

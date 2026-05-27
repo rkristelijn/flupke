@@ -1,7 +1,0 @@
-node_modules/
-dist/
-*.tgz
-.tmp/
-coverage/
-examples/
-coverage.lcov
