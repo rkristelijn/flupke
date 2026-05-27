@@ -68,10 +68,23 @@ jobs:
           RELEASE_VERSION=${{ steps.version.outputs.version }}
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b release/v${RELEASE_VERSION}
           git add -A
           git commit -m "chore: release v${RELEASE_VERSION}" || true
           git tag "v${RELEASE_VERSION}"
-          git push origin main --tags
+          git push origin release/v${RELEASE_VERSION} --tags
+
+      - name: Create PR
+        if: steps.version.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          RELEASE_VERSION=${{ steps.version.outputs.version }}
+          gh pr create \
+            --title "chore: release v${RELEASE_VERSION}" \
+            --body "$(cat /tmp/release-notes.md)" \
+            --base main \
+            --head release/v${RELEASE_VERSION}
 
       - name: Publish to npm
         if: steps.version.outputs.skip == 'false'
