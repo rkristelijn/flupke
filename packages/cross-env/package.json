@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/cross-env",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Drop-in replacement for cross-env",
   "main": "src/index.js",
   "bin": { "cross-env": "src/index.js" },

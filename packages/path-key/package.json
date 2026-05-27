@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/path-key",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Drop-in replacement for path-key",
   "main": "src/index.js",
   "exports": {

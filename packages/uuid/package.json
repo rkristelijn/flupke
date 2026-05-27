@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/uuid",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Drop-in replacement for uuid — uses native crypto.randomUUID()",
   "main": "src/index.js",
   "types": "src/index.d.ts",
