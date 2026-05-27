@@ -1,10 +1,13 @@
 {
   "name": "@flupkejs/function-bind",
   "version": "1.3.0",
-  "description": "Drop-in replacement for function-bind \u2014 uses native Function.prototype.bind",
+  "description": "Drop-in replacement for function-bind — uses native Function.prototype.bind",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": ["src"],
+  "files": [
+    "src",
+    "README.md"
+  ],
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -17,6 +20,11 @@
     "type": "git",
     "url": "https://github.com/rkristelijn/flupke"
   },
-  "keywords": ["function-bind", "bind", "flupke", "hardened"],
+  "keywords": [
+    "function-bind",
+    "bind",
+    "flupke",
+    "hardened"
+  ],
   "sideEffects": false
 }

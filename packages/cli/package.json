@@ -6,7 +6,8 @@
     "flupke": "src/index.js"
   },
   "files": [
-    "src"
+    "src",
+    "README.md"
   ],
   "license": "MIT",
   "repository": {

@@ -1,0 +1,30 @@
+# @flupkejs/unpipe
+
+[![npm](https://img.shields.io/npm/v/@flupkejs%2Funpipe)](https://www.npmjs.com/package/@flupkejs/unpipe)
+[![bundle](https://img.shields.io/bundlephobia/minzip/@flupkejs%2Funpipe)](https://bundlephobia.com/package/@flupkejs/unpipe)
+
+Drop-in replacement for unpipe
+
+## Install
+
+```bash
+npm i @flupkejs/unpipe
+```
+
+## What this replaces
+
+Drop-in replacement for [`unpipe`](https://www.npmjs.com/package/unpipe). Zero dependencies, 14 lines of code.
+
+Only the API surface used by major frameworks (Express, Next.js, Jest, etc.) is implemented — unused code is stripped.
+
+## ⚠ Status
+
+This package is under active development. While tested against framework usage patterns, edge cases may exist. Please [report issues](https://github.com/rkristelijn/flupke/issues) if you encounter incompatibilities.
+
+## Part of [flupke](https://github.com/rkristelijn/flupke)
+
+165 packages. 888 tests. Zero dependencies each.
+
+## License
+
+MIT

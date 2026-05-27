@@ -4,7 +4,10 @@
   "description": "util.isDeepStrictEqual",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "files": ["src"],
+  "files": [
+    "src",
+    "README.md"
+  ],
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
