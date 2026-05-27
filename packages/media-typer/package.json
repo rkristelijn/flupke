@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/media-typer",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Drop-in replacement for media-typer",
   "main": "src/index.js",
   "exports": {

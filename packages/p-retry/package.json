@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/p-retry",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Drop-in replacement for p-retry",
   "main": "src/index.js",
   "exports": {

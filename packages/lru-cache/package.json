@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/lru-cache",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Map-based LRU cache",
   "main": "src/index.js",
   "types": "src/index.d.ts",

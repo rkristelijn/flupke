@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/lodash",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Drop-in replacement for lodash — native ES2020+ implementations",
   "main": "src/index.js",
   "types": "src/index.d.ts",

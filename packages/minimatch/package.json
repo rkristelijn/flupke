@@ -1,6 +1,6 @@
 {
   "name": "@flupkejs/minimatch",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Drop-in replacement for minimatch",
   "main": "src/index.js",
   "exports": {
