@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   release:
@@ -20,7 +21,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org
 
       - name: Calculate version from commits
         id: version
@@ -62,47 +62,20 @@ jobs:
         if: steps.version.outputs.skip == 'false'
         run: node scripts/generate-catalog.js
 
-      - name: Commit and tag
+      - name: Create release PR
         if: steps.version.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           RELEASE_VERSION=${{ steps.version.outputs.version }}
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b release/v${RELEASE_VERSION}
           git add -A
-          git commit -m "chore: release v${RELEASE_VERSION}" || true
-          git tag "v${RELEASE_VERSION}"
-          git push origin release/v${RELEASE_VERSION} --tags
-
-      - name: Create PR
-        if: steps.version.outputs.skip == 'false'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          RELEASE_VERSION=${{ steps.version.outputs.version }}
+          git commit -m "chore: release v${RELEASE_VERSION}"
+          git push origin release/v${RELEASE_VERSION}
           gh pr create \
             --title "chore: release v${RELEASE_VERSION}" \
             --body "$(cat /tmp/release-notes.md)" \
             --base main \
             --head release/v${RELEASE_VERSION}
-
-      - name: Publish to npm
-        if: steps.version.outputs.skip == 'false'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          for pkg in packages/*/; do
-            if [ -f "$pkg/package.json" ]; then
-              npm publish "$pkg" --access public || true
-            fi
-          done
-
-      - name: Create GitHub Release
-        if: steps.version.outputs.skip == 'false'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          RELEASE_VERSION=${{ steps.version.outputs.version }}
-          gh release create "v${RELEASE_VERSION}" \
-            --title "v${RELEASE_VERSION}" \
-            --notes-file /tmp/release-notes.md

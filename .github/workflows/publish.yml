@@ -1,0 +1,46 @@
+name: Publish
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Get version
+        id: version
+        run: |
+          VERSION=$(echo "${{ github.event.pull_request.head.ref }}" | sed 's|release/v||')
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Tag and publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          RELEASE_VERSION=${{ steps.version.outputs.version }}
+          git tag "v${RELEASE_VERSION}"
+          git push origin "v${RELEASE_VERSION}"
+
+          for pkg in packages/*/; do
+            if [ -f "$pkg/package.json" ]; then
+              npm publish "$pkg" --access public || true
+            fi
+          done
+
+          gh release create "v${RELEASE_VERSION}" \
+            --title "v${RELEASE_VERSION}" \
+            --generate-notes
