@@ -5,3 +5,5 @@ dist/
 coverage/
 examples/
 coverage.lcov
+data/mutations/
+.stryker-tmp/
