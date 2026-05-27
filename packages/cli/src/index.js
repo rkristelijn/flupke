@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require("node:fs");
 const path = require("node:path");
+const { spawnSync } = require("node:child_process");
 
 // All packages @flupkejs provides
 const REPLACEMENTS = [
@@ -166,75 +167,77 @@ function detectPackageManager(dir) {
   return "npm";
 }
 
-// List all installed packages in node_modules
-function findInstalled(dir) {
-  const nm = path.join(dir, "node_modules");
-  if (!fs.existsSync(nm)) return [];
-  return fs
-    .readdirSync(nm)
-    .filter((f) => !f.startsWith(".") && !f.startsWith("@"));
+// List all installed packages using the package manager
+function findInstalled(pm) {
+  const cmd = pm === "pnpm"
+    ? ["pnpm", ["ls", "--depth=Infinity", "--json"]]
+    : pm === "yarn"
+      ? ["yarn", ["list", "--json", "--all"]]
+      : ["npm", ["ls", "--all", "--json"]];
+  try {
+    const { spawnSync } = require("node:child_process");
+    const result = spawnSync(cmd[0], cmd[1], { encoding: "utf8", maxBuffer: 100 * 1024 * 1024 });
+    const data = JSON.parse(result.stdout);
+    const pkgs = new Set();
+    function walk(deps) {
+      if (!deps) return;
+      for (const [name, info] of Object.entries(deps)) {
+        pkgs.add(name);
+        walk(info.dependencies);
+      }
+    }
+    const root = Array.isArray(data) ? data[0] : data;
+    walk(root.dependencies);
+    return Array.from(pkgs);
+  } catch {
+    return [];
+  }
 }
 
-// Filter installed packages against known replacements
-function findReplaceable(installed) {
-  return REPLACEMENTS.filter((p) => installed.includes(p));
+// Remove overrides from package.json
+function removeOverrides(dir) {
+  const pkgPath = path.join(dir, "package.json");
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
+  let changed = false;
+
+  if (pkg.overrides) { delete pkg.overrides; changed = true; }
+  if (pkg.resolutions) { delete pkg.resolutions; changed = true; }
+  if (pkg.pnpm?.overrides) { delete pkg.pnpm.overrides; changed = true; }
+
+  if (changed) {
+    fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
+  }
+  return changed;
 }
 
-// Write overrides to package.json in the correct format per package manager
+// Write overrides to package.json
 function writeOverrides(dir, pm, replaceable) {
   const pkgPath = path.join(dir, "package.json");
   const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
-  const directDeps = Object.keys(pkg.dependencies || {});
-  const devDeps = Object.keys(pkg.devDependencies || {});
   const overrides = {};
 
   for (const p of replaceable) {
-    const alias = `npm:@flupkejs/${p}@^1.0.0`;
-    if (directDeps.includes(p)) {
-      pkg.dependencies[p] = alias;
-    } else if (devDeps.includes(p)) {
-      pkg.devDependencies[p] = alias;
-    } else {
-      overrides[p] = alias;
-    }
+    overrides[p] = `npm:@flupkejs/${p}@^1.0.0`;
   }
 
-  if (Object.keys(overrides).length > 0) {
-    if (pm === "pnpm") {
-      pkg.pnpm = pkg.pnpm || {};
-      pkg.pnpm.overrides = { ...(pkg.pnpm.overrides || {}), ...overrides };
-    } else if (pm === "yarn") {
-      pkg.resolutions = { ...(pkg.resolutions || {}), ...overrides };
-    } else {
-      pkg.overrides = { ...(pkg.overrides || {}), ...overrides };
-    }
+  if (pm === "pnpm") {
+    pkg.pnpm = pkg.pnpm || {};
+    pkg.pnpm.overrides = { ...(pkg.pnpm.overrides || {}), ...overrides };
+  } else if (pm === "yarn") {
+    pkg.resolutions = { ...(pkg.resolutions || {}), ...overrides };
+  } else {
+    pkg.overrides = { ...(pkg.overrides || {}), ...overrides };
   }
 
   fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
 }
 
-// Known bundle sizes (gzip KB) of originals vs flupke
-const SIZES = {
-  axios: [13.4, 1.2],
-  moment: [72.0, 7.0],
-  lodash: [25.0, 3.2],
-  uuid: [3.0, 0.1],
-  qs: [8.0, 0.3],
-  deepmerge: [2.0, 0.4],
-  eventemitter3: [3.0, 0.5],
-  classnames: [0.3, 0.2],
-  clsx: [0.3, 0.2],
-  dotenv: [2.5, 0.5],
-  cookie: [1.5, 0.3],
-  "escape-html": [0.3, 0.2],
-};
-
 // Main entry point
 function run() {
   const dir = process.cwd();
   const args = process.argv.slice(2);
-  const analyze = args.includes("--analyze");
   const dryRun = args.includes("--dry-run");
+  const uninstall = args.includes("--uninstall");
   const pkgPath = path.join(dir, "package.json");
 
   if (!fs.existsSync(pkgPath)) {
@@ -242,14 +245,24 @@ function run() {
     process.exit(1);
   }
 
-  const pm = detectPackageManager(dir);
-  const installed = findInstalled(dir);
-  const replaceable = findReplaceable(installed);
-
-  // Header
   console.log("");
   console.log("  \x1b[1mflupke\x1b[0m — dependency cleanup");
   console.log("");
+
+  if (uninstall) {
+    const changed = removeOverrides(dir);
+    if (changed) {
+      console.log("  \x1b[32m✓\x1b[0m Overrides removed from package.json");
+    } else {
+      console.log("  No flupke overrides found to remove.");
+    }
+    console.log("");
+    return;
+  }
+
+  const pm = detectPackageManager(dir);
+  const installed = findInstalled(pm);
+  const replaceable = REPLACEMENTS.filter((p) => installed.includes(p));
 
   if (replaceable.length === 0) {
     console.log("  No replaceable packages found.");
@@ -257,68 +270,28 @@ function run() {
     return;
   }
 
-  // Before stats
-  const totalPkgs = installed.length;
-
-  // Write overrides (unless dry-run)
   if (!dryRun) {
     writeOverrides(dir, pm, replaceable);
   }
 
-  // Report
-  const field =
-    pm === "pnpm"
-      ? "pnpm.overrides"
-      : pm === "yarn"
-        ? "resolutions"
-        : "overrides";
-  console.log(`  Scanned:   ${totalPkgs} packages in node_modules`);
-  console.log(
-    `  Replaced:  ${replaceable.length} packages → @flupkejs/* equivalents`,
-  );
+  const field = pm === "pnpm" ? "pnpm.overrides" : pm === "yarn" ? "resolutions" : "overrides";
+  console.log(`  Scanned:   ${installed.length} packages in dependency tree`);
+  console.log(`  Replaced:  ${replaceable.length} packages → @flupkejs/* equivalents`);
   console.log("");
-
-  // Bundle size analysis
-  if (analyze || replaceable.some((p) => SIZES[p])) {
-    let savedKB = 0;
-    let beforeKB = 0;
-    console.log("  Bundle impact (gzip):");
-    for (const p of replaceable) {
-      if (SIZES[p]) {
-        const [orig, flup] = SIZES[p];
-        savedKB += orig - flup;
-        beforeKB += orig;
-        console.log(
-          `    ${p}: ${orig} KB → ${flup} KB (\x1b[32m-${(orig - flup).toFixed(1)} KB\x1b[0m)`,
-        );
-      }
-    }
-    if (savedKB > 0) {
-      console.log("");
-      console.log(
-        `  \x1b[1mTotal bundle savings: -${savedKB.toFixed(1)} KB gzip\x1b[0m`,
-      );
-    }
-    console.log("");
-  }
-
   console.log("  Packages replaced:");
   for (const p of replaceable) {
-    console.log(`    ✓ ${p}`);
+    console.log(`    \x1b[32m✓\x1b[0m ${p}`);
   }
   console.log("");
   if (dryRun) {
     console.log("  \x1b[33m⚠ Dry run — no changes written\x1b[0m");
   } else {
     console.log(`  \x1b[32m✓\x1b[0m ${field} written to package.json`);
+    console.log("");
+    console.log(`  \x1b[1mYou have been flupked! ᕕ( ᐛ )ᕗ\x1b[0m`);
   }
   console.log("");
-  const cmd =
-    pm === "pnpm"
-      ? "pnpm install"
-      : pm === "yarn"
-        ? "yarn install"
-        : "npm install";
+  const cmd = pm === "pnpm" ? "pnpm install" : pm === "yarn" ? "yarn install" : "npm install";
   if (!dryRun) console.log(`  Run \x1b[1m${cmd}\x1b[0m to apply.`);
   console.log("");
 }
