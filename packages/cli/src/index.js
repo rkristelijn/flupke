@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const fs = require("node:fs");
 const path = require("node:path");
-const { spawnSync } = require("node:child_process");
 
 // All packages @flupkejs provides
 const REPLACEMENTS = [
@@ -168,26 +167,40 @@ function detectPackageManager(dir) {
 }
 
 // List all installed packages using the package manager
-function findInstalled(pm) {
-  const cmd = pm === "pnpm"
-    ? ["pnpm", ["ls", "--depth=Infinity", "--json"]]
-    : pm === "yarn"
-      ? ["yarn", ["list", "--json", "--all"]]
-      : ["npm", ["ls", "--all", "--json"]];
-  try {
-    const { spawnSync } = require("node:child_process");
-    const result = spawnSync(cmd[0], cmd[1], { encoding: "utf8", maxBuffer: 100 * 1024 * 1024 });
-    const data = JSON.parse(result.stdout);
+function findInstalled(pm, dir) {
+  const nm = path.join(dir, "node_modules");
+  if (!fs.existsSync(nm)) return [];
+
+  // pnpm: parse .pnpm folder names
+  if (pm === "pnpm") {
+    const pnpmDir = path.join(nm, ".pnpm");
+    if (!fs.existsSync(pnpmDir)) return [];
+    const entries = fs.readdirSync(pnpmDir);
     const pkgs = new Set();
-    function walk(deps) {
-      if (!deps) return;
-      for (const [name, info] of Object.entries(deps)) {
-        pkgs.add(name);
-        walk(info.dependencies);
+    for (const entry of entries) {
+      if (entry.startsWith(".")) continue;
+      // Format: pkg@version or @scope+pkg@version
+      const name = entry.startsWith("@")
+        ? entry.replace("+", "/").replace(/@[0-9].*/, "")
+        : entry.replace(/@[0-9].*/, "");
+      if (name) pkgs.add(name);
+    }
+    return Array.from(pkgs);
+  }
+
+  // npm/yarn: node_modules is flat, just read top-level
+  try {
+    const entries = fs.readdirSync(nm);
+    const pkgs = new Set();
+    for (const entry of entries) {
+      if (entry.startsWith(".")) continue;
+      if (entry.startsWith("@")) {
+        const scoped = fs.readdirSync(path.join(nm, entry));
+        for (const s of scoped) pkgs.add(`${entry}/${s}`);
+      } else {
+        pkgs.add(entry);
       }
     }
-    const root = Array.isArray(data) ? data[0] : data;
-    walk(root.dependencies);
     return Array.from(pkgs);
   } catch {
     return [];
@@ -238,6 +251,7 @@ function run() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
   const uninstall = args.includes("--uninstall");
+  const numbers = args.includes("--numbers");
   const pkgPath = path.join(dir, "package.json");
 
   if (!fs.existsSync(pkgPath)) {
@@ -269,7 +283,7 @@ function run() {
   const pm = detectPackageManager(dir);
   console.log("  Flupking...");
   console.log("");
-  const installed = findInstalled(pm);
+  const installed = findInstalled(pm, dir);
   const replaceable = REPLACEMENTS.filter((p) => installed.includes(p));
 
   if (replaceable.length === 0) {
@@ -285,6 +299,20 @@ function run() {
   const field = pm === "pnpm" ? "pnpm.overrides" : pm === "yarn" ? "resolutions" : "overrides";
   console.log(`  Scanned:   ${installed.length} packages in dependency tree`);
   console.log(`  Replaced:  ${replaceable.length} packages → @flupkejs/* equivalents`);
+
+  if (numbers) {
+    const nm = path.join(dir, "node_modules");
+    let nmSize = 0;
+    try {
+      const du = require("node:child_process").execSync(`du -sk "${nm}"`, { encoding: "utf8" });
+      nmSize = parseInt(du.split("\t")[0], 10);
+    } catch {}
+    if (nmSize > 0) {
+      const mb = (nmSize / 1024).toFixed(0);
+      console.log(`  Storage:   ${mb} MB in node_modules`);
+    }
+  }
+
   console.log("");
   console.log("  Packages replaced:");
   for (const p of replaceable) {
